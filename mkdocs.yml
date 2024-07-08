@@ -2,26 +2,28 @@
 site_name: "dp-eh-nettopologie"
 theme:
   name: material
-  # palette:
-  #  scheme: slate
-  #  primary: cyan
+  palette:
+    scheme: default
+    primary: white
+    accent: blue
   features:
     - content.tabs.link
+  logo: assets/logo.svg
 plugins:
   - search
   - mermaid2
-  - mermaid2:
-      version: 10.9.0
 nav:
   # - Home: home.md
   - Index: index.md
-  - About: about.md
+  - Conceptual Model: about.md
+markdown_extensions:
+  - pymdownx.betterem
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+extra_css:
+  - assets/style.css
 site_url: https://Netbeheer-Nederland.github.io/dp-eh-nettopologie
 repo_url: https://github.com/Netbeheer-Nederland/dp-eh-nettopologie
-
-# Uncomment this block to enable use of Google Analytics.
-# Replace the property value with your own ID.
-# extra:
-#   analytics:
-#     provider: google
-#     property: G-XXXXXXXXXX

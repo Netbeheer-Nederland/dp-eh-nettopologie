@@ -1,161 +1,1065 @@
 {
     "$defs": {
+        "ACDCTerminal": {
+            "additionalProperties": false,
+            "description": "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.",
+            "properties": {
+                "description": {
+                    "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+                    "type": "string"
+                },
+                "energy_ident_code_eic": {
+                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
+                    "type": "string"
+                },
+                "european_article_number_ean": {
+                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
+                    "type": "string"
+                },
+                "m_rid": {
+                    "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+                    "type": "string"
+                },
+                "names": {
+                    "description": "All names of this identified object.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": "array"
+                },
+                "sequence_number": {
+                    "description": "The orientation of the terminal connections for a multiple terminal conducting equipment.  The sequence numbering starts with 1 and additional terminals should follow in increasing order.   The first terminal is the \"starting point\" for a two terminal branch.",
+                    "type": "integer"
+                },
+                "short_name": {
+                    "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sequence_number",
+                "m_rid"
+            ],
+            "title": "ACDCTerminal",
+            "type": "object"
+        },
+        "ActivePower": {
+            "additionalProperties": false,
+            "description": "Product of RMS value of the voltage and the RMS value of the in-phase component of the current.",
+            "properties": {
+                "multiplier": {
+                    "$ref": "#/$defs/UnitMultiplier"
+                },
+                "unit": {
+                    "$ref": "#/$defs/UnitSymbol"
+                },
+                "value": {
+                    "type": "number"
+                }
+            },
+            "title": "ActivePower",
+            "type": "object"
+        },
+        "AngleDegrees": {
+            "additionalProperties": false,
+            "description": "Measurement of angle in degrees.",
+            "properties": {
+                "multiplier": {
+                    "$ref": "#/$defs/UnitMultiplier"
+                },
+                "unit": {
+                    "$ref": "#/$defs/UnitSymbol"
+                },
+                "value": {
+                    "type": "number"
+                }
+            },
+            "title": "AngleDegrees",
+            "type": "object"
+        },
+        "BaseVoltage": {
+            "additionalProperties": false,
+            "description": "Defines a system base voltage which is referenced.",
+            "properties": {
+                "conducting_equipment": {
+                    "description": "All conducting equipment with this base voltage.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.",
+                    "items": {
+                        "$ref": "#/$defs/ConductingEquipment"
+                    },
+                    "type": "array"
+                },
+                "topological_node": {
+                    "description": "The topological nodes at the base voltage.",
+                    "items": {
+                        "$ref": "#/$defs/TopologicalNode"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "BaseVoltage",
+            "type": "object"
+        },
+        "ConductingEquipment": {
+            "additionalProperties": false,
+            "description": "The parts of the AC power system that are designed to carry current or that are conductively connected through terminals.",
+            "properties": {
+                "aggregate": {
+                    "description": "The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to \u201ctrue\u201d the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.  \r\nThe attribute is not used for EquivalentBranch, EquivalentShunt and EquivalentInjection.",
+                    "type": "boolean"
+                },
+                "base_voltage": {
+                    "$ref": "#/$defs/BaseVoltage",
+                    "description": "Base voltage of this conducting equipment.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers."
+                },
+                "description": {
+                    "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+                    "type": "string"
+                },
+                "energy_ident_code_eic": {
+                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
+                    "type": "string"
+                },
+                "european_article_number_ean": {
+                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
+                    "type": "string"
+                },
+                "in_service": {
+                    "description": "Specifies the availability of the equipment. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.",
+                    "type": "boolean"
+                },
+                "m_rid": {
+                    "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+                    "type": "string"
+                },
+                "names": {
+                    "description": "All names of this identified object.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": "array"
+                },
+                "network_analysis_enabled": {
+                    "description": "The equipment is enabled to participate in network analysis.  If unspecified, the value is assumed to be true.",
+                    "type": "boolean"
+                },
+                "normally_in_service": {
+                    "description": "Specifies the availability of the equipment under normal operating conditions. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.",
+                    "type": "boolean"
+                },
+                "short_name": {
+                    "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "m_rid"
+            ],
+            "title": "ConductingEquipment",
+            "type": "object"
+        },
+        "ConnectivityNode": {
+            "additionalProperties": false,
+            "description": "Connectivity nodes are points where terminals of AC conducting equipment are connected together with zero impedance.",
+            "title": "ConnectivityNode",
+            "type": "object"
+        },
+        "ConnectivityNodeContainer": {
+            "additionalProperties": false,
+            "description": "A base class for all objects that may contain connectivity nodes or topological nodes.",
+            "title": "ConnectivityNodeContainer",
+            "type": "object"
+        },
+        "CurrentFlow": {
+            "additionalProperties": false,
+            "description": "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC.",
+            "properties": {
+                "multiplier": {
+                    "$ref": "#/$defs/UnitMultiplier"
+                },
+                "unit": {
+                    "$ref": "#/$defs/UnitSymbol"
+                },
+                "value": {
+                    "type": "number"
+                }
+            },
+            "title": "CurrentFlow",
+            "type": "object"
+        },
+        "EnergyConnection": {
+            "additionalProperties": false,
+            "description": "A connection of energy generation or consumption on the power system model.",
+            "properties": {
+                "aggregate": {
+                    "description": "The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to \u201ctrue\u201d the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.  \r\nThe attribute is not used for EquivalentBranch, EquivalentShunt and EquivalentInjection.",
+                    "type": "boolean"
+                },
+                "base_voltage": {
+                    "$ref": "#/$defs/BaseVoltage",
+                    "description": "Base voltage of this conducting equipment.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers."
+                },
+                "description": {
+                    "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+                    "type": "string"
+                },
+                "energy_ident_code_eic": {
+                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
+                    "type": "string"
+                },
+                "european_article_number_ean": {
+                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
+                    "type": "string"
+                },
+                "in_service": {
+                    "description": "Specifies the availability of the equipment. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.",
+                    "type": "boolean"
+                },
+                "m_rid": {
+                    "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+                    "type": "string"
+                },
+                "names": {
+                    "description": "All names of this identified object.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": "array"
+                },
+                "network_analysis_enabled": {
+                    "description": "The equipment is enabled to participate in network analysis.  If unspecified, the value is assumed to be true.",
+                    "type": "boolean"
+                },
+                "normally_in_service": {
+                    "description": "Specifies the availability of the equipment under normal operating conditions. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.",
+                    "type": "boolean"
+                },
+                "short_name": {
+                    "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "m_rid"
+            ],
+            "title": "EnergyConnection",
+            "type": "object"
+        },
+        "EnergyConsumer": {
+            "additionalProperties": false,
+            "description": "Generic user of energy - a  point of consumption on the power system model.\nEnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only if there is no LoadResponseCharacteristic associated with EnergyConsumer or if LoadResponseCharacteristic.exponentModel is set to False.",
+            "properties": {
+                "aggregate": {
+                    "description": "The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to \u201ctrue\u201d the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.  \r\nThe attribute is not used for EquivalentBranch, EquivalentShunt and EquivalentInjection.",
+                    "type": "boolean"
+                },
+                "base_voltage": {
+                    "$ref": "#/$defs/BaseVoltage",
+                    "description": "Base voltage of this conducting equipment.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers."
+                },
+                "description": {
+                    "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+                    "type": "string"
+                },
+                "energy_ident_code_eic": {
+                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
+                    "type": "string"
+                },
+                "european_article_number_ean": {
+                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
+                    "type": "string"
+                },
+                "in_service": {
+                    "description": "Specifies the availability of the equipment. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.",
+                    "type": "boolean"
+                },
+                "m_rid": {
+                    "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+                    "type": "string"
+                },
+                "names": {
+                    "description": "All names of this identified object.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": "array"
+                },
+                "network_analysis_enabled": {
+                    "description": "The equipment is enabled to participate in network analysis.  If unspecified, the value is assumed to be true.",
+                    "type": "boolean"
+                },
+                "normally_in_service": {
+                    "description": "Specifies the availability of the equipment under normal operating conditions. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.",
+                    "type": "boolean"
+                },
+                "pfixed": {
+                    "$ref": "#/$defs/ActivePower",
+                    "description": "Active power of the load that is a fixed quantity and does not vary as load group value varies. Load sign convention is used, i.e. positive sign means flow out from a node."
+                },
+                "pfixed_pct": {
+                    "$ref": "#/$defs/PerCent",
+                    "description": "Fixed active power as a percentage of load group fixed active power. Used to represent the time-varying components.  Load sign convention is used, i.e. positive sign means flow out from a node."
+                },
+                "qfixed": {
+                    "$ref": "#/$defs/ReactivePower",
+                    "description": "Reactive power of the load that is a fixed quantity and does not vary as load group value varies. Load sign convention is used, i.e. positive sign means flow out from a node."
+                },
+                "qfixed_pct": {
+                    "$ref": "#/$defs/PerCent",
+                    "description": "Fixed reactive power as a percentage of load group fixed reactive power. Used to represent the time-varying components.  Load sign convention is used, i.e. positive sign means flow out from a node."
+                },
+                "short_name": {
+                    "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "m_rid"
+            ],
+            "title": "EnergyConsumer",
+            "type": "object"
+        },
+        "Equipment": {
+            "additionalProperties": false,
+            "description": "The parts of a power system that are physical devices, electronic or mechanical.",
+            "properties": {
+                "aggregate": {
+                    "description": "The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to \u201ctrue\u201d the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.  \r\nThe attribute is not used for EquivalentBranch, EquivalentShunt and EquivalentInjection.",
+                    "type": "boolean"
+                },
+                "description": {
+                    "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+                    "type": "string"
+                },
+                "energy_ident_code_eic": {
+                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
+                    "type": "string"
+                },
+                "european_article_number_ean": {
+                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
+                    "type": "string"
+                },
+                "in_service": {
+                    "description": "Specifies the availability of the equipment. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.",
+                    "type": "boolean"
+                },
+                "m_rid": {
+                    "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+                    "type": "string"
+                },
+                "names": {
+                    "description": "All names of this identified object.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": "array"
+                },
+                "network_analysis_enabled": {
+                    "description": "The equipment is enabled to participate in network analysis.  If unspecified, the value is assumed to be true.",
+                    "type": "boolean"
+                },
+                "normally_in_service": {
+                    "description": "Specifies the availability of the equipment under normal operating conditions. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.",
+                    "type": "boolean"
+                },
+                "short_name": {
+                    "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "m_rid"
+            ],
+            "title": "Equipment",
+            "type": "object"
+        },
         "IdentifiedObject": {
             "additionalProperties": false,
-            "description": "Represents a IdentifiedObject",
+            "description": "This is a root class to provide common identification for all classes needing identification and naming attributes.",
             "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
-                    "type": "integer"
-                },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
-                    "type": "string"
-                },
                 "description": {
-                    "description": "A human-readable description for a thing",
+                    "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
                 },
-                "id": {
-                    "description": "A unique identifier for a thing",
+                "energy_ident_code_eic": {
+                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
                     "type": "string"
                 },
-                "name": {
-                    "description": "A human-readable name for a thing",
+                "european_article_number_ean": {
+                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
                     "type": "string"
                 },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
+                "m_rid": {
+                    "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
                     "type": "string"
                 },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "IdentifiedObject",
-            "type": "object"
-        },
-        "IdentifiedObjectCollection": {
-            "additionalProperties": false,
-            "description": "A holder for IdentifiedObject objects",
-            "properties": {
-                "entries": {
-                    "additionalProperties": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/IdentifiedObject__identifier_optional"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ]
+                "names": {
+                    "description": "All names of this identified object.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
                     },
-                    "type": "object"
-                }
-            },
-            "title": "IdentifiedObjectCollection",
-            "type": "object"
-        },
-        "IdentifiedObject__identifier_optional": {
-            "additionalProperties": false,
-            "description": "Represents a IdentifiedObject",
-            "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
-                    "type": "integer"
+                    "type": "array"
                 },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human-readable name for a thing",
-                    "type": "string"
-                },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
-                    "type": "string"
-                },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
-                }
-            },
-            "required": [],
-            "title": "IdentifiedObject",
-            "type": "object"
-        },
-        "NamedThing": {
-            "additionalProperties": false,
-            "description": "A generic grouping for any identifiable entity",
-            "properties": {
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human-readable name for a thing",
+                "short_name": {
+                    "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
                     "type": "string"
                 }
             },
             "required": [
-                "id"
+                "m_rid"
             ],
-            "title": "NamedThing",
+            "title": "IdentifiedObject",
             "type": "object"
         },
-        "PersonStatus": {
+        "Name": {
+            "additionalProperties": false,
+            "description": "The Name class provides the means to define any number of human readable  names for an object. A name is <b>not</b> to be used for defining inter-object relationships. For inter-object relationships instead use the object identification 'mRID'.",
+            "properties": {
+                "identified_object": {
+                    "$ref": "#/$defs/IdentifiedObject",
+                    "description": "Identified object that this name designates."
+                },
+                "name_type": {
+                    "$ref": "#/$defs/NameType",
+                    "description": "Type of this name."
+                }
+            },
+            "required": [
+                "name_type",
+                "identified_object"
+            ],
+            "title": "Name",
+            "type": "object"
+        },
+        "NameType": {
+            "additionalProperties": false,
+            "description": "Type of name. Possible values for attribute 'name' are implementation dependent but standard profiles may specify types. An enterprise may have multiple IT systems each having its own local name for the same object, e.g. a planning system may have different names from an EMS. An object may also have different names within the same IT system, e.g. localName as defined in CIM version 14. The definition from CIM14 is:\r\nThe localName is a human readable name of the object. It is a free text name local to a node in a naming hierarchy similar to a file directory structure. A power system related naming hierarchy may be: Substation, VoltageLevel, Equipment etc. Children of the same parent in such a hierarchy have names that typically are unique among them.",
+            "properties": {
+                "description": {
+                    "description": "Description of the name type.\r\n",
+                    "type": "string"
+                },
+                "name_type_authority": {
+                    "$ref": "#/$defs/NameTypeAuthority",
+                    "description": "Authority responsible for managing names of this type."
+                },
+                "names": {
+                    "description": "All names of this type.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "NameType",
+            "type": "object"
+        },
+        "NameTypeAuthority": {
+            "additionalProperties": false,
+            "description": "Authority responsible for creation and management of names of a given type; typically an organization or an enterprise system.",
+            "properties": {
+                "description": {
+                    "description": "Description of the name type authority.\r\n",
+                    "type": "string"
+                },
+                "name_types": {
+                    "description": "All name types managed by this authority.",
+                    "items": {
+                        "$ref": "#/$defs/NameType"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "NameTypeAuthority",
+            "type": "object"
+        },
+        "PerCent": {
+            "additionalProperties": false,
+            "description": "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base.",
+            "properties": {
+                "multiplier": {
+                    "$ref": "#/$defs/UnitMultiplier"
+                },
+                "unit": {
+                    "$ref": "#/$defs/UnitSymbol"
+                },
+                "value": {
+                    "description": "Normally 0 to 100 on a defined base.",
+                    "type": "number"
+                }
+            },
+            "title": "PerCent",
+            "type": "object"
+        },
+        "PhaseCode": {
+            "description": "An unordered enumeration of phase identifiers.  Allows designation of phases for both transmission and distribution equipment, circuits and loads.   The enumeration, by itself, does not describe how the phases are connected together or connected to ground.  Ground is not explicitly denoted as a phase.\r\nResidential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For the example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.\r\nThe integer values are from IEC 61968-9 to support revenue metering applications.",
+            "enum": [
+                "A",
+                "AB",
+                "ABC",
+                "ABCN",
+                "ABN",
+                "AC",
+                "ACN",
+                "AN",
+                "B",
+                "BC",
+                "BCN",
+                "BN",
+                "C",
+                "CN",
+                "N",
+                "none",
+                "s1",
+                "s12",
+                "s12N",
+                "s1N",
+                "s2",
+                "s2N",
+                "X",
+                "XN",
+                "XY",
+                "XYN"
+            ],
+            "title": "PhaseCode",
+            "type": "string"
+        },
+        "PowerSystemResource": {
+            "additionalProperties": false,
+            "description": "A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated.",
+            "properties": {
+                "description": {
+                    "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+                    "type": "string"
+                },
+                "energy_ident_code_eic": {
+                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
+                    "type": "string"
+                },
+                "european_article_number_ean": {
+                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
+                    "type": "string"
+                },
+                "m_rid": {
+                    "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+                    "type": "string"
+                },
+                "names": {
+                    "description": "All names of this identified object.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": "array"
+                },
+                "short_name": {
+                    "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "m_rid"
+            ],
+            "title": "PowerSystemResource",
+            "type": "object"
+        },
+        "ReactivePower": {
+            "additionalProperties": false,
+            "description": "Product of RMS value of the voltage and the RMS value of the quadrature component of the current.",
+            "properties": {
+                "multiplier": {
+                    "$ref": "#/$defs/UnitMultiplier"
+                },
+                "unit": {
+                    "$ref": "#/$defs/UnitSymbol"
+                },
+                "value": {
+                    "type": "number"
+                }
+            },
+            "title": "ReactivePower",
+            "type": "object"
+        },
+        "SvInjection": {
+            "additionalProperties": false,
+            "description": "The SvInjection reports the calculated bus injection minus the sum of the terminal flows. The terminal flow is positive out from the bus (load sign convention) and bus injection has positive flow into the bus. SvInjection may have the remainder after state estimation or slack after power flow calculation.",
+            "properties": {
+                "p_injection": {
+                    "$ref": "#/$defs/ActivePower",
+                    "description": "The active power mismatch between calculated injection and initial injection.  Positive sign means injection into the TopologicalNode (bus)."
+                },
+                "q_injection": {
+                    "$ref": "#/$defs/ReactivePower",
+                    "description": "The reactive power mismatch between calculated injection and initial injection.  Positive sign means injection into the TopologicalNode (bus)."
+                }
+            },
+            "required": [
+                "p_injection"
+            ],
+            "title": "SvInjection",
+            "type": "object"
+        },
+        "SvPowerFlow": {
+            "additionalProperties": false,
+            "description": "State variable for power flow. Load convention is used for flow direction. This means flow out from the TopologicalNode into the equipment is positive.",
+            "properties": {
+                "p": {
+                    "$ref": "#/$defs/ActivePower",
+                    "description": "The active power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment."
+                },
+                "q": {
+                    "$ref": "#/$defs/ReactivePower",
+                    "description": "The reactive power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment."
+                },
+                "terminal": {
+                    "$ref": "#/$defs/Terminal",
+                    "description": "The terminal associated with the power flow state variable."
+                }
+            },
+            "required": [
+                "p",
+                "q",
+                "terminal"
+            ],
+            "title": "SvPowerFlow",
+            "type": "object"
+        },
+        "SvVoltage": {
+            "additionalProperties": false,
+            "description": "State variable for voltage.",
+            "properties": {
+                "angle": {
+                    "$ref": "#/$defs/AngleDegrees",
+                    "description": "The voltage angle of the topological node complex voltage with respect to system reference."
+                },
+                "v": {
+                    "$ref": "#/$defs/Voltage",
+                    "description": "The voltage magnitude at the topological node. The attribute shall be a positive value."
+                }
+            },
+            "required": [
+                "angle",
+                "v"
+            ],
+            "title": "SvVoltage",
+            "type": "object"
+        },
+        "Terminal": {
+            "additionalProperties": false,
+            "description": "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.",
+            "properties": {
+                "conducting_equipment": {
+                    "$ref": "#/$defs/ConductingEquipment",
+                    "description": "The conducting equipment of the terminal.  Conducting equipment have  terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes."
+                },
+                "connectivity_node": {
+                    "$ref": "#/$defs/ConnectivityNode",
+                    "description": "The connectivity node to which this terminal connects with zero impedance."
+                },
+                "description": {
+                    "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+                    "type": "string"
+                },
+                "energy_ident_code_eic": {
+                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
+                    "type": "string"
+                },
+                "european_article_number_ean": {
+                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
+                    "type": "string"
+                },
+                "m_rid": {
+                    "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+                    "type": "string"
+                },
+                "names": {
+                    "description": "All names of this identified object.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": "array"
+                },
+                "sequence_number": {
+                    "description": "The orientation of the terminal connections for a multiple terminal conducting equipment.  The sequence numbering starts with 1 and additional terminals should follow in increasing order.   The first terminal is the \"starting point\" for a two terminal branch.",
+                    "type": "integer"
+                },
+                "short_name": {
+                    "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "conducting_equipment",
+                "sequence_number",
+                "m_rid"
+            ],
+            "title": "Terminal",
+            "type": "object"
+        },
+        "TopologicalIsland": {
+            "additionalProperties": false,
+            "description": "An electrically connected subset of the network. Topological islands can change as the current network state changes, e.g. due to: \n- disconnect switches or breakers changing state in a SCADA/EMS.\n- manual creation, change or deletion of topological nodes in a planning tool.\nOnly energised TopologicalNode-s shall be part of the topological island.",
+            "properties": {
+                "description": {
+                    "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+                    "type": "string"
+                },
+                "energy_ident_code_eic": {
+                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
+                    "type": "string"
+                },
+                "european_article_number_ean": {
+                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
+                    "type": "string"
+                },
+                "m_rid": {
+                    "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+                    "type": "string"
+                },
+                "names": {
+                    "description": "All names of this identified object.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": "array"
+                },
+                "short_name": {
+                    "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "m_rid"
+            ],
+            "title": "TopologicalIsland",
+            "type": "object"
+        },
+        "TopologicalNode": {
+            "additionalProperties": false,
+            "description": "For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).\nFor a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called \"busses\".",
+            "properties": {
+                "base_voltage": {
+                    "$ref": "#/$defs/BaseVoltage",
+                    "description": "The base voltage of the topological node."
+                },
+                "connectivity_nodes": {
+                    "description": "The connectivity nodes combine together to form this topological node.  May depend on the current state of switches in the network.",
+                    "items": {
+                        "$ref": "#/$defs/ConnectivityNode"
+                    },
+                    "type": "array"
+                },
+                "sv_injection": {
+                    "$ref": "#/$defs/SvInjection",
+                    "description": "The injection flows state variables associated with the topological node."
+                },
+                "sv_voltage": {
+                    "$ref": "#/$defs/SvVoltage",
+                    "description": "The state voltage associated with the topological node."
+                },
+                "topological_island": {
+                    "$ref": "#/$defs/TopologicalIsland",
+                    "description": "A topological node belongs to a topological island."
+                }
+            },
+            "required": [
+                "base_voltage"
+            ],
+            "title": "TopologicalNode",
+            "type": "object"
+        },
+        "UnitMultiplier": {
             "description": "",
             "enum": [
-                "ALIVE",
-                "DEAD",
-                "UNKNOWN"
+                "y",
+                "z",
+                "a",
+                "f",
+                "p",
+                "n",
+                "micro",
+                "m",
+                "c",
+                "d",
+                "none",
+                "da",
+                "h",
+                "k",
+                "M",
+                "G",
+                "T",
+                "P",
+                "E",
+                "Z",
+                "Y"
             ],
-            "title": "PersonStatus",
+            "title": "UnitMultiplier",
             "type": "string"
-        }
-    },
-    "$id": "https://w3id.org/Netbeheer-Nederland/dp-eh-nettopologie",
-    "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "additionalProperties": true,
-    "description": "A holder for IdentifiedObject objects",
-    "metamodel_version": "1.7.0",
-    "properties": {
-        "entries": {
-            "additionalProperties": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/IdentifiedObject__identifier_optional"
+        },
+        "UnitSymbol": {
+            "description": "",
+            "enum": [
+                "none",
+                "m",
+                "kg",
+                "s",
+                "A",
+                "K",
+                "mol",
+                "cd",
+                "deg",
+                "rad",
+                "sr",
+                "Gy",
+                "Bq",
+                "degC",
+                "Sv",
+                "F",
+                "C",
+                "S",
+                "H",
+                "V",
+                "ohm",
+                "J",
+                "N",
+                "Hz",
+                "lx",
+                "lm",
+                "Wb",
+                "T",
+                "W",
+                "Pa",
+                "m2",
+                "m3",
+                "mPers",
+                "mPers2",
+                "m3Pers",
+                "mPerm3",
+                "kgm",
+                "kgPerm3",
+                "m2Pers",
+                "WPermK",
+                "JPerK",
+                "ppm",
+                "rotPers",
+                "radPers",
+                "WPerm2",
+                "JPerm2",
+                "SPerm",
+                "KPers",
+                "PaPers",
+                "JPerkgK",
+                "VA",
+                "VAr",
+                "cosPhi",
+                "Vs",
+                "V2",
+                "As",
+                "A2",
+                "A2s",
+                "VAh",
+                "Wh",
+                "VArh",
+                "VPerHz",
+                "HzPers",
+                "character",
+                "charPers",
+                "kgm2",
+                "dB",
+                "WPers",
+                "lPers",
+                "dBm",
+                "h",
+                "min",
+                "Q",
+                "Qh",
+                "ohmm",
+                "APerm",
+                "V2h",
+                "A2h",
+                "Ah",
+                "count",
+                "ft3",
+                "m3Perh",
+                "gal",
+                "Btu",
+                "l",
+                "lPerh",
+                "lPerl",
+                "gPerg",
+                "molPerm3",
+                "molPermol",
+                "molPerkg",
+                "sPers",
+                "HzPerHz",
+                "VPerV",
+                "APerA",
+                "VPerVA",
+                "rev",
+                "kat",
+                "JPerkg",
+                "m3Uncompensated",
+                "m3Compensated",
+                "WPerW",
+                "therm",
+                "onePerm",
+                "m3Perkg",
+                "Pas",
+                "Nm",
+                "NPerm",
+                "radPers2",
+                "JPerm3",
+                "VPerm",
+                "CPerm3",
+                "CPerm2",
+                "FPerm",
+                "HPerm",
+                "JPermol",
+                "JPermolK",
+                "CPerkg",
+                "GyPers",
+                "WPersr",
+                "WPerm2sr",
+                "katPerm3",
+                "d",
+                "anglemin",
+                "anglesec",
+                "ha",
+                "tonne",
+                "bar",
+                "mmHg",
+                "M",
+                "kn",
+                "Mx",
+                "G",
+                "Oe",
+                "Vh",
+                "WPerA",
+                "onePerHz",
+                "VPerVAr",
+                "ohmPerm",
+                "kgPerJ",
+                "JPers"
+            ],
+            "title": "UnitSymbol",
+            "type": "string"
+        },
+        "UsagePoint": {
+            "additionalProperties": false,
+            "description": "Logical or physical point in the network to which readings or events may be attributed. Used at the place where a physical or virtual meter may be located; however, it is not required that a meter be present.",
+            "properties": {
+                "connection_category": {
+                    "description": "A code used to specify the connection category, e.g., low voltage or low pressure, where the usage point is defined.",
+                    "type": "string"
+                },
+                "connection_state": {
+                    "$ref": "#/$defs/UsagePointConnectedKind",
+                    "description": "State of the usage point with respect to connection to the network.\r\n"
+                },
+                "description": {
+                    "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+                    "type": "string"
+                },
+                "disconnection_method": {
+                    "description": "Is an indication of how the usage point is physically connected or disconnected.",
+                    "type": "string"
+                },
+                "energy_ident_code_eic": {
+                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
+                    "type": "string"
+                },
+                "equipments": {
+                    "description": "All equipment connecting this usage point to the electrical grid.",
+                    "items": {
+                        "$ref": "#/$defs/Equipment"
                     },
-                    {
-                        "type": "null"
-                    }
-                ]
+                    "type": "array"
+                },
+                "estimated_load": {
+                    "$ref": "#/$defs/CurrentFlow",
+                    "description": "Estimated load."
+                },
+                "european_article_number_ean": {
+                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
+                    "type": "string"
+                },
+                "grounded": {
+                    "description": "True if grounded.",
+                    "type": "boolean"
+                },
+                "is_sdp": {
+                    "description": "If true, this usage point is a service delivery point, i.e., a usage point where the ownership of the service changes hands.\r\n",
+                    "type": "boolean"
+                },
+                "is_virtual": {
+                    "description": "If true, this usage point is virtual, i.e., no physical location exists in the network where a meter could be located to collect the meter readings. For example, one may define a virtual usage point to serve as an aggregation of usage for all of a company's premises distributed widely across the distribution territory. Otherwise, the usage point is physical, i.e., there is a logical point in the network where a meter could be located to collect meter readings.",
+                    "type": "boolean"
+                },
+                "m_rid": {
+                    "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+                    "type": "string"
+                },
+                "names": {
+                    "description": "All names of this identified object.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": "array"
+                },
+                "nominal_service_voltage": {
+                    "$ref": "#/$defs/Voltage",
+                    "description": "Nominal service voltage.\r\n"
+                },
+                "rated_current": {
+                    "$ref": "#/$defs/CurrentFlow",
+                    "description": "Current flow that this usage point is configured to deliver.\r\n"
+                },
+                "rated_power": {
+                    "$ref": "#/$defs/ActivePower",
+                    "description": "Active power that this usage point is configured to deliver.\r\n"
+                },
+                "short_name": {
+                    "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+                    "type": "string"
+                }
             },
+            "required": [
+                "m_rid"
+            ],
+            "title": "UsagePoint",
+            "type": "object"
+        },
+        "UsagePointConnectedKind": {
+            "description": "State of the usage point with respect to connection to the network.",
+            "enum": [
+                "connected",
+                "logicallyDisconnected",
+                "physicallyDisconnected"
+            ],
+            "title": "UsagePointConnectedKind",
+            "type": "string"
+        },
+        "Voltage": {
+            "additionalProperties": false,
+            "description": "Electrical voltage, can be both AC and DC.",
+            "properties": {
+                "multiplier": {
+                    "$ref": "#/$defs/UnitMultiplier"
+                },
+                "unit": {
+                    "$ref": "#/$defs/UnitSymbol"
+                },
+                "value": {
+                    "type": "number"
+                }
+            },
+            "title": "Voltage",
             "type": "object"
         }
     },
-    "title": "dp-eh-nettopologie",
+    "$id": "http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "NettopologieDataproduct",
     "type": "object",
     "version": null
 }

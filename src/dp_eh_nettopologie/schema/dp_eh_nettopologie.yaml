@@ -1,96 +1,1062 @@
----
-id: https://w3id.org/Netbeheer-Nederland/dp-eh-nettopologie
-name: dp-eh-nettopologie
-title: dp-eh-nettopologie
-description: |-
-  Informatiemodel voor het dataproduct Nettopologie voor EnergyHubs.
-license: Apache Software License 2.0
-see_also:
-  - https://Netbeheer-Nederland.github.io/dp-eh-nettopologie
-
-prefixes:
-  dp_eh_nettopologie: https://w3id.org/Netbeheer-Nederland/dp-eh-nettopologie/
-  linkml: https://w3id.org/linkml/
-  biolink: https://w3id.org/biolink/
-  schema: http://schema.org/
-  PATO: http://purl.obolibrary.org/obo/PATO_
-  example: https://example.org/
-default_prefix: dp_eh_nettopologie
-default_range: string
-
+name: NettopologieDataproduct
+description: EnergyHubs Nettopologie dataproduct.
+title: Nettopologie Dataproduct
+id: http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0
 imports:
-  - linkml:types
-
-classes:
-
-  NamedThing:
-    description: >-
-      A generic grouping for any identifiable entity
-    slots:
-      - id
-      - name
-      - description
-    class_uri: schema:Thing
-
-  IdentifiedObject:
-    is_a: NamedThing
-    description: >-
-      Represents a IdentifiedObject
-    slots:
-      - primary_email
-      - birth_date
-      - age_in_years
-      - vital_status
-    slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
-
-  IdentifiedObjectCollection:
-    tree_root: true
-    description: >-
-      A holder for IdentifiedObject objects
-    attributes:
-      entries:
-        range: IdentifiedObject
-        multivalued: true
-        inlined: true
-
-slots:
-  id:
-    identifier: true
-    slot_uri: schema:identifier
-    range: uriorcurie
-    description: A unique identifier for a thing
-  name:
-    slot_uri: schema:name
-    description: A human-readable name for a thing
-  description:
-    slot_uri: schema:description
-    description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
-    range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
-
+- linkml:types
+prefixes:
+  linkml: https://w3id.org/linkml/
+  github: https://github.com/
+  cim: https://cim.ucaiug.io/ns#
+  eu: http://iec.ch/TC57/CIM100-European#
+  nl: http://iec.ch/TC57/CIM100-Netherlands#
+  this: http://data.netbeheernederland.nl/dp-eh-nettopologie/def#
+default_curi_maps:
+- semweb_context
+default_prefix: this
+default_range: string
 enums:
-  PersonStatus:
+  UnitMultiplier:
+    from_schema: http://iec.ch/TC57/ns/CIM/StateVariables-EU#Package_StateVariablesProfile
+    enum_uri: http://iec.ch/TC57/CIM100#UnitMultiplier
     permissible_values:
-      ALIVE:
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
+      y:
+        meaning: cim:UnitMultiplier.y
+      z:
+        meaning: cim:UnitMultiplier.z
+      a:
+        meaning: cim:UnitMultiplier.a
+      f:
+        meaning: cim:UnitMultiplier.f
+      p:
+        meaning: cim:UnitMultiplier.p
+      n:
+        meaning: cim:UnitMultiplier.n
+      micro:
+        meaning: cim:UnitMultiplier.micro
+      m:
+        meaning: cim:UnitMultiplier.m
+      c:
+        meaning: cim:UnitMultiplier.c
+      d:
+        meaning: cim:UnitMultiplier.d
+      none:
+        meaning: cim:UnitMultiplier.none
+      da:
+        meaning: cim:UnitMultiplier.da
+      h:
+        meaning: cim:UnitMultiplier.h
+      k:
+        meaning: cim:UnitMultiplier.k
+      M:
+        meaning: cim:UnitMultiplier.M
+      G:
+        meaning: cim:UnitMultiplier.G
+      T:
+        meaning: cim:UnitMultiplier.T
+      P:
+        meaning: cim:UnitMultiplier.P
+      E:
+        meaning: cim:UnitMultiplier.E
+      Z:
+        meaning: cim:UnitMultiplier.Z
+      Y:
+        meaning: cim:UnitMultiplier.Y
+  UnitSymbol:
+    from_schema: http://iec.ch/TC57/ns/CIM/StateVariables-EU#Package_StateVariablesProfile
+    enum_uri: http://iec.ch/TC57/CIM100#UnitSymbol
+    permissible_values:
+      none:
+        meaning: cim:UnitSymbol.none
+      m:
+        meaning: cim:UnitSymbol.m
+      kg:
+        meaning: cim:UnitSymbol.kg
+      s:
+        meaning: cim:UnitSymbol.s
+      A:
+        meaning: cim:UnitSymbol.A
+      K:
+        meaning: cim:UnitSymbol.K
+      mol:
+        meaning: cim:UnitSymbol.mol
+      cd:
+        meaning: cim:UnitSymbol.cd
+      deg:
+        meaning: cim:UnitSymbol.deg
+      rad:
+        meaning: cim:UnitSymbol.rad
+      sr:
+        meaning: cim:UnitSymbol.sr
+      Gy:
+        meaning: cim:UnitSymbol.Gy
+      Bq:
+        meaning: cim:UnitSymbol.Bq
+      degC:
+        meaning: cim:UnitSymbol.degC
+      Sv:
+        meaning: cim:UnitSymbol.Sv
+      F:
+        meaning: cim:UnitSymbol.F
+      C:
+        meaning: cim:UnitSymbol.C
+      S:
+        meaning: cim:UnitSymbol.S
+      H:
+        meaning: cim:UnitSymbol.H
+      V:
+        meaning: cim:UnitSymbol.V
+      ohm:
+        meaning: cim:UnitSymbol.ohm
+      J:
+        meaning: cim:UnitSymbol.J
+      N:
+        meaning: cim:UnitSymbol.N
+      Hz:
+        meaning: cim:UnitSymbol.Hz
+      lx:
+        meaning: cim:UnitSymbol.lx
+      lm:
+        meaning: cim:UnitSymbol.lm
+      Wb:
+        meaning: cim:UnitSymbol.Wb
+      T:
+        meaning: cim:UnitSymbol.T
+      W:
+        meaning: cim:UnitSymbol.W
+      Pa:
+        meaning: cim:UnitSymbol.Pa
+      m2:
+        meaning: cim:UnitSymbol.m2
+      m3:
+        meaning: cim:UnitSymbol.m3
+      mPers:
+        meaning: cim:UnitSymbol.mPers
+      mPers2:
+        meaning: cim:UnitSymbol.mPers2
+      m3Pers:
+        meaning: cim:UnitSymbol.m3Pers
+      mPerm3:
+        meaning: cim:UnitSymbol.mPerm3
+      kgm:
+        meaning: cim:UnitSymbol.kgm
+      kgPerm3:
+        meaning: cim:UnitSymbol.kgPerm3
+      m2Pers:
+        meaning: cim:UnitSymbol.m2Pers
+      WPermK:
+        meaning: cim:UnitSymbol.WPermK
+      JPerK:
+        meaning: cim:UnitSymbol.JPerK
+      ppm:
+        meaning: cim:UnitSymbol.ppm
+      rotPers:
+        meaning: cim:UnitSymbol.rotPers
+      radPers:
+        meaning: cim:UnitSymbol.radPers
+      WPerm2:
+        meaning: cim:UnitSymbol.WPerm2
+      JPerm2:
+        meaning: cim:UnitSymbol.JPerm2
+      SPerm:
+        meaning: cim:UnitSymbol.SPerm
+      KPers:
+        meaning: cim:UnitSymbol.KPers
+      PaPers:
+        meaning: cim:UnitSymbol.PaPers
+      JPerkgK:
+        meaning: cim:UnitSymbol.JPerkgK
+      VA:
+        meaning: cim:UnitSymbol.VA
+      VAr:
+        meaning: cim:UnitSymbol.VAr
+      cosPhi:
+        meaning: cim:UnitSymbol.cosPhi
+      Vs:
+        meaning: cim:UnitSymbol.Vs
+      V2:
+        meaning: cim:UnitSymbol.V2
+      As:
+        meaning: cim:UnitSymbol.As
+      A2:
+        meaning: cim:UnitSymbol.A2
+      A2s:
+        meaning: cim:UnitSymbol.A2s
+      VAh:
+        meaning: cim:UnitSymbol.VAh
+      Wh:
+        meaning: cim:UnitSymbol.Wh
+      VArh:
+        meaning: cim:UnitSymbol.VArh
+      VPerHz:
+        meaning: cim:UnitSymbol.VPerHz
+      HzPers:
+        meaning: cim:UnitSymbol.HzPers
+      character:
+        meaning: cim:UnitSymbol.character
+      charPers:
+        meaning: cim:UnitSymbol.charPers
+      kgm2:
+        meaning: cim:UnitSymbol.kgm2
+      dB:
+        meaning: cim:UnitSymbol.dB
+      WPers:
+        meaning: cim:UnitSymbol.WPers
+      lPers:
+        meaning: cim:UnitSymbol.lPers
+      dBm:
+        meaning: cim:UnitSymbol.dBm
+      h:
+        meaning: cim:UnitSymbol.h
+      min:
+        meaning: cim:UnitSymbol.min
+      Q:
+        meaning: cim:UnitSymbol.Q
+      Qh:
+        meaning: cim:UnitSymbol.Qh
+      ohmm:
+        meaning: cim:UnitSymbol.ohmm
+      APerm:
+        meaning: cim:UnitSymbol.APerm
+      V2h:
+        meaning: cim:UnitSymbol.V2h
+      A2h:
+        meaning: cim:UnitSymbol.A2h
+      Ah:
+        meaning: cim:UnitSymbol.Ah
+      count:
+        meaning: cim:UnitSymbol.count
+      ft3:
+        meaning: cim:UnitSymbol.ft3
+      m3Perh:
+        meaning: cim:UnitSymbol.m3Perh
+      gal:
+        meaning: cim:UnitSymbol.gal
+      Btu:
+        meaning: cim:UnitSymbol.Btu
+      l:
+        meaning: cim:UnitSymbol.l
+      lPerh:
+        meaning: cim:UnitSymbol.lPerh
+      lPerl:
+        meaning: cim:UnitSymbol.lPerl
+      gPerg:
+        meaning: cim:UnitSymbol.gPerg
+      molPerm3:
+        meaning: cim:UnitSymbol.molPerm3
+      molPermol:
+        meaning: cim:UnitSymbol.molPermol
+      molPerkg:
+        meaning: cim:UnitSymbol.molPerkg
+      sPers:
+        meaning: cim:UnitSymbol.sPers
+      HzPerHz:
+        meaning: cim:UnitSymbol.HzPerHz
+      VPerV:
+        meaning: cim:UnitSymbol.VPerV
+      APerA:
+        meaning: cim:UnitSymbol.APerA
+      VPerVA:
+        meaning: cim:UnitSymbol.VPerVA
+      rev:
+        meaning: cim:UnitSymbol.rev
+      kat:
+        meaning: cim:UnitSymbol.kat
+      JPerkg:
+        meaning: cim:UnitSymbol.JPerkg
+      m3Uncompensated:
+        meaning: cim:UnitSymbol.m3Uncompensated
+      m3Compensated:
+        meaning: cim:UnitSymbol.m3Compensated
+      WPerW:
+        meaning: cim:UnitSymbol.WPerW
+      therm:
+        meaning: cim:UnitSymbol.therm
+      onePerm:
+        meaning: cim:UnitSymbol.onePerm
+      m3Perkg:
+        meaning: cim:UnitSymbol.m3Perkg
+      Pas:
+        meaning: cim:UnitSymbol.Pas
+      Nm:
+        meaning: cim:UnitSymbol.Nm
+      NPerm:
+        meaning: cim:UnitSymbol.NPerm
+      radPers2:
+        meaning: cim:UnitSymbol.radPers2
+      JPerm3:
+        meaning: cim:UnitSymbol.JPerm3
+      VPerm:
+        meaning: cim:UnitSymbol.VPerm
+      CPerm3:
+        meaning: cim:UnitSymbol.CPerm3
+      CPerm2:
+        meaning: cim:UnitSymbol.CPerm2
+      FPerm:
+        meaning: cim:UnitSymbol.FPerm
+      HPerm:
+        meaning: cim:UnitSymbol.HPerm
+      JPermol:
+        meaning: cim:UnitSymbol.JPermol
+      JPermolK:
+        meaning: cim:UnitSymbol.JPermolK
+      CPerkg:
+        meaning: cim:UnitSymbol.CPerkg
+      GyPers:
+        meaning: cim:UnitSymbol.GyPers
+      WPersr:
+        meaning: cim:UnitSymbol.WPersr
+      WPerm2sr:
+        meaning: cim:UnitSymbol.WPerm2sr
+      katPerm3:
+        meaning: cim:UnitSymbol.katPerm3
+      d:
+        meaning: cim:UnitSymbol.d
+      anglemin:
+        meaning: cim:UnitSymbol.anglemin
+      anglesec:
+        meaning: cim:UnitSymbol.anglesec
+      ha:
+        meaning: cim:UnitSymbol.ha
+      tonne:
+        meaning: cim:UnitSymbol.tonne
+      bar:
+        meaning: cim:UnitSymbol.bar
+      mmHg:
+        meaning: cim:UnitSymbol.mmHg
+      M:
+        meaning: cim:UnitSymbol.M
+      kn:
+        meaning: cim:UnitSymbol.kn
+      Mx:
+        meaning: cim:UnitSymbol.Mx
+      G:
+        meaning: cim:UnitSymbol.G
+      Oe:
+        meaning: cim:UnitSymbol.Oe
+      Vh:
+        meaning: cim:UnitSymbol.Vh
+      WPerA:
+        meaning: cim:UnitSymbol.WPerA
+      onePerHz:
+        meaning: cim:UnitSymbol.onePerHz
+      VPerVAr:
+        meaning: cim:UnitSymbol.VPerVAr
+      ohmPerm:
+        meaning: cim:UnitSymbol.ohmPerm
+      kgPerJ:
+        meaning: cim:UnitSymbol.kgPerJ
+      JPers:
+        meaning: cim:UnitSymbol.JPers
+  UsagePointConnectedKind:
+    description: "State of the usage point with respect to connection to the network.\r\
+      \n"
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM
+    enum_uri: cim:UsagePointConnectedKind
+    permissible_values:
+      connected:
+        meaning: cim:UsagePointConnectedKind.connected
+      logicallyDisconnected:
+        meaning: cim:UsagePointConnectedKind.logicallyDisconnected
+      physicallyDisconnected:
+        meaning: cim:UsagePointConnectedKind.physicallyDisconnected
+  PhaseCode:
+    description: "An unordered enumeration of phase identifiers.  Allows designation\
+      \ of phases for both transmission and distribution equipment, circuits and loads.\
+      \   The enumeration, by itself, does not describe how the phases are connected\
+      \ together or connected to ground.  Ground is not explicitly denoted as a phase.\r\
+      \nResidential and small commercial loads are often served from single-phase,\
+      \ or split-phase, secondary circuits. For the example of s12N, phases 1 and\
+      \ 2 refer to hot wires that are 180 degrees out of phase, while N refers to\
+      \ the neutral wire. Through single-phase transformer connections, these secondary\
+      \ circuits may be served from one or two of the primary phases A, B, and C.\
+      \ For three-phase loads, use the A, B, C phase codes instead of s12N.\r\nThe\
+      \ integer values are from IEC 61968-9 to support revenue metering applications."
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM
+    enum_uri: cim:PhaseCode
+    permissible_values:
+      A:
+        meaning: cim:PhaseCode.A
+      AB:
+        meaning: cim:PhaseCode.AB
+      ABC:
+        meaning: cim:PhaseCode.ABC
+      ABCN:
+        meaning: cim:PhaseCode.ABCN
+      ABN:
+        meaning: cim:PhaseCode.ABN
+      AC:
+        meaning: cim:PhaseCode.AC
+      ACN:
+        meaning: cim:PhaseCode.ACN
+      AN:
+        meaning: cim:PhaseCode.AN
+      B:
+        meaning: cim:PhaseCode.B
+      BC:
+        meaning: cim:PhaseCode.BC
+      BCN:
+        meaning: cim:PhaseCode.BCN
+      BN:
+        meaning: cim:PhaseCode.BN
+      C:
+        meaning: cim:PhaseCode.C
+      CN:
+        meaning: cim:PhaseCode.CN
+      N:
+        meaning: cim:PhaseCode.N
+      none:
+        meaning: cim:PhaseCode.none
+      s1:
+        meaning: cim:PhaseCode.s1
+      s12:
+        meaning: cim:PhaseCode.s12
+      s12N:
+        meaning: cim:PhaseCode.s12N
+      s1N:
+        meaning: cim:PhaseCode.s1N
+      s2:
+        meaning: cim:PhaseCode.s2
+      s2N:
+        meaning: cim:PhaseCode.s2N
+      X:
+        meaning: cim:PhaseCode.X
+      XN:
+        meaning: cim:PhaseCode.XN
+      XY:
+        meaning: cim:PhaseCode.XY
+      XYN:
+        meaning: cim:PhaseCode.XYN
+classes:
+  TopologicalIsland:
+    description: "An electrically connected subset of the network. Topological islands\
+      \ can change as the current network state changes, e.g. due to: \n- disconnect\
+      \ switches or breakers changing state in a SCADA/EMS.\n- manual creation, change\
+      \ or deletion of topological nodes in a planning tool.\nOnly energised TopologicalNode-s\
+      \ shall be part of the topological island."
+    is_a: IdentifiedObject
+    class_uri: cim:TopologicalIsland
+  TopologicalNode:
+    description: 'For a detailed substation model a topological node is a set of connectivity
+      nodes that, in the current network state, are connected together through any
+      type of closed switches, including  jumpers. Topological nodes change as the
+      current network state changes (i.e., switches, breakers, etc. change state).
+
+      For a planning model, switch statuses are not used to form topological nodes.
+      Instead they are manually created or deleted in a model builder tool. Topological
+      nodes maintained this way are also called "busses".'
+    attributes:
+      sv_injection:
+        description: The injection flows state variables associated with the topological
+          node.
+        slot_uri: cim:TopologicalNode.SvInjection
+        multivalued: false
+        range: SvInjection
+        required: false
+      sv_voltage:
+        description: The state voltage associated with the topological node.
+        slot_uri: cim:TopologicalNode.SvVoltage
+        multivalued: false
+        range: SvVoltage
+        required: false
+      topological_island:
+        description: A topological node belongs to a topological island.
+        slot_uri: cim:TopologicalNode.TopologicalIsland
+        multivalued: false
+        range: TopologicalIsland
+        required: false
+      base_voltage:
+        description: The base voltage of the topological node.
+        slot_uri: cim:TopologicalNode.BaseVoltage
+        multivalued: false
+        range: BaseVoltage
+        required: true
+      connectivity_nodes:
+        description: The connectivity nodes combine together to form this topological
+          node.  May depend on the current state of switches in the network.
+        slot_uri: cim:TopologicalNode.ConnectivityNodes
+        multivalued: true
+        range: ConnectivityNode
+        required: false
+    class_uri: cim:TopologicalNode
+  SvInjection:
+    description: The SvInjection reports the calculated bus injection minus the sum
+      of the terminal flows. The terminal flow is positive out from the bus (load
+      sign convention) and bus injection has positive flow into the bus. SvInjection
+      may have the remainder after state estimation or slack after power flow calculation.
+    attributes:
+      p_injection:
+        description: The active power mismatch between calculated injection and initial
+          injection.  Positive sign means injection into the TopologicalNode (bus).
+        slot_uri: cim:SvInjection.pInjection
+        multivalued: false
+        range: ActivePower
+        required: true
+      q_injection:
+        description: The reactive power mismatch between calculated injection and
+          initial injection.  Positive sign means injection into the TopologicalNode
+          (bus).
+        slot_uri: cim:SvInjection.qInjection
+        multivalued: false
+        range: ReactivePower
+        required: false
+    class_uri: cim:SvInjection
+  ActivePower:
+    description: Product of RMS value of the voltage and the RMS value of the in-phase
+      component of the current.
+    attributes:
+      value:
+        slot_uri: cim:ActivePower.value
+        multivalued: false
+        range: float
+        required: false
+      multiplier:
+        slot_uri: cim:ActivePower.multiplier
+        multivalued: false
+        range: UnitMultiplier
+        required: false
+      unit:
+        slot_uri: cim:ActivePower.unit
+        multivalued: false
+        range: UnitSymbol
+        required: false
+    class_uri: cim:ActivePower
+  ReactivePower:
+    description: Product of RMS value of the voltage and the RMS value of the quadrature
+      component of the current.
+    attributes:
+      value:
+        slot_uri: cim:ReactivePower.value
+        multivalued: false
+        range: float
+        required: false
+      unit:
+        slot_uri: cim:ReactivePower.unit
+        multivalued: false
+        range: UnitSymbol
+        required: false
+      multiplier:
+        slot_uri: cim:ReactivePower.multiplier
+        multivalued: false
+        range: UnitMultiplier
+        required: false
+    class_uri: cim:ReactivePower
+  SvVoltage:
+    description: State variable for voltage.
+    attributes:
+      angle:
+        description: The voltage angle of the topological node complex voltage with
+          respect to system reference.
+        slot_uri: cim:SvVoltage.angle
+        multivalued: false
+        range: AngleDegrees
+        required: true
+      v:
+        description: The voltage magnitude at the topological node. The attribute
+          shall be a positive value.
+        slot_uri: cim:SvVoltage.v
+        multivalued: false
+        range: Voltage
+        required: true
+    class_uri: cim:SvVoltage
+  SvPowerFlow:
+    description: State variable for power flow. Load convention is used for flow direction.
+      This means flow out from the TopologicalNode into the equipment is positive.
+    attributes:
+      p:
+        description: The active power flow. Load sign convention is used, i.e. positive
+          sign means flow out from a TopologicalNode (bus) into the conducting equipment.
+        slot_uri: cim:SvPowerFlow.p
+        multivalued: false
+        range: ActivePower
+        required: true
+      q:
+        description: The reactive power flow. Load sign convention is used, i.e. positive
+          sign means flow out from a TopologicalNode (bus) into the conducting equipment.
+        slot_uri: cim:SvPowerFlow.q
+        multivalued: false
+        range: ReactivePower
+        required: true
+      terminal:
+        description: The terminal associated with the power flow state variable.
+        slot_uri: cim:SvPowerFlow.Terminal
+        multivalued: false
+        range: Terminal
+        required: true
+    class_uri: cim:SvPowerFlow
+  Terminal:
+    description: An AC electrical connection point to a piece of conducting equipment.
+      Terminals are connected at physical connection points called connectivity nodes.
+    is_a: ACDCTerminal
+    attributes:
+      conducting_equipment:
+        description: The conducting equipment of the terminal.  Conducting equipment
+          have  terminals that may be connected to other conducting equipment terminals
+          via connectivity nodes or topological nodes.
+        slot_uri: cim:Terminal.ConductingEquipment
+        multivalued: false
+        range: ConductingEquipment
+        required: true
+      connectivity_node:
+        description: The connectivity node to which this terminal connects with zero
+          impedance.
+        slot_uri: cim:Terminal.ConnectivityNode
+        multivalued: false
+        range: ConnectivityNode
+        required: false
+    class_uri: cim:Terminal
+  ACDCTerminal:
+    description: An electrical connection point (AC or DC) to a piece of conducting
+      equipment. Terminals are connected at physical connection points called connectivity
+      nodes.
+    is_a: IdentifiedObject
+    attributes:
+      sequence_number:
+        description: The orientation of the terminal connections for a multiple terminal
+          conducting equipment.  The sequence numbering starts with 1 and additional
+          terminals should follow in increasing order.   The first terminal is the
+          "starting point" for a two terminal branch.
+        slot_uri: cim:ACDCTerminal.sequenceNumber
+        multivalued: false
+        range: integer
+        required: true
+    class_uri: cim:ACDCTerminal
+  AngleDegrees:
+    description: Measurement of angle in degrees.
+    attributes:
+      value:
+        slot_uri: cim:AngleDegrees.value
+        multivalued: false
+        range: float
+        required: false
+      unit:
+        slot_uri: cim:AngleDegrees.unit
+        multivalued: false
+        range: UnitSymbol
+        required: false
+      multiplier:
+        slot_uri: cim:AngleDegrees.multiplier
+        multivalued: false
+        range: UnitMultiplier
+        required: false
+    class_uri: cim:AngleDegrees
+  Voltage:
+    description: Electrical voltage, can be both AC and DC.
+    attributes:
+      value:
+        slot_uri: cim:Voltage.value
+        multivalued: false
+        range: float
+        required: false
+      multiplier:
+        slot_uri: cim:Voltage.multiplier
+        multivalued: false
+        range: UnitMultiplier
+        required: false
+      unit:
+        slot_uri: cim:Voltage.unit
+        multivalued: false
+        range: UnitSymbol
+        required: false
+    class_uri: cim:Voltage
+  IdentifiedObject:
+    description: This is a root class to provide common identification for all classes
+      needing identification and naming attributes.
+    attributes:
+      m_rid:
+        description: 'Master resource identifier issued by a model authority. The
+          mRID is unique within an exchange context. Global uniqueness is easily achieved
+          by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID
+          is strongly recommended.
+
+          For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID
+          is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.'
+        slot_uri: cim:IdentifiedObject.mRID
+        multivalued: false
+        range: string
+        required: true
+      description:
+        description: The description is a free human readable text describing or naming
+          the object. It may be non unique and may not correlate to a naming hierarchy.
+        slot_uri: cim:IdentifiedObject.description
+        multivalued: false
+        range: string
+        required: false
+      energy_ident_code_eic:
+        description: The attribute is used for an exchange of the EIC code (Energy
+          identification Code). The length of the string is 16 characters as defined
+          by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.
+        slot_uri: eu:IdentifiedObject.energyIdentCodeEic
+        multivalued: false
+        range: string
+        required: false
+      european_article_number_ean:
+        description: The attribute is used for an exchange of the EAN code (European
+          Article Number). The length of the string is 16 characters as defined by
+          the EAN code. For details on EAN scheme please refer to the [Codebesluit
+          toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).
+        slot_uri: nl:IdentifiedObject.europeanArticleNumberEAN
+        multivalued: false
+        range: string
+        required: false
+      names:
+        description: All names of this identified object.
+        slot_uri: cim:IdentifiedObject.Names
+        multivalued: true
+        range: Name
+        required: false
+      short_name:
+        description: The attribute is used for an exchange of a human readable short
+          name with length of the string 12 characters maximum.
+        slot_uri: eu:IdentifiedObject.shortName
+        multivalued: false
+        range: string
+        required: false
+    class_uri: cim:IdentifiedObject
+  Name:
+    description: "The Name class provides the means to define any number of human\
+      \ readable  names for an object. A name is <b>not</b> to be used for defining\
+      \ inter-object relationships. For inter-object relationships instead use the\
+      \ object identification 'mRID'.\r\n"
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61970.Base.Core
+    attributes:
+      name_type:
+        description: Type of this name.
+        slot_uri: cim:Name.NameType
+        multivalued: false
+        range: NameType
+        required: true
+      identified_object:
+        description: Identified object that this name designates.
+        slot_uri: cim:Name.IdentifiedObject
+        multivalued: false
+        range: IdentifiedObject
+        required: true
+    class_uri: cim:Name
+  NameType:
+    description: "Type of name. Possible values for attribute 'name' are implementation\
+      \ dependent but standard profiles may specify types. An enterprise may have\
+      \ multiple IT systems each having its own local name for the same object, e.g.\
+      \ a planning system may have different names from an EMS. An object may also\
+      \ have different names within the same IT system, e.g. localName as defined\
+      \ in CIM version 14. The definition from CIM14 is:\r\nThe localName is a human\
+      \ readable name of the object. It is a free text name local to a node in a naming\
+      \ hierarchy similar to a file directory structure. A power system related naming\
+      \ hierarchy may be: Substation, VoltageLevel, Equipment etc. Children of the\
+      \ same parent in such a hierarchy have names that typically are unique among\
+      \ them.\r\n"
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61970.Base.Core
+    attributes:
+      description:
+        description: "Description of the name type.\r\n"
+        slot_uri: cim:NameType.description
+        multivalued: false
+        range: string
+        required: false
+      name_type_authority:
+        description: Authority responsible for managing names of this type.
+        slot_uri: cim:NameType.NameTypeAuthority
+        multivalued: false
+        range: NameTypeAuthority
+        required: false
+      names:
+        description: All names of this type.
+        slot_uri: cim:NameType.Names
+        multivalued: true
+        range: Name
+        required: false
+    class_uri: cim:NameType
+  NameTypeAuthority:
+    description: "Authority responsible for creation and management of names of a\
+      \ given type; typically an organization or an enterprise system.\r\n"
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61970.Base.Core
+    attributes:
+      description:
+        description: "Description of the name type authority.\r\n"
+        slot_uri: cim:NameTypeAuthority.description
+        multivalued: false
+        range: string
+        required: false
+      name_types:
+        description: All name types managed by this authority.
+        slot_uri: cim:NameTypeAuthority.NameTypes
+        multivalued: true
+        range: NameType
+        required: false
+    class_uri: cim:NameTypeAuthority
+  BaseVoltage:
+    description: Defines a system base voltage which is referenced.
+    attributes:
+      topological_node:
+        description: The topological nodes at the base voltage.
+        slot_uri: cim:BaseVoltage.TopologicalNode
+        multivalued: true
+        range: TopologicalNode
+        required: false
+      conducting_equipment:
+        description: All conducting equipment with this base voltage.  Use only when
+          there is no voltage level container used and only one base voltage applies.  For
+          example, not used for transformers.
+        slot_uri: cim:BaseVoltage.ConductingEquipment
+        multivalued: true
+        range: ConductingEquipment
+        required: false
+    class_uri: cim:BaseVoltage
+  ConnectivityNode:
+    description: Connectivity nodes are points where terminals of AC conducting equipment
+      are connected together with zero impedance.
+    class_uri: cim:ConnectivityNode
+  ConnectivityNodeContainer:
+    description: A base class for all objects that may contain connectivity nodes
+      or topological nodes.
+    class_uri: cim:ConnectivityNodeContainer
+  UsagePoint:
+    description: Logical or physical point in the network to which readings or events
+      may be attributed. Used at the place where a physical or virtual meter may be
+      located; however, it is not required that a meter be present.
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61968.Metering
+    is_a: IdentifiedObject
+    attributes:
+      connection_category:
+        description: A code used to specify the connection category, e.g., low voltage
+          or low pressure, where the usage point is defined.
+        slot_uri: cim:UsagePoint.connectionCategory
+        multivalued: false
+        range: string
+        required: false
+      connection_state:
+        description: "State of the usage point with respect to connection to the network.\r\
+          \n"
+        slot_uri: cim:UsagePoint.connectionState
+        multivalued: false
+        range: UsagePointConnectedKind
+        required: false
+      disconnection_method:
+        description: Is an indication of how the usage point is physically connected
+          or disconnected.
+        slot_uri: cim:UsagePoint.disconnectionMethod
+        multivalued: false
+        range: string
+        required: false
+      estimated_load:
+        description: Estimated load.
+        slot_uri: cim:UsagePoint.estimatedLoad
+        multivalued: false
+        range: CurrentFlow
+        required: false
+      grounded:
+        description: True if grounded.
+        slot_uri: cim:UsagePoint.grounded
+        multivalued: false
+        range: boolean
+        required: false
+      is_sdp:
+        description: "If true, this usage point is a service delivery point, i.e.,\
+          \ a usage point where the ownership of the service changes hands.\r\n"
+        slot_uri: cim:UsagePoint.isSdp
+        multivalued: false
+        range: boolean
+        required: false
+      is_virtual:
+        description: If true, this usage point is virtual, i.e., no physical location
+          exists in the network where a meter could be located to collect the meter
+          readings. For example, one may define a virtual usage point to serve as
+          an aggregation of usage for all of a company's premises distributed widely
+          across the distribution territory. Otherwise, the usage point is physical,
+          i.e., there is a logical point in the network where a meter could be located
+          to collect meter readings.
+        slot_uri: cim:UsagePoint.isVirtual
+        multivalued: false
+        range: boolean
+        required: false
+      nominal_service_voltage:
+        description: "Nominal service voltage.\r\n"
+        slot_uri: cim:UsagePoint.nominalServiceVoltage
+        multivalued: false
+        range: Voltage
+        required: false
+      rated_current:
+        description: "Current flow that this usage point is configured to deliver.\r\
+          \n"
+        slot_uri: cim:UsagePoint.ratedCurrent
+        multivalued: false
+        range: CurrentFlow
+        required: false
+      rated_power:
+        description: "Active power that this usage point is configured to deliver.\r\
+          \n"
+        slot_uri: cim:UsagePoint.ratedPower
+        multivalued: false
+        range: ActivePower
+        required: false
+      equipments:
+        description: All equipment connecting this usage point to the electrical grid.
+        slot_uri: cim:UsagePoint.Equipments
+        multivalued: true
+        range: Equipment
+        required: false
+    class_uri: cim:UsagePoint
+  CurrentFlow:
+    annotations:
+      represents_cim_data_type:
+        tag: represents_cim_data_type
+        value: true
+    description: 'Electrical current with sign convention: positive flow is out of
+      the conducting equipment into the connectivity node. Can be both AC and DC.'
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61970.Base.Domain
+    attributes:
+      multiplier:
+        slot_uri: cim:CurrentFlow.multiplier
+        multivalued: false
+        range: UnitMultiplier
+        required: false
+      unit:
+        slot_uri: cim:CurrentFlow.unit
+        multivalued: false
+        range: UnitSymbol
+        required: false
+      value:
+        slot_uri: cim:CurrentFlow.value
+        multivalued: false
+        range: float
+        required: false
+    class_uri: cim:CurrentFlow
+  Equipment:
+    description: The parts of a power system that are physical devices, electronic
+      or mechanical.
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61970.Base.Core
+    is_a: PowerSystemResource
+    attributes:
+      aggregate:
+        description: "The aggregate flag provides an alternative way of representing\
+          \ an aggregated (equivalent) element. It is applicable in cases when the\
+          \ dedicated classes for equivalent equipment do not have all of the attributes\
+          \ necessary to represent the required level of detail.  In case the flag\
+          \ is set to \u201Ctrue\u201D the single instance of equipment represents\
+          \ multiple pieces of equipment that have been modelled together as an aggregate\
+          \ equivalent obtained by a network reduction procedure. Examples would be\
+          \ power transformers or synchronous machines operating in parallel modelled\
+          \ as a single aggregate power transformer or aggregate synchronous machine.\
+          \  \r\nThe attribute is not used for EquivalentBranch, EquivalentShunt and\
+          \ EquivalentInjection."
+        slot_uri: cim:Equipment.aggregate
+        multivalued: false
+        range: boolean
+        required: false
+      in_service:
+        description: Specifies the availability of the equipment. True means the equipment
+          is available for topology processing, which determines if the equipment
+          is energized or not. False means that the equipment is treated by network
+          applications as if it is not in the model.
+        slot_uri: cim:Equipment.inService
+        multivalued: false
+        range: boolean
+        required: false
+      network_analysis_enabled:
+        description: The equipment is enabled to participate in network analysis.  If
+          unspecified, the value is assumed to be true.
+        slot_uri: cim:Equipment.networkAnalysisEnabled
+        multivalued: false
+        range: boolean
+        required: false
+      normally_in_service:
+        description: Specifies the availability of the equipment under normal operating
+          conditions. True means the equipment is available for topology processing,
+          which determines if the equipment is energized or not. False means that
+          the equipment is treated by network applications as if it is not in the
+          model.
+        slot_uri: cim:Equipment.normallyInService
+        multivalued: false
+        range: boolean
+        required: false
+    class_uri: cim:Equipment
+  PowerSystemResource:
+    description: A power system resource (PSR) can be an item of equipment such as
+      a switch, an equipment container containing many individual items of equipment
+      such as a substation, or an organisational entity such as sub-control area.
+      Power system resources can have measurements associated.
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61970.Base.Core
+    is_a: IdentifiedObject
+    class_uri: cim:PowerSystemResource
+  ConductingEquipment:
+    description: The parts of the AC power system that are designed to carry current
+      or that are conductively connected through terminals.
+    is_a: Equipment
+    attributes:
+      base_voltage:
+        description: Base voltage of this conducting equipment.  Use only when there
+          is no voltage level container used and only one base voltage applies.  For
+          example, not used for transformers.
+        slot_uri: cim:ConductingEquipment.BaseVoltage
+        multivalued: false
+        range: BaseVoltage
+        required: false
+    class_uri: cim:ConductingEquipment
+  EnergyConsumer:
+    description: 'Generic user of energy - a  point of consumption on the power system
+      model.
+
+      EnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only
+      if there is no LoadResponseCharacteristic associated with EnergyConsumer or
+      if LoadResponseCharacteristic.exponentModel is set to False.'
+    is_a: EnergyConnection
+    attributes:
+      pfixed:
+        description: Active power of the load that is a fixed quantity and does not
+          vary as load group value varies. Load sign convention is used, i.e. positive
+          sign means flow out from a node.
+        slot_uri: cim:EnergyConsumer.pfixed
+        multivalued: false
+        range: ActivePower
+        required: false
+      pfixed_pct:
+        description: Fixed active power as a percentage of load group fixed active
+          power. Used to represent the time-varying components.  Load sign convention
+          is used, i.e. positive sign means flow out from a node.
+        slot_uri: cim:EnergyConsumer.pfixedPct
+        multivalued: false
+        range: PerCent
+        required: false
+      qfixed:
+        description: Reactive power of the load that is a fixed quantity and does
+          not vary as load group value varies. Load sign convention is used, i.e.
+          positive sign means flow out from a node.
+        slot_uri: cim:EnergyConsumer.qfixed
+        multivalued: false
+        range: ReactivePower
+        required: false
+      qfixed_pct:
+        description: Fixed reactive power as a percentage of load group fixed reactive
+          power. Used to represent the time-varying components.  Load sign convention
+          is used, i.e. positive sign means flow out from a node.
+        slot_uri: cim:EnergyConsumer.qfixedPct
+        multivalued: false
+        range: PerCent
+        required: false
+    class_uri: cim:EnergyConsumer
+  PerCent:
+    description: Percentage on a defined base.   For example, specify as 100 to indicate
+      at the defined base.
+    attributes:
+      value:
+        description: Normally 0 to 100 on a defined base.
+        slot_uri: cim:PerCent.value
+        multivalued: false
+        range: float
+        required: false
+      unit:
+        slot_uri: cim:PerCent.unit
+        multivalued: false
+        range: UnitSymbol
+        required: false
+      multiplier:
+        slot_uri: cim:PerCent.multiplier
+        multivalued: false
+        range: UnitMultiplier
+        required: false
+    class_uri: cim:PerCent
+  EnergyConnection:
+    description: A connection of energy generation or consumption on the power system
+      model.
+    is_a: ConductingEquipment
+    class_uri: cim:EnergyConnection
