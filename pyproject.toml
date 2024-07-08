@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dp_eh_nettopologie"
-version = "0.1.0"
+version = "1.0.0"
 description = "Informatiemodel voor het dataproduct Nettopologie voor EnergyHubs."
 authors = ["Ritger Teunissen <ritger.teunissen@alliander.com>"]
 license = "Apache Software License 2.0"

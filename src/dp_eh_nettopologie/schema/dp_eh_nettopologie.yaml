@@ -1,5 +1,131 @@
 name: NettopologieDataproduct
-description: EnergyHubs Nettopologie dataproduct.
+description: |-
+  EnergyHubs Nettopologie dataproduct.
+
+  ```mermaid
+  classDiagram
+  direction RL
+
+  class TopologicalIsland {
+      string m_rid
+      string description
+      string energy_ident_code_eic
+      string european_article_number_ean
+      Name names
+      string short_name
+  }
+  class TopologicalNode {
+      SvInjection sv_injection
+      SvVoltage sv_voltage
+      TopologicalIsland topological_island
+      BaseVoltage base_voltage
+      ConnectivityNode connectivity_nodes
+  }
+  class SvInjection {
+      ActivePower p_injection
+      ReactivePower q_injection
+  }
+  class SvVoltage {
+      AngleDegrees angle
+      Voltage v
+  }
+  class Terminal {
+      ConductingEquipment conducting_equipment
+      ConnectivityNode connectivity_node
+      integer sequence_number
+      string m_rid
+      string description
+      string energy_ident_code_eic
+      string european_article_number_ean
+      Name names
+      string short_name
+  }
+  class UsagePoint {
+      string connection_category
+      UsagePointConnectedKind connection_state
+      string disconnection_method
+      CurrentFlow estimated_load
+      boolean grounded
+      boolean is_sdp
+      boolean is_virtual
+      Voltage nominal_service_voltage
+      CurrentFlow rated_current
+      ActivePower rated_power
+      Equipment equipments
+      string m_rid
+      string description
+      string energy_ident_code_eic
+      string european_article_number_ean
+      Name names
+      string short_name
+  }
+  class EnergyConnection {
+      BaseVoltage base_voltage
+      boolean aggregate
+      boolean in_service
+      boolean network_analysis_enabled
+      boolean normally_in_service
+      string m_rid
+      string description
+      string energy_ident_code_eic
+      string european_article_number_ean
+      Name names
+      string short_name
+  }
+  class EnergyConsumer {
+      ActivePower pfixed
+      PerCent pfixed_pct
+      ReactivePower qfixed
+      PerCent qfixed_pct
+      BaseVoltage base_voltage
+      boolean aggregate
+      boolean in_service
+      boolean network_analysis_enabled
+      boolean normally_in_service
+      string m_rid
+      string description
+      string energy_ident_code_eic
+      string european_article_number_ean
+      Name names
+      string short_name
+  }
+  class Equipment {
+      boolean aggregate
+      boolean in_service
+      boolean network_analysis_enabled
+      boolean normally_in_service
+      string m_rid
+      string description
+      string energy_ident_code_eic
+      string european_article_number_ean
+      Name names
+      string short_name
+  }
+  class ConductingEquipment {
+      BaseVoltage base_voltage
+      boolean aggregate
+      boolean in_service
+      boolean network_analysis_enabled
+      boolean normally_in_service
+      string m_rid
+      string description
+      string energy_ident_code_eic
+      string european_article_number_ean
+      Name names
+      string short_name
+  }
+
+  EnergyConnection --|> ConductingEquipment
+  EnergyConsumer --|> EnergyConnection
+  ConductingEquipment --|> Equipment
+  TopologicalNode --> SvInjection : sv_injection
+  TopologicalNode --> SvVoltage : sv_voltage
+  TopologicalNode --> TopologicalIsland : topological_island
+  TopologicalNode --> ConnectivityNode : connectivity_nodes
+  Terminal --> ConductingEquipment : conducting_equipment
+  Terminal --> ConnectivityNode : connectivity_node
+  UsagePoint --> Equipment : equipments
+  ```
 title: Nettopologie Dataproduct
 id: http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0
 imports:
