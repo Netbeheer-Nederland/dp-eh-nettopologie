@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/linkml/linkml-project-cookiecutter",
+  "commit": "b2da87eb7835bfec748a76823d098cac85e8363a",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "dp-eh-nettopologie",
+      "__project_slug": "dp_eh_nettopologie",
+      "github_org": "Netbeheer-Nederland",
+      "__source_path": "src/dp_eh_nettopologie/schema/dp_eh_nettopologie.yaml",
+      "project_description": "Informatiemodel voor het dataproduct Nettopologie voor EnergyHubs.",
+      "full_name": "Ritger Teunissen",
+      "email": "ritger.teunissen@alliander.com",
+      "__author": "Ritger Teunissen <ritger.teunissen@alliander.com>",
+      "license": "Apache Software License 2.0",
+      "main_schema_class": "IdentifiedObject",
+      "create_python_classes": "No",
+      "use_schemasheets": "No",
+      "google_sheet_id": "1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ",
+      "google_sheet_tabs": "personinfo enums",
+      "__google_sheet_module": "personinfo_enums",
+      "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_template": "https://github.com/linkml/linkml-project-cookiecutter"
+    }
+  },
+  "directory": null
+}
