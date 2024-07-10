@@ -110,7 +110,7 @@ description: |-
   UsagePoint --> EnergySource : equipments
   ```
   ## Additional schemas
-  * [JSON Schema](https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/main/project/jsonschema/dp-eh-nettopologie.schema.json)
+  * [JSON Schema](https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/main/project/jsonschema/dp_eh_nettopologie.schema.json)
   ## Identifiers
 title: Nettopologie Dataproduct
 id: http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0
