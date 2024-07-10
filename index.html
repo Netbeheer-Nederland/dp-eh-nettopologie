@@ -135,6 +135,16 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#additional-schemas">
+    Additional schemas
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifiers">
+    Identifiers
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#classes">
     Classes
   </a>
@@ -182,6 +192,16 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#additional-schemas">
+    Additional schemas
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifiers">
+    Identifiers
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#classes">
     Classes
   </a>
@@ -219,8 +239,16 @@
 <h1 id="nettopologie-dataproduct">Nettopologie Dataproduct</h1>
 <p>EnergyHubs Nettopologie dataproduct.</p>
 <pre class="mermaid"><code>classDiagram
-direction RL
+direction TB
 
+class TopologyDataSet {
+    string identifier
+    string contact_point
+    string conforms_to
+    date release_date
+    string version
+    string topological_islands
+}
 class TopologicalIsland {
     string m_rid
     string description
@@ -274,19 +302,6 @@ class UsagePoint {
     Name names
     string short_name
 }
-class EnergyConnection {
-    BaseVoltage base_voltage
-    boolean aggregate
-    boolean in_service
-    boolean network_analysis_enabled
-    boolean normally_in_service
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
 class EnergyConsumer {
     ActivePower pfixed
     PerCent pfixed_pct
@@ -304,19 +319,7 @@ class EnergyConsumer {
     Name names
     string short_name
 }
-class Equipment {
-    boolean aggregate
-    boolean in_service
-    boolean network_analysis_enabled
-    boolean normally_in_service
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
-class ConductingEquipment {
+class EnergySource {
     BaseVoltage base_voltage
     boolean aggregate
     boolean in_service
@@ -330,16 +333,21 @@ class ConductingEquipment {
     string short_name
 }
 
-EnergyConnection --|&gt; ConductingEquipment
-EnergyConsumer --|&gt; EnergyConnection
-ConductingEquipment --|&gt; Equipment
+TopologyDataSet --&gt; TopologicalIsland : topological_islands
 TopologicalNode --&gt; SvInjection : sv_injection
 TopologicalNode --&gt; SvVoltage : sv_voltage
 TopologicalNode --&gt; TopologicalIsland : topological_island
 TopologicalNode --&gt; ConnectivityNode : connectivity_nodes
-Terminal --&gt; ConductingEquipment : conducting_equipment
 Terminal --&gt; ConnectivityNode : connectivity_node
-UsagePoint --&gt; Equipment : equipments</code></pre>
+Terminal --&gt; EnergyConsumer : conducting_equipment
+Terminal --&gt; EnergySource : conducting_equipment
+UsagePoint --&gt; EnergyConsumer : equipments
+UsagePoint --&gt; EnergySource : equipments</code></pre>
+<h2 id="additional-schemas">Additional schemas</h2>
+<ul>
+<li><a href="https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/main/project/jsonschema/dp-eh-nettopologie.schema.json">JSON Schema</a></li>
+</ul>
+<h2 id="identifiers">Identifiers</h2>
 <p>URI: http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</p>
 <p>Name: NettopologieDataproduct</p>
 <h2 id="classes">Classes</h2>
@@ -390,6 +398,10 @@ UsagePoint --&gt; Equipment : equipments</code></pre>
 <tr>
 <td><a href="EnergyConsumer/">EnergyConsumer</a></td>
 <td>Generic user of energy - a  point of consumption on the power system model</td>
+</tr>
+<tr>
+<td><a href="EnergySource/">EnergySource</a></td>
+<td>A generic equivalent for an energy supplier on a transmission or distribution...</td>
 </tr>
 <tr>
 <td><a href="Equipment/">Equipment</a></td>
@@ -448,6 +460,10 @@ UsagePoint --&gt; Equipment : equipments</code></pre>
 <td>For a detailed substation model a topological node is a set of connectivity n...</td>
 </tr>
 <tr>
+<td><a href="TopologyDataSet/">TopologyDataSet</a></td>
+<td>A single instance of a published dataset</td>
+</tr>
+<tr>
 <td><a href="UsagePoint/">UsagePoint</a></td>
 <td>Logical or physical point in the network to which readings or events may be a...</td>
 </tr>
@@ -483,6 +499,10 @@ UsagePoint --&gt; Equipment : equipments</code></pre>
 <td>The conducting equipment of the terminal</td>
 </tr>
 <tr>
+<td><a href="conforms_to/">conforms_to</a></td>
+<td></td>
+</tr>
+<tr>
 <td><a href="connection_category/">connection_category</a></td>
 <td>A code used to specify the connection category, e</td>
 </tr>
@@ -497,6 +517,10 @@ UsagePoint --&gt; Equipment : equipments</code></pre>
 <tr>
 <td><a href="connectivity_nodes/">connectivity_nodes</a></td>
 <td>The connectivity nodes combine together to form this topological node</td>
+</tr>
+<tr>
+<td><a href="contact_point/">contact_point</a></td>
+<td></td>
 </tr>
 <tr>
 <td><a href="description/">description</a></td>
@@ -529,6 +553,10 @@ UsagePoint --&gt; Equipment : equipments</code></pre>
 <tr>
 <td><a href="identified_object/">identified_object</a></td>
 <td>Identified object that this name designates</td>
+</tr>
+<tr>
+<td><a href="identifier/">identifier</a></td>
+<td></td>
 </tr>
 <tr>
 <td><a href="in_service/">in_service</a></td>
@@ -619,6 +647,10 @@ UsagePoint --&gt; Equipment : equipments</code></pre>
 <td>Active power that this usage point is configured to deliver</td>
 </tr>
 <tr>
+<td><a href="release_date/">release_date</a></td>
+<td></td>
+</tr>
+<tr>
 <td><a href="sequence_number/">sequence_number</a></td>
 <td>The orientation of the terminal connections for a multiple terminal conductin...</td>
 </tr>
@@ -643,6 +675,10 @@ UsagePoint --&gt; Equipment : equipments</code></pre>
 <td>A topological node belongs to a topological island</td>
 </tr>
 <tr>
+<td><a href="topological_islands/">topological_islands</a></td>
+<td></td>
+</tr>
+<tr>
 <td><a href="topological_node/">topological_node</a></td>
 <td>The topological nodes at the base voltage</td>
 </tr>
@@ -656,6 +692,10 @@ UsagePoint --&gt; Equipment : equipments</code></pre>
 </tr>
 <tr>
 <td><a href="value/">value</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="version/">version</a></td>
 <td></td>
 </tr>
 </tbody>

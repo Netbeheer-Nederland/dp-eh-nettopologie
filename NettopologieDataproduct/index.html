@@ -138,6 +138,22 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#additional-schemas">
+    Additional schemas
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifiers">
+    Identifiers
+  </a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -150,8 +166,16 @@
 <h1 id="nettopologiedataproduct">NettopologieDataproduct</h1>
 <p>EnergyHubs Nettopologie dataproduct.</p>
 <pre class="mermaid"><code>classDiagram
-direction RL
+direction TB
 
+class TopologyDataSet {
+    string identifier
+    string contact_point
+    string conforms_to
+    date release_date
+    string version
+    string topological_islands
+}
 class TopologicalIsland {
     string m_rid
     string description
@@ -205,19 +229,6 @@ class UsagePoint {
     Name names
     string short_name
 }
-class EnergyConnection {
-    BaseVoltage base_voltage
-    boolean aggregate
-    boolean in_service
-    boolean network_analysis_enabled
-    boolean normally_in_service
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
 class EnergyConsumer {
     ActivePower pfixed
     PerCent pfixed_pct
@@ -235,19 +246,7 @@ class EnergyConsumer {
     Name names
     string short_name
 }
-class Equipment {
-    boolean aggregate
-    boolean in_service
-    boolean network_analysis_enabled
-    boolean normally_in_service
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
-class ConductingEquipment {
+class EnergySource {
     BaseVoltage base_voltage
     boolean aggregate
     boolean in_service
@@ -261,16 +260,21 @@ class ConductingEquipment {
     string short_name
 }
 
-EnergyConnection --|&gt; ConductingEquipment
-EnergyConsumer --|&gt; EnergyConnection
-ConductingEquipment --|&gt; Equipment
+TopologyDataSet --&gt; TopologicalIsland : topological_islands
 TopologicalNode --&gt; SvInjection : sv_injection
 TopologicalNode --&gt; SvVoltage : sv_voltage
 TopologicalNode --&gt; TopologicalIsland : topological_island
 TopologicalNode --&gt; ConnectivityNode : connectivity_nodes
-Terminal --&gt; ConductingEquipment : conducting_equipment
 Terminal --&gt; ConnectivityNode : connectivity_node
-UsagePoint --&gt; Equipment : equipments</code></pre>
+Terminal --&gt; EnergyConsumer : conducting_equipment
+Terminal --&gt; EnergySource : conducting_equipment
+UsagePoint --&gt; EnergyConsumer : equipments
+UsagePoint --&gt; EnergySource : equipments</code></pre>
+<h2 id="additional-schemas">Additional schemas</h2>
+<ul>
+<li><a href="https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/main/project/jsonschema/dp-eh-nettopologie.schema.json">JSON Schema</a></li>
+</ul>
+<h2 id="identifiers">Identifiers</h2>
 <p>URI: http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</p>
 </article>
 </div>
