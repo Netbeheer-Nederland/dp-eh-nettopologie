@@ -4,8 +4,16 @@ description: |-
 
   ```mermaid
   classDiagram
-  direction RL
+  direction TB
 
+  class TopologyDataSet {
+      string identifier
+      string contact_point
+      string conforms_to
+      date release_date
+      string version
+      string topological_islands
+  }
   class TopologicalIsland {
       string m_rid
       string description
@@ -59,19 +67,6 @@ description: |-
       Name names
       string short_name
   }
-  class EnergyConnection {
-      BaseVoltage base_voltage
-      boolean aggregate
-      boolean in_service
-      boolean network_analysis_enabled
-      boolean normally_in_service
-      string m_rid
-      string description
-      string energy_ident_code_eic
-      string european_article_number_ean
-      Name names
-      string short_name
-  }
   class EnergyConsumer {
       ActivePower pfixed
       PerCent pfixed_pct
@@ -89,19 +84,7 @@ description: |-
       Name names
       string short_name
   }
-  class Equipment {
-      boolean aggregate
-      boolean in_service
-      boolean network_analysis_enabled
-      boolean normally_in_service
-      string m_rid
-      string description
-      string energy_ident_code_eic
-      string european_article_number_ean
-      Name names
-      string short_name
-  }
-  class ConductingEquipment {
+  class EnergySource {
       BaseVoltage base_voltage
       boolean aggregate
       boolean in_service
@@ -115,17 +98,20 @@ description: |-
       string short_name
   }
 
-  EnergyConnection --|> ConductingEquipment
-  EnergyConsumer --|> EnergyConnection
-  ConductingEquipment --|> Equipment
+  TopologyDataSet --> TopologicalIsland : topological_islands
   TopologicalNode --> SvInjection : sv_injection
   TopologicalNode --> SvVoltage : sv_voltage
   TopologicalNode --> TopologicalIsland : topological_island
   TopologicalNode --> ConnectivityNode : connectivity_nodes
-  Terminal --> ConductingEquipment : conducting_equipment
   Terminal --> ConnectivityNode : connectivity_node
-  UsagePoint --> Equipment : equipments
+  Terminal --> EnergyConsumer : conducting_equipment
+  Terminal --> EnergySource : conducting_equipment
+  UsagePoint --> EnergyConsumer : equipments
+  UsagePoint --> EnergySource : equipments
   ```
+  ## Additional schemas
+  * [JSON Schema](https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/main/project/jsonschema/dp-eh-nettopologie.schema.json)
+  ## Identifiers
 title: Nettopologie Dataproduct
 id: http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0
 imports:
@@ -133,10 +119,22 @@ imports:
 prefixes:
   linkml: https://w3id.org/linkml/
   github: https://github.com/
+  dct: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
   cim: https://cim.ucaiug.io/ns#
   eu: http://iec.ch/TC57/CIM100-European#
   nl: http://iec.ch/TC57/CIM100-Netherlands#
   this: http://data.netbeheernederland.nl/dp-eh-nettopologie/def#
+  cims: http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#
+  dc: http://purl.org/dc/elements/1.1/
+  owl: http://www.w3.org/2002/07/owl#
+  profcim: http://iec.ch/TC57/ns/CIM/prof-cim#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  sh: http://www.w3.org/ns/shacl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  eq: http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#
 default_curi_maps:
 - semweb_context
 default_prefix: this
@@ -554,6 +552,35 @@ enums:
       XYN:
         meaning: cim:PhaseCode.XYN
 classes:
+  TopologyDataSet:
+    description: A single instance of a published dataset.
+    attributes:
+      identifier:
+        slot_uri: dct:identifier
+        multivalued: false
+        required: true
+      contact_point:
+        slot_uri: dcat:contactPoint
+        multivalued: false
+        required: true
+      conforms_to:
+        slot_uri: dct:conformsTo
+        multivalued: false
+        required: true
+      release_date:
+        slot_uri: dct:issued
+        multivalued: false
+        range: date
+        required: true
+      version:
+        slot_uri: owl:versionInfo
+        multivalued: false
+        required: true
+      topological_islands:
+        slot_uri: this:TopologyDataSet.TopologicalIslands
+        multivalued: true
+        required: false
+    class_uri: this:TopologyDataSet
   TopologicalIsland:
     description: "An electrically connected subset of the network. Topological islands\
       \ can change as the current network state changes, e.g. due to: \n- disconnect\
@@ -1186,3 +1213,9 @@ classes:
       model.
     is_a: ConductingEquipment
     class_uri: cim:EnergyConnection
+  EnergySource:
+    description: A generic equivalent for an energy supplier on a transmission or
+      distribution voltage level.
+    is_a: EnergyConnection
+    class_uri: cim:EnergySource
+
