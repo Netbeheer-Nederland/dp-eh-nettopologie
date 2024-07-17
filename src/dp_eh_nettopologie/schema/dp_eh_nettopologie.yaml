@@ -1,6 +1,15 @@
 name: NettopologieDataproduct
 description: |-
-  EnergyHubs Nettopologie dataproduct.
+  This data product for EnergyHubs describes which information and data to
+  exchange between DSO and customer/advisor when establishing an EnergyHub. A
+  minimum set of data is defined that all operators are expected to conform to,
+  along with a number of optional properties and data types.
+
+  The data is intended to be presented as a hierarchy with a
+  [TopologyDataSet](TopologyDataSet.md) at its root, then
+  [TopologicalIsland-s](TopologicalIsland.md) nested inside the
+  TopologyDataSet. A grid connection (*Aansluiting*) is defined as a
+  [UsagePoint](UsagePoint.md) and related to the
 
   ```mermaid
   classDiagram
@@ -23,19 +32,19 @@ description: |-
       string short_name
   }
   class TopologicalNode {
-      SvInjection sv_injection
       SvVoltage sv_voltage
       TopologicalIsland topological_island
       BaseVoltage base_voltage
       ConnectivityNode connectivity_nodes
   }
-  class SvInjection {
-      ActivePower p_injection
-      ReactivePower q_injection
-  }
   class SvVoltage {
       AngleDegrees angle
       Voltage v
+  }
+  class SvPowerFlow {
+      ActivePower p
+      ReactivePower q
+      Terminal terminal
   }
   class Terminal {
       ConductingEquipment conducting_equipment
@@ -98,8 +107,8 @@ description: |-
       string short_name
   }
 
+  SvPowerFlow --> Terminal : terminal
   TopologyDataSet --> TopologicalIsland : topological_islands
-  TopologicalNode --> SvInjection : sv_injection
   TopologicalNode --> SvVoltage : sv_voltage
   TopologicalNode --> TopologicalIsland : topological_island
   TopologicalNode --> ConnectivityNode : connectivity_nodes
@@ -599,13 +608,6 @@ classes:
       Instead they are manually created or deleted in a model builder tool. Topological
       nodes maintained this way are also called "busses".'
     attributes:
-      sv_injection:
-        description: The injection flows state variables associated with the topological
-          node.
-        slot_uri: cim:TopologicalNode.SvInjection
-        multivalued: false
-        range: SvInjection
-        required: false
       sv_voltage:
         description: The state voltage associated with the topological node.
         slot_uri: cim:TopologicalNode.SvVoltage
@@ -632,28 +634,6 @@ classes:
         range: ConnectivityNode
         required: false
     class_uri: cim:TopologicalNode
-  SvInjection:
-    description: The SvInjection reports the calculated bus injection minus the sum
-      of the terminal flows. The terminal flow is positive out from the bus (load
-      sign convention) and bus injection has positive flow into the bus. SvInjection
-      may have the remainder after state estimation or slack after power flow calculation.
-    attributes:
-      p_injection:
-        description: The active power mismatch between calculated injection and initial
-          injection.  Positive sign means injection into the TopologicalNode (bus).
-        slot_uri: cim:SvInjection.pInjection
-        multivalued: false
-        range: ActivePower
-        required: true
-      q_injection:
-        description: The reactive power mismatch between calculated injection and
-          initial injection.  Positive sign means injection into the TopologicalNode
-          (bus).
-        slot_uri: cim:SvInjection.qInjection
-        multivalued: false
-        range: ReactivePower
-        required: false
-    class_uri: cim:SvInjection
   ActivePower:
     description: Product of RMS value of the voltage and the RMS value of the in-phase
       component of the current.

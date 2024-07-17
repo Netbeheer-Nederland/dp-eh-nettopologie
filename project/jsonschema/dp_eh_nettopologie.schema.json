@@ -636,25 +636,6 @@
             "title": "ReactivePower",
             "type": "object"
         },
-        "SvInjection": {
-            "additionalProperties": false,
-            "description": "The SvInjection reports the calculated bus injection minus the sum of the terminal flows. The terminal flow is positive out from the bus (load sign convention) and bus injection has positive flow into the bus. SvInjection may have the remainder after state estimation or slack after power flow calculation.",
-            "properties": {
-                "p_injection": {
-                    "$ref": "#/$defs/ActivePower",
-                    "description": "The active power mismatch between calculated injection and initial injection.  Positive sign means injection into the TopologicalNode (bus)."
-                },
-                "q_injection": {
-                    "$ref": "#/$defs/ReactivePower",
-                    "description": "The reactive power mismatch between calculated injection and initial injection.  Positive sign means injection into the TopologicalNode (bus)."
-                }
-            },
-            "required": [
-                "p_injection"
-            ],
-            "title": "SvInjection",
-            "type": "object"
-        },
         "SvPowerFlow": {
             "additionalProperties": false,
             "description": "State variable for power flow. Load convention is used for flow direction. This means flow out from the TopologicalNode into the equipment is positive.",
@@ -804,10 +785,6 @@
                         "$ref": "#/$defs/ConnectivityNode"
                     },
                     "type": "array"
-                },
-                "sv_injection": {
-                    "$ref": "#/$defs/SvInjection",
-                    "description": "The injection flows state variables associated with the topological node."
                 },
                 "sv_voltage": {
                     "$ref": "#/$defs/SvVoltage",
