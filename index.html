@@ -237,7 +237,15 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="nettopologie-dataproduct">Nettopologie Dataproduct</h1>
-<p>EnergyHubs Nettopologie dataproduct.</p>
+<p>This data product for EnergyHubs describes which information and data to
+exchange between DSO and customer/advisor when establishing an EnergyHub. A
+minimum set of data is defined that all operators are expected to conform to,
+along with a number of optional properties and data types.</p>
+<p>The data is intended to be presented as a hierarchy with a
+<a href="TopologyDataSet/">TopologyDataSet</a> at its root, then
+<a href="TopologicalIsland/">TopologicalIsland-s</a> nested inside the
+TopologyDataSet. A grid connection (<em>Aansluiting</em>) is defined as a
+<a href="UsagePoint/">UsagePoint</a> and related to the</p>
 <pre class="mermaid"><code>classDiagram
 direction TB
 
@@ -258,19 +266,19 @@ class TopologicalIsland {
     string short_name
 }
 class TopologicalNode {
-    SvInjection sv_injection
     SvVoltage sv_voltage
     TopologicalIsland topological_island
     BaseVoltage base_voltage
     ConnectivityNode connectivity_nodes
 }
-class SvInjection {
-    ActivePower p_injection
-    ReactivePower q_injection
-}
 class SvVoltage {
     AngleDegrees angle
     Voltage v
+}
+class SvPowerFlow {
+    ActivePower p
+    ReactivePower q
+    Terminal terminal
 }
 class Terminal {
     ConductingEquipment conducting_equipment
@@ -333,8 +341,8 @@ class EnergySource {
     string short_name
 }
 
+SvPowerFlow --&gt; Terminal : terminal
 TopologyDataSet --&gt; TopologicalIsland : topological_islands
-TopologicalNode --&gt; SvInjection : sv_injection
 TopologicalNode --&gt; SvVoltage : sv_voltage
 TopologicalNode --&gt; TopologicalIsland : topological_island
 TopologicalNode --&gt; ConnectivityNode : connectivity_nodes
@@ -434,10 +442,6 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 <tr>
 <td><a href="ReactivePower/">ReactivePower</a></td>
 <td>Product of RMS value of the voltage and the RMS value of the quadrature compo...</td>
-</tr>
-<tr>
-<td><a href="SvInjection/">SvInjection</a></td>
-<td>The SvInjection reports the calculated bus injection minus the sum of the ter...</td>
 </tr>
 <tr>
 <td><a href="SvPowerFlow/">SvPowerFlow</a></td>
@@ -611,10 +615,6 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 <td>The active power flow</td>
 </tr>
 <tr>
-<td><a href="p_injection/">p_injection</a></td>
-<td>The active power mismatch between calculated injection and initial injection</td>
-</tr>
-<tr>
 <td><a href="pfixed/">pfixed</a></td>
 <td>Active power of the load that is a fixed quantity and does not vary as load g...</td>
 </tr>
@@ -625,10 +625,6 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 <tr>
 <td><a href="q/">q</a></td>
 <td>The reactive power flow</td>
-</tr>
-<tr>
-<td><a href="q_injection/">q_injection</a></td>
-<td>The reactive power mismatch between calculated injection and initial injectio...</td>
 </tr>
 <tr>
 <td><a href="qfixed/">qfixed</a></td>
@@ -657,10 +653,6 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 <tr>
 <td><a href="short_name/">short_name</a></td>
 <td>The attribute is used for an exchange of a human readable short name with len...</td>
-</tr>
-<tr>
-<td><a href="sv_injection/">sv_injection</a></td>
-<td>The injection flows state variables associated with the topological node</td>
 </tr>
 <tr>
 <td><a href="sv_voltage/">sv_voltage</a></td>
