@@ -9,7 +9,10 @@ description: |-
   [TopologyDataSet](TopologyDataSet.md) at its root, then
   [TopologicalIsland-s](TopologicalIsland.md) nested inside the
   TopologyDataSet. A grid connection (*Aansluiting*) is defined as a
-  [UsagePoint](UsagePoint.md) and related to the
+  [UsagePoint](UsagePoint.md) and related to a
+  [TopologicalIsland](TopologicalIsland.md) through a
+  [TopologicalNode](TopologicalNode.md) and
+  [ConnectivityNode](ConnectivityNode.md).
 
   ```mermaid
   classDiagram
