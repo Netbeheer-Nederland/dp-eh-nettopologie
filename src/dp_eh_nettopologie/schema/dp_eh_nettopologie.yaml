@@ -12,7 +12,6 @@ description: |-
   [UsagePoint](UsagePoint.md) and related to a
   [TopologicalIsland](TopologicalIsland.md) through a
   [TopologicalNode](TopologicalNode.md) and
-  [ConnectivityNode](ConnectivityNode.md).
 
   ```mermaid
   classDiagram
@@ -38,7 +37,7 @@ description: |-
       SvVoltage sv_voltage
       TopologicalIsland topological_island
       BaseVoltage base_voltage
-      ConnectivityNode connectivity_nodes
+      Terminal terminals
   }
   class SvVoltage {
       AngleDegrees angle
@@ -51,7 +50,6 @@ description: |-
   }
   class Terminal {
       ConductingEquipment conducting_equipment
-      ConnectivityNode connectivity_node
       integer sequence_number
       string m_rid
       string description
@@ -114,8 +112,6 @@ description: |-
   TopologyDataSet --> TopologicalIsland : topological_islands
   TopologicalNode --> SvVoltage : sv_voltage
   TopologicalNode --> TopologicalIsland : topological_island
-  TopologicalNode --> ConnectivityNode : connectivity_nodes
-  Terminal --> ConnectivityNode : connectivity_node
   Terminal --> EnergyConsumer : conducting_equipment
   Terminal --> EnergySource : conducting_equipment
   UsagePoint --> EnergyConsumer : equipments
@@ -629,13 +625,16 @@ classes:
         multivalued: false
         range: BaseVoltage
         required: true
-      connectivity_nodes:
-        description: The connectivity nodes combine together to form this topological
-          node.  May depend on the current state of switches in the network.
-        slot_uri: cim:TopologicalNode.ConnectivityNodes
-        multivalued: true
-        range: ConnectivityNode
+      terminal:
+        slot_uri: cim:TopologicalNode.Terminal
+        range: Terminal
         required: false
+        multivalued: true
+        description: The terminals associated with the topological node. This can
+          be used as an alternative to the connectivity node path to terminal, thus
+          making it unnecessary to model connectivity nodes in some cases.   Note
+          that if connectivity nodes are in the model, this association would probably
+          not be used as an input specification.
     class_uri: cim:TopologicalNode
   ActivePower:
     description: Product of RMS value of the voltage and the RMS value of the in-phase
@@ -733,13 +732,6 @@ classes:
         multivalued: false
         range: ConductingEquipment
         required: true
-      connectivity_node:
-        description: The connectivity node to which this terminal connects with zero
-          impedance.
-        slot_uri: cim:Terminal.ConnectivityNode
-        multivalued: false
-        range: ConnectivityNode
-        required: false
     class_uri: cim:Terminal
   ACDCTerminal:
     description: An electrical connection point (AC or DC) to a piece of conducting
@@ -938,14 +930,6 @@ classes:
         range: ConductingEquipment
         required: false
     class_uri: cim:BaseVoltage
-  ConnectivityNode:
-    description: Connectivity nodes are points where terminals of AC conducting equipment
-      are connected together with zero impedance.
-    class_uri: cim:ConnectivityNode
-  ConnectivityNodeContainer:
-    description: A base class for all objects that may contain connectivity nodes
-      or topological nodes.
-    class_uri: cim:ConnectivityNodeContainer
   UsagePoint:
     description: Logical or physical point in the network to which readings or events
       may be attributed. Used at the place where a physical or virtual meter may be

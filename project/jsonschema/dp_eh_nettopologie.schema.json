@@ -157,18 +157,6 @@
             "title": "ConductingEquipment",
             "type": "object"
         },
-        "ConnectivityNode": {
-            "additionalProperties": false,
-            "description": "Connectivity nodes are points where terminals of AC conducting equipment are connected together with zero impedance.",
-            "title": "ConnectivityNode",
-            "type": "object"
-        },
-        "ConnectivityNodeContainer": {
-            "additionalProperties": false,
-            "description": "A base class for all objects that may contain connectivity nodes or topological nodes.",
-            "title": "ConnectivityNodeContainer",
-            "type": "object"
-        },
         "CurrentFlow": {
             "additionalProperties": false,
             "description": "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC.",
@@ -689,10 +677,6 @@
                     "$ref": "#/$defs/ConductingEquipment",
                     "description": "The conducting equipment of the terminal.  Conducting equipment have  terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes."
                 },
-                "connectivity_node": {
-                    "$ref": "#/$defs/ConnectivityNode",
-                    "description": "The connectivity node to which this terminal connects with zero impedance."
-                },
                 "description": {
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
@@ -779,16 +763,16 @@
                     "$ref": "#/$defs/BaseVoltage",
                     "description": "The base voltage of the topological node."
                 },
-                "connectivity_nodes": {
-                    "description": "The connectivity nodes combine together to form this topological node.  May depend on the current state of switches in the network.",
-                    "items": {
-                        "$ref": "#/$defs/ConnectivityNode"
-                    },
-                    "type": "array"
-                },
                 "sv_voltage": {
                     "$ref": "#/$defs/SvVoltage",
                     "description": "The state voltage associated with the topological node."
+                },
+                "terminal": {
+                    "description": "The terminals associated with the topological node. This can be used as an alternative to the connectivity node path to terminal, thus making it unnecessary to model connectivity nodes in some cases.   Note that if connectivity nodes are in the model, this association would probably not be used as an input specification.",
+                    "items": {
+                        "$ref": "#/$defs/Terminal"
+                    },
+                    "type": "array"
                 },
                 "topological_island": {
                     "$ref": "#/$defs/TopologicalIsland",
