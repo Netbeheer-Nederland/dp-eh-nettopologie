@@ -328,8 +328,7 @@
 
 
 <h1 id="slot-aggregate">Slot: aggregate</h1>
-<p><em>The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to “true” the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.<br />
-</em></p>
+<p>_The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to “true” the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.  _</p>
 <p><em>The attribute is not used for EquivalentBranch, EquivalentShunt and EquivalentInjection.</em></p>
 <p>URI: <a href="https://cim.ucaiug.io/ns#Equipment.aggregate">cim:Equipment.aggregate</a></p>
 <!-- no inheritance hierarchy -->
@@ -345,8 +344,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../EnergySource/">EnergySource</a></td>
-<td>A generic equivalent for an energy supplier on a transmission or distribution...</td>
+<td><a href="../Equipment/">Equipment</a></td>
+<td>The parts of a power system that are physical devices, electronic or mechanic...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EnergyConsumer/">EnergyConsumer</a></td>
+<td>Generic user of energy - a  point of consumption on the power system model</td>
 <td>no</td>
 </tr>
 <tr>
@@ -357,16 +361,6 @@
 <tr>
 <td><a href="../EnergyConnection/">EnergyConnection</a></td>
 <td>A connection of energy generation or consumption on the power system model</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Equipment/">Equipment</a></td>
-<td>The parts of a power system that are physical devices, electronic or mechanic...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EnergyConsumer/">EnergyConsumer</a></td>
-<td>Generic user of energy - a  point of consumption on the power system model</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -409,7 +403,7 @@
 <span class="w">  </span><span class="s">\ of</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">represents</span><span class="nv"> </span><span class="s">multiple</span><span class="nv"> </span><span class="s">pieces</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">modelled</span><span class="nv"> </span><span class="s">together\</span>
 <span class="w">  </span><span class="s">\ as</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">equivalent</span><span class="nv"> </span><span class="s">obtained</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">network</span><span class="nv"> </span><span class="s">reduction</span><span class="nv"> </span><span class="s">procedure.</span><span class="nv"> </span><span class="s">Examples\</span>
 <span class="w">  </span><span class="s">\ would</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformers</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machines</span><span class="nv"> </span><span class="s">operating</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">parallel</span><span class="nv"> </span><span class="s">modelled\</span>
-<span class="w">  </span><span class="s">\ as</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformer</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machine.</span><span class="nv">  </span><span class="s">\r\n\</span>
+<span class="w">  </span><span class="s">\ as</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformer</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machine.</span><span class="nv">  </span><span class="s">\n\</span>
 <span class="w">  </span><span class="s">The</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">EquivalentBranch,</span><span class="nv"> </span><span class="s">EquivalentShunt</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">EquivalentInjection.&quot;</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>

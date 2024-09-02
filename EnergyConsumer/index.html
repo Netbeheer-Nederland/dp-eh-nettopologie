@@ -213,22 +213,29 @@
 
       EnergyConsumer : aggregate
 
-      EnergyConsumer : base_voltage
-
-
-
-
-    EnergyConsumer --&gt; "0..1" BaseVoltage : base_voltage
-    click BaseVoltage href "../BaseVoltage"
-
-
       EnergyConsumer : description
 
       EnergyConsumer : energy_ident_code_eic
 
+      EnergyConsumer : equipment_container
+
+
+
+
+    EnergyConsumer --&gt; "0..1" EquipmentContainer : equipment_container
+    click EquipmentContainer href "../EquipmentContainer"
+
+
       EnergyConsumer : european_article_number_ean
 
-      EnergyConsumer : in_service
+      EnergyConsumer : location
+
+
+
+
+    EnergyConsumer --&gt; "0..1" Location : location
+    click Location href "../Location"
+
 
       EnergyConsumer : m_rid
 
@@ -241,45 +248,7 @@
     click Name href "../Name"
 
 
-      EnergyConsumer : network_analysis_enabled
-
       EnergyConsumer : normally_in_service
-
-      EnergyConsumer : pfixed
-
-
-
-
-    EnergyConsumer --&gt; "0..1" ActivePower : pfixed
-    click ActivePower href "../ActivePower"
-
-
-      EnergyConsumer : pfixed_pct
-
-
-
-
-    EnergyConsumer --&gt; "0..1" PerCent : pfixed_pct
-    click PerCent href "../PerCent"
-
-
-      EnergyConsumer : qfixed
-
-
-
-
-    EnergyConsumer --&gt; "0..1" ReactivePower : qfixed
-    click ReactivePower href "../ReactivePower"
-
-
-      EnergyConsumer : qfixed_pct
-
-
-
-
-    EnergyConsumer --&gt; "0..1" PerCent : qfixed_pct
-    click PerCent href "../PerCent"
-
 
       EnergyConsumer : short_name
 
@@ -315,51 +284,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../pfixed/">pfixed</a></td>
-<td>0..1 <br/> <a href="../ActivePower/">ActivePower</a></td>
-<td>Active power of the load that is a fixed quantity and does not vary as load g...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../pfixed_pct/">pfixed_pct</a></td>
-<td>0..1 <br/> <a href="../PerCent/">PerCent</a></td>
-<td>Fixed active power as a percentage of load group fixed active power</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../qfixed/">qfixed</a></td>
-<td>0..1 <br/> <a href="../ReactivePower/">ReactivePower</a></td>
-<td>Reactive power of the load that is a fixed quantity and does not vary as load...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../qfixed_pct/">qfixed_pct</a></td>
-<td>0..1 <br/> <a href="../PerCent/">PerCent</a></td>
-<td>Fixed reactive power as a percentage of load group fixed reactive power</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../base_voltage/">base_voltage</a></td>
-<td>0..1 <br/> <a href="../BaseVoltage/">BaseVoltage</a></td>
-<td>Base voltage of this conducting equipment</td>
-<td><a href="../ConductingEquipment/">ConductingEquipment</a></td>
-</tr>
-<tr>
 <td><a href="../aggregate/">aggregate</a></td>
 <td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
 <td>The aggregate flag provides an alternative way of representing an aggregated ...</td>
-<td><a href="../Equipment/">Equipment</a></td>
-</tr>
-<tr>
-<td><a href="../in_service/">in_service</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>Specifies the availability of the equipment</td>
-<td><a href="../Equipment/">Equipment</a></td>
-</tr>
-<tr>
-<td><a href="../network_analysis_enabled/">network_analysis_enabled</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>The equipment is enabled to participate in network analysis</td>
 <td><a href="../Equipment/">Equipment</a></td>
 </tr>
 <tr>
@@ -369,10 +296,16 @@
 <td><a href="../Equipment/">Equipment</a></td>
 </tr>
 <tr>
-<td><a href="../m_rid/">m_rid</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>Master resource identifier issued by a model authority</td>
-<td><a href="../IdentifiedObject/">IdentifiedObject</a></td>
+<td><a href="../equipment_container/">equipment_container</a></td>
+<td>0..1 <br/> <a href="../EquipmentContainer/">EquipmentContainer</a></td>
+<td>Container of this equipment</td>
+<td><a href="../Equipment/">Equipment</a></td>
+</tr>
+<tr>
+<td><a href="../location/">location</a></td>
+<td>0..1 <br/> <a href="../Location/">Location</a></td>
+<td>Location of this power system resource</td>
+<td><a href="../PowerSystemResource/">PowerSystemResource</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
@@ -390,6 +323,12 @@
 <td><a href="../european_article_number_ean/">european_article_number_ean</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The attribute is used for an exchange of the EAN code (European Article Numbe...</td>
+<td><a href="../IdentifiedObject/">IdentifiedObject</a></td>
+</tr>
+<tr>
+<td><a href="../m_rid/">m_rid</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Master resource identifier issued by a model authority</td>
 <td><a href="../IdentifiedObject/">IdentifiedObject</a></td>
 </tr>
 <tr>
@@ -444,59 +383,6 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
-<span class="nt">attributes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">pfixed</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pfixed</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active power of the load that is a fixed quantity and does not vary</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">as load group value varies. Load sign convention is used, i.e. positive sign</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">means flow out from a node.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConsumer.pfixed</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ActivePower</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">pfixed_pct</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pfixed_pct</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fixed active power as a percentage of load group fixed active power.</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">Used to represent the time-varying components.  Load sign convention is used,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">i.e. positive sign means flow out from a node.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConsumer.pfixedPct</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PerCent</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">qfixed</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qfixed</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reactive power of the load that is a fixed quantity and does not</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">vary as load group value varies. Load sign convention is used, i.e. positive</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">sign means flow out from a node.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConsumer.qfixed</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactivePower</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">qfixed_pct</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qfixed_pct</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fixed reactive power as a percentage of load group fixed reactive</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">power. Used to represent the time-varying components.  Load sign convention</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">is used, i.e. positive sign means flow out from a node.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConsumer.qfixedPct</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PerCent</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConsumer</span>
 </code></pre></div>
 </details>
@@ -513,81 +399,6 @@
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
 <span class="nt">attributes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">pfixed</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pfixed</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active power of the load that is a fixed quantity and does not vary</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">as load group value varies. Load sign convention is used, i.e. positive sign</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">means flow out from a node.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConsumer.pfixed</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pfixed</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ActivePower</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">pfixed_pct</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pfixed_pct</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fixed active power as a percentage of load group fixed active power.</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">Used to represent the time-varying components.  Load sign convention is used,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">i.e. positive sign means flow out from a node.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConsumer.pfixedPct</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pfixed_pct</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PerCent</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">qfixed</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qfixed</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reactive power of the load that is a fixed quantity and does not</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">vary as load group value varies. Load sign convention is used, i.e. positive</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">sign means flow out from a node.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConsumer.qfixed</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qfixed</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactivePower</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">qfixed_pct</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qfixed_pct</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fixed reactive power as a percentage of load group fixed reactive</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">power. Used to represent the time-varying components.  Load sign convention</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">is used, i.e. positive sign means flow out from a node.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConsumer.qfixedPct</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qfixed_pct</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PerCent</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">base_voltage</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_voltage</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Base voltage of this conducting equipment.  Use only when there is</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">no voltage level container used and only one base voltage applies.  For example,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">not used for transformers.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:ConductingEquipment.BaseVoltage</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_voltage</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TopologicalNode</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConductingEquipment</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BaseVoltage</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">aggregate</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"The</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">flag</span><span class="nv"> </span><span class="s">provides</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">alternative</span><span class="nv"> </span><span class="s">way</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">representing</span><span class="nv"> </span><span class="s">an\</span>
@@ -598,42 +409,12 @@
 <span class="w">      </span><span class="s">\ have</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">modelled</span><span class="nv"> </span><span class="s">together</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">equivalent</span><span class="nv"> </span><span class="s">obtained</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">network\</span>
 <span class="w">      </span><span class="s">\ reduction</span><span class="nv"> </span><span class="s">procedure.</span><span class="nv"> </span><span class="s">Examples</span><span class="nv"> </span><span class="s">would</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformers</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machines\</span>
 <span class="w">      </span><span class="s">\ operating</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">parallel</span><span class="nv"> </span><span class="s">modelled</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformer</span><span class="nv"> </span><span class="s">or\</span>
-<span class="w">      </span><span class="s">\ aggregate</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machine.</span><span class="nv">  </span><span class="s">\r\nThe</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">EquivalentBranch,\</span>
+<span class="w">      </span><span class="s">\ aggregate</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machine.</span><span class="nv">  </span><span class="s">\nThe</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">EquivalentBranch,\</span>
 <span class="w">      </span><span class="s">\ EquivalentShunt</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">EquivalentInjection."</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:Equipment.aggregate</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">in_service</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">in_service</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Specifies the availability of the equipment. True means the equipment</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">is available for topology processing, which determines if the equipment is energized</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">or not. False means that the equipment is treated by network applications as</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">if it is not in the model.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:Equipment.inService</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">in_service</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">network_analysis_enabled</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">network_analysis_enabled</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The equipment is enabled to participate in network analysis.  If</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">unspecified, the value is assumed to be true.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:Equipment.networkAnalysisEnabled</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">network_analysis_enabled</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
@@ -656,24 +437,32 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">m_rid</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Master</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">identifier</span><span class="nv"> </span><span class="s">issued</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">authority.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">mRID</span>
-<span class="w">      </span><span class="s">is</span><span class="nv"> </span><span class="s">unique</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">exchange</span><span class="nv"> </span><span class="s">context.</span><span class="nv"> </span><span class="s">Global</span><span class="nv"> </span><span class="s">uniqueness</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">easily</span><span class="nv"> </span><span class="s">achieved</span><span class="nv"> </span><span class="s">by</span>
-<span class="w">      </span><span class="s">using</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">UUID,</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">specified</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RFC</span><span class="nv"> </span><span class="s">4122,</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">UUID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">strongly</span>
-<span class="w">      </span><span class="s">recommended.</span>
-
-<span class="w">      </span><span class="s">For</span><span class="nv"> </span><span class="s">CIMXML</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RDF</span><span class="nv"> </span><span class="s">syntax</span><span class="nv"> </span><span class="s">conforming</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">IEC</span><span class="nv"> </span><span class="s">61970-552,</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID</span><span class="nv"> </span><span class="s">is</span>
-<span class="w">      </span><span class="s">mapped</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">rdf:ID</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">rdf:about</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">identify</span><span class="nv"> </span><span class="s">CIM</span><span class="nv"> </span><span class="s">object</span><span class="nv"> </span><span class="s">elements.'</span>
+<span class="w">  </span><span class="nt">equipment_container</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">equipment_container</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Container of this equipment.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.mRID</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:Equipment.EquipmentContainer</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">equipment_container</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EquipmentContainer</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">location</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">location</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Location of this power system resource.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:PowerSystemResource.Location</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">location</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PowerSystemResource</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PositionPoint</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Location</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">description</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
@@ -716,6 +505,24 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nl:IdentifiedObject.europeanArticleNumberEAN</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">european_article_number_ean</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">m_rid</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Master</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">identifier</span><span class="nv"> </span><span class="s">issued</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">authority.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">mRID\</span>
+<span class="w">      </span><span class="s">\ is</span><span class="nv"> </span><span class="s">unique</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">exchange</span><span class="nv"> </span><span class="s">context.</span><span class="nv"> </span><span class="s">Global</span><span class="nv"> </span><span class="s">uniqueness</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">easily</span><span class="nv"> </span><span class="s">achieved\</span>
+<span class="w">      </span><span class="s">\ by</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">UUID,</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">specified</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RFC</span><span class="nv"> </span><span class="s">4122,</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">UUID</span><span class="nv"> </span><span class="s">is\</span>
+<span class="w">      </span><span class="s">\ strongly</span><span class="nv"> </span><span class="s">recommended.\r\nFor</span><span class="nv"> </span><span class="s">CIMXML</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RDF</span><span class="nv"> </span><span class="s">syntax</span><span class="nv"> </span><span class="s">conforming</span><span class="nv"> </span><span class="s">to\</span>
+<span class="w">      </span><span class="s">\ IEC</span><span class="nv"> </span><span class="s">61970-552,</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">mapped</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">rdf:ID</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">rdf:about</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">identify\</span>
+<span class="w">      </span><span class="s">\ CIM</span><span class="nv"> </span><span class="s">object</span><span class="nv"> </span><span class="s">elements."</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.mRID</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>

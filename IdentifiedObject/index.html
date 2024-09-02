@@ -212,14 +212,14 @@
 <pre class="mermaid"><code> classDiagram
     class IdentifiedObject
     click IdentifiedObject href "../IdentifiedObject"
-      IdentifiedObject &lt;|-- TopologicalIsland
-        click TopologicalIsland href "../TopologicalIsland"
-      IdentifiedObject &lt;|-- ACDCTerminal
-        click ACDCTerminal href "../ACDCTerminal"
-      IdentifiedObject &lt;|-- UsagePoint
-        click UsagePoint href "../UsagePoint"
       IdentifiedObject &lt;|-- PowerSystemResource
         click PowerSystemResource href "../PowerSystemResource"
+      IdentifiedObject &lt;|-- Location
+        click Location href "../Location"
+      IdentifiedObject &lt;|-- CoordinateSystem
+        click CoordinateSystem href "../CoordinateSystem"
+      IdentifiedObject &lt;|-- UsagePoint
+        click UsagePoint href "../UsagePoint"
 
       IdentifiedObject : description
 
@@ -244,10 +244,10 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>IdentifiedObject</strong><ul>
-<li><a href="../TopologicalIsland/">TopologicalIsland</a></li>
-<li><a href="../ACDCTerminal/">ACDCTerminal</a></li>
-<li><a href="../UsagePoint/">UsagePoint</a></li>
 <li><a href="../PowerSystemResource/">PowerSystemResource</a></li>
+<li><a href="../Location/">Location</a></li>
+<li><a href="../CoordinateSystem/">CoordinateSystem</a></li>
+<li><a href="../UsagePoint/">UsagePoint</a></li>
 </ul>
 </li>
 </ul>
@@ -262,12 +262,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../m_rid/">m_rid</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>Master resource identifier issued by a model authority</td>
-<td>direct</td>
-</tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
@@ -284,6 +278,12 @@
 <td><a href="../european_article_number_ean/">european_article_number_ean</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The attribute is used for an exchange of the EAN code (European Article Numbe...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../m_rid/">m_rid</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Master resource identifier issued by a model authority</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -353,23 +353,6 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">attributes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">m_rid</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Master</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">identifier</span><span class="nv"> </span><span class="s">issued</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">authority.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">mRID</span>
-<span class="w">      </span><span class="s">is</span><span class="nv"> </span><span class="s">unique</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">exchange</span><span class="nv"> </span><span class="s">context.</span><span class="nv"> </span><span class="s">Global</span><span class="nv"> </span><span class="s">uniqueness</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">easily</span><span class="nv"> </span><span class="s">achieved</span><span class="nv"> </span><span class="s">by</span>
-<span class="w">      </span><span class="s">using</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">UUID,</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">specified</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RFC</span><span class="nv"> </span><span class="s">4122,</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">UUID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">strongly</span>
-<span class="w">      </span><span class="s">recommended.</span>
-
-<span class="w">      </span><span class="s">For</span><span class="nv"> </span><span class="s">CIMXML</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RDF</span><span class="nv"> </span><span class="s">syntax</span><span class="nv"> </span><span class="s">conforming</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">IEC</span><span class="nv"> </span><span class="s">61970-552,</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID</span><span class="nv"> </span><span class="s">is</span>
-<span class="w">      </span><span class="s">mapped</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">rdf:ID</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">rdf:about</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">identify</span><span class="nv"> </span><span class="s">CIM</span><span class="nv"> </span><span class="s">object</span><span class="nv"> </span><span class="s">elements.'</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.mRID</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">description</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The description is a free human readable text describing or naming</span>
@@ -411,6 +394,22 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">m_rid</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Master</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">identifier</span><span class="nv"> </span><span class="s">issued</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">authority.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">mRID\</span>
+<span class="w">      </span><span class="s">\ is</span><span class="nv"> </span><span class="s">unique</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">exchange</span><span class="nv"> </span><span class="s">context.</span><span class="nv"> </span><span class="s">Global</span><span class="nv"> </span><span class="s">uniqueness</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">easily</span><span class="nv"> </span><span class="s">achieved\</span>
+<span class="w">      </span><span class="s">\ by</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">UUID,</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">specified</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RFC</span><span class="nv"> </span><span class="s">4122,</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">UUID</span><span class="nv"> </span><span class="s">is\</span>
+<span class="w">      </span><span class="s">\ strongly</span><span class="nv"> </span><span class="s">recommended.\r\nFor</span><span class="nv"> </span><span class="s">CIMXML</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RDF</span><span class="nv"> </span><span class="s">syntax</span><span class="nv"> </span><span class="s">conforming</span><span class="nv"> </span><span class="s">to\</span>
+<span class="w">      </span><span class="s">\ IEC</span><span class="nv"> </span><span class="s">61970-552,</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">mapped</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">rdf:ID</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">rdf:about</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">identify\</span>
+<span class="w">      </span><span class="s">\ CIM</span><span class="nv"> </span><span class="s">object</span><span class="nv"> </span><span class="s">elements."</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.mRID</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">names</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">names</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">All names of this identified object.</span>
@@ -446,25 +445,6 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">attributes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">m_rid</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Master</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">identifier</span><span class="nv"> </span><span class="s">issued</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">authority.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">mRID</span>
-<span class="w">      </span><span class="s">is</span><span class="nv"> </span><span class="s">unique</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">exchange</span><span class="nv"> </span><span class="s">context.</span><span class="nv"> </span><span class="s">Global</span><span class="nv"> </span><span class="s">uniqueness</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">easily</span><span class="nv"> </span><span class="s">achieved</span><span class="nv"> </span><span class="s">by</span>
-<span class="w">      </span><span class="s">using</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">UUID,</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">specified</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RFC</span><span class="nv"> </span><span class="s">4122,</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">UUID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">strongly</span>
-<span class="w">      </span><span class="s">recommended.</span>
-
-<span class="w">      </span><span class="s">For</span><span class="nv"> </span><span class="s">CIMXML</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RDF</span><span class="nv"> </span><span class="s">syntax</span><span class="nv"> </span><span class="s">conforming</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">IEC</span><span class="nv"> </span><span class="s">61970-552,</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID</span><span class="nv"> </span><span class="s">is</span>
-<span class="w">      </span><span class="s">mapped</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">rdf:ID</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">rdf:about</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">identify</span><span class="nv"> </span><span class="s">CIM</span><span class="nv"> </span><span class="s">object</span><span class="nv"> </span><span class="s">elements.'</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.mRID</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">description</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The description is a free human readable text describing or naming</span>
@@ -506,6 +486,24 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nl:IdentifiedObject.europeanArticleNumberEAN</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">european_article_number_ean</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">m_rid</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Master</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">identifier</span><span class="nv"> </span><span class="s">issued</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">authority.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">mRID\</span>
+<span class="w">      </span><span class="s">\ is</span><span class="nv"> </span><span class="s">unique</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">exchange</span><span class="nv"> </span><span class="s">context.</span><span class="nv"> </span><span class="s">Global</span><span class="nv"> </span><span class="s">uniqueness</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">easily</span><span class="nv"> </span><span class="s">achieved\</span>
+<span class="w">      </span><span class="s">\ by</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">UUID,</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">specified</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RFC</span><span class="nv"> </span><span class="s">4122,</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">UUID</span><span class="nv"> </span><span class="s">is\</span>
+<span class="w">      </span><span class="s">\ strongly</span><span class="nv"> </span><span class="s">recommended.\r\nFor</span><span class="nv"> </span><span class="s">CIMXML</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RDF</span><span class="nv"> </span><span class="s">syntax</span><span class="nv"> </span><span class="s">conforming</span><span class="nv"> </span><span class="s">to\</span>
+<span class="w">      </span><span class="s">\ IEC</span><span class="nv"> </span><span class="s">61970-552,</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">mapped</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">rdf:ID</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">rdf:about</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">identify\</span>
+<span class="w">      </span><span class="s">\ CIM</span><span class="nv"> </span><span class="s">object</span><span class="nv"> </span><span class="s">elements."</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.mRID</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>

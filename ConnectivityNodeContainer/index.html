@@ -144,6 +144,11 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+    Inheritance
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
   </a>
@@ -202,8 +207,56 @@
 <pre class="mermaid"><code> classDiagram
     class ConnectivityNodeContainer
     click ConnectivityNodeContainer href "../ConnectivityNodeContainer"
+      PowerSystemResource &lt;|-- ConnectivityNodeContainer
+        click PowerSystemResource href "../PowerSystemResource"
+
+
+      ConnectivityNodeContainer &lt;|-- EquipmentContainer
+        click EquipmentContainer href "../EquipmentContainer"
+
+
+      ConnectivityNodeContainer : description
+
+      ConnectivityNodeContainer : energy_ident_code_eic
+
+      ConnectivityNodeContainer : european_article_number_ean
+
+      ConnectivityNodeContainer : location
+
+
+
+
+    ConnectivityNodeContainer --&gt; "0..1" Location : location
+    click Location href "../Location"
+
+
+      ConnectivityNodeContainer : m_rid
+
+      ConnectivityNodeContainer : names
+
+
+
+
+    ConnectivityNodeContainer --&gt; "*" Name : names
+    click Name href "../Name"
+
+
+      ConnectivityNodeContainer : short_name
+
 </code></pre>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../IdentifiedObject/">IdentifiedObject</a><ul>
+<li><a href="../PowerSystemResource/">PowerSystemResource</a><ul>
+<li><strong>ConnectivityNodeContainer</strong><ul>
+<li><a href="../EquipmentContainer/">EquipmentContainer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -216,10 +269,46 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><a href="../location/">location</a></td>
+<td>0..1 <br/> <a href="../Location/">Location</a></td>
+<td>Location of this power system resource</td>
+<td><a href="../PowerSystemResource/">PowerSystemResource</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The description is a free human readable text describing or naming the object</td>
+<td><a href="../IdentifiedObject/">IdentifiedObject</a></td>
+</tr>
+<tr>
+<td><a href="../energy_ident_code_eic/">energy_ident_code_eic</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The attribute is used for an exchange of the EIC code (Energy identification ...</td>
+<td><a href="../IdentifiedObject/">IdentifiedObject</a></td>
+</tr>
+<tr>
+<td><a href="../european_article_number_ean/">european_article_number_ean</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The attribute is used for an exchange of the EAN code (European Article Numbe...</td>
+<td><a href="../IdentifiedObject/">IdentifiedObject</a></td>
+</tr>
+<tr>
+<td><a href="../m_rid/">m_rid</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Master resource identifier issued by a model authority</td>
+<td><a href="../IdentifiedObject/">IdentifiedObject</a></td>
+</tr>
+<tr>
+<td><a href="../names/">names</a></td>
+<td>* <br/> <a href="../Name/">Name</a></td>
+<td>All names of this identified object</td>
+<td><a href="../IdentifiedObject/">IdentifiedObject</a></td>
+</tr>
+<tr>
+<td><a href="../short_name/">short_name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The attribute is used for an exchange of a human readable short name with len...</td>
+<td><a href="../IdentifiedObject/">IdentifiedObject</a></td>
 </tr>
 </tbody>
 </table>
@@ -256,6 +345,7 @@
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">nodes.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PowerSystemResource</span>
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:ConnectivityNodeContainer</span>
 </code></pre></div>
 </details>
@@ -266,6 +356,115 @@
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">nodes.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PowerSystemResource</span>
+<span class="nt">attributes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">location</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">location</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Location of this power system resource.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:PowerSystemResource.Location</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">location</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConnectivityNodeContainer</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PowerSystemResource</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PositionPoint</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Location</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The description is a free human readable text describing or naming</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">the object. It may be non unique and may not correlate to a naming hierarchy.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.description</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConnectivityNodeContainer</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameType</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameTypeAuthority</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">energy_ident_code_eic</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energy_ident_code_eic</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The attribute is used for an exchange of the EIC code (Energy identification</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">Code). The length of the string is 16 characters as defined by the EIC code.</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">For details on EIC scheme please refer to ENTSO-E web site.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu:IdentifiedObject.energyIdentCodeEic</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energy_ident_code_eic</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConnectivityNodeContainer</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">european_article_number_ean</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">european_article_number_ean</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The attribute is used for an exchange of the EAN code (European Article</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">Number). The length of the string is 16 characters as defined by the EAN code.</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nl:IdentifiedObject.europeanArticleNumberEAN</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">european_article_number_ean</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConnectivityNodeContainer</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">m_rid</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Master</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">identifier</span><span class="nv"> </span><span class="s">issued</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">authority.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">mRID\</span>
+<span class="w">      </span><span class="s">\ is</span><span class="nv"> </span><span class="s">unique</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">exchange</span><span class="nv"> </span><span class="s">context.</span><span class="nv"> </span><span class="s">Global</span><span class="nv"> </span><span class="s">uniqueness</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">easily</span><span class="nv"> </span><span class="s">achieved\</span>
+<span class="w">      </span><span class="s">\ by</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">UUID,</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">specified</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RFC</span><span class="nv"> </span><span class="s">4122,</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">UUID</span><span class="nv"> </span><span class="s">is\</span>
+<span class="w">      </span><span class="s">\ strongly</span><span class="nv"> </span><span class="s">recommended.\r\nFor</span><span class="nv"> </span><span class="s">CIMXML</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RDF</span><span class="nv"> </span><span class="s">syntax</span><span class="nv"> </span><span class="s">conforming</span><span class="nv"> </span><span class="s">to\</span>
+<span class="w">      </span><span class="s">\ IEC</span><span class="nv"> </span><span class="s">61970-552,</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">mapped</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">rdf:ID</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">rdf:about</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">identify\</span>
+<span class="w">      </span><span class="s">\ CIM</span><span class="nv"> </span><span class="s">object</span><span class="nv"> </span><span class="s">elements."</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.mRID</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConnectivityNodeContainer</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">names</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">All names of this identified object.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.Names</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">names</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConnectivityNodeContainer</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameType</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Name</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">short_name</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">short_name</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The attribute is used for an exchange of a human readable short name</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">with length of the string 12 characters maximum.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu:IdentifiedObject.shortName</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">short_name</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConnectivityNodeContainer</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:ConnectivityNodeContainer</span>
 </code></pre></div>
 </details>

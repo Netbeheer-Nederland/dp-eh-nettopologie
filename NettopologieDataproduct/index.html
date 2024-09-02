@@ -170,117 +170,118 @@ minimum set of data is defined that all operators are expected to conform to,
 along with a number of optional properties and data types.</p>
 <p>The data is intended to be presented as a hierarchy with a
 <a href="../TopologyDataSet/">TopologyDataSet</a> at its root, then
-<a href="../TopologicalIsland/">TopologicalIsland-s</a> nested inside the
-TopologyDataSet. A grid connection (<em>Aansluiting</em>) is defined as a
-<a href="../UsagePoint/">UsagePoint</a> and related to a
-<a href="../TopologicalIsland/">TopologicalIsland</a> through a
-<a href="../TopologicalNode/">TopologicalNode</a> and
-<a href="../ConnectivityNode/">ConnectivityNode</a>.</p>
+<a href="../Substation/">Substation-s</a> nested inside the TopologyDataSet. A grid
+connection (<em>Aansluiting</em>) is defined as a <a href="../UsagePoint/">UsagePoint</a> and
+related to a <a href="../Bay/">Bay</a> through <a href="../EnergyConsumer/">EnergyConsumer-s</a>.</p>
 <pre class="mermaid"><code>classDiagram
-direction TB
+direction RL
 
+class Line {
+    Location location
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class Substation {
+    Location location
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class Bay {
+    Location location
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class EnergyConsumer {
+    boolean aggregate
+    boolean normally_in_service
+    EquipmentContainer equipment_container
+    Location location
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class UsagePoint {
+    string connection_category
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class StreetAddress {
+    TownDetail town_detail
+    string postal_code
+    string po_box
+    string language
+}
+class Location {
+    CoordinateSystem coordinate_system
+    StreetAddress main_address
+    PowerSystemResource power_system_resources
+    PositionPoint position_points
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class CoordinateSystem {
+    string crs_urn
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class PositionPoint {
+    Location location
+    integer sequence_number
+    string x_position
+    string y_position
+    string z_position
+}
+class TownDetail {
+    string code
+    string section
+    string state_or_province
+    string country
+}
 class TopologyDataSet {
     string identifier
     string contact_point
     string conforms_to
     date release_date
     string version
-    string topological_islands
+    Substation substations
 }
-class TopologicalIsland {
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
-class TopologicalNode {
-    SvVoltage sv_voltage
-    TopologicalIsland topological_island
-    BaseVoltage base_voltage
-    ConnectivityNode connectivity_nodes
-}
-class SvVoltage {
-    AngleDegrees angle
-    Voltage v
-}
-class SvPowerFlow {
-    ActivePower p
-    ReactivePower q
-    Terminal terminal
-}
-class Terminal {
-    ConductingEquipment conducting_equipment
-    ConnectivityNode connectivity_node
-    integer sequence_number
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
-class UsagePoint {
-    string connection_category
-    UsagePointConnectedKind connection_state
-    string disconnection_method
-    CurrentFlow estimated_load
-    boolean grounded
-    boolean is_sdp
-    boolean is_virtual
-    Voltage nominal_service_voltage
-    CurrentFlow rated_current
-    ActivePower rated_power
-    Equipment equipments
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
-class EnergyConsumer {
-    ActivePower pfixed
-    PerCent pfixed_pct
-    ReactivePower qfixed
-    PerCent qfixed_pct
-    BaseVoltage base_voltage
-    boolean aggregate
-    boolean in_service
-    boolean network_analysis_enabled
-    boolean normally_in_service
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
-class EnergySource {
-    BaseVoltage base_voltage
-    boolean aggregate
-    boolean in_service
-    boolean network_analysis_enabled
-    boolean normally_in_service
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
-
-SvPowerFlow --&gt; Terminal : terminal
-TopologyDataSet --&gt; TopologicalIsland : topological_islands
-TopologicalNode --&gt; SvVoltage : sv_voltage
-TopologicalNode --&gt; TopologicalIsland : topological_island
-TopologicalNode --&gt; ConnectivityNode : connectivity_nodes
-Terminal --&gt; ConnectivityNode : connectivity_node
-Terminal --&gt; EnergyConsumer : conducting_equipment
-Terminal --&gt; EnergySource : conducting_equipment
+TopologyDataSet --&gt; Substation : substations
+Line --&gt; Location : location
+Substation --&gt; Location : location
+Bay --&gt; Location : location
+EnergyConsumer --&gt; Location : location
 UsagePoint --&gt; EnergyConsumer : equipments
-UsagePoint --&gt; EnergySource : equipments</code></pre>
+StreetAddress --&gt; TownDetail : town_detail
+Location --&gt; CoordinateSystem : coordinate_system
+Location --&gt; StreetAddress : main_address
+PositionPoint --&gt; Location : location</code></pre>
 <h2 id="additional-schemas">Additional schemas</h2>
 <ul>
 <li><a href="https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/main/project/jsonschema/dp_eh_nettopologie.schema.json">JSON Schema</a></li>

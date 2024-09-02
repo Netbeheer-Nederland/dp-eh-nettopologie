@@ -328,7 +328,8 @@
 
 
 <h1 id="slot-m_rid">Slot: m_rid</h1>
-<p><em>Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.</em></p>
+<p>_Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+_</p>
 <p><em>For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.</em></p>
 <p>URI: <a href="https://cim.ucaiug.io/ns#IdentifiedObject.mRID">cim:IdentifiedObject.mRID</a></p>
 <!-- no inheritance hierarchy -->
@@ -344,48 +345,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Equipment/">Equipment</a></td>
-<td>The parts of a power system that are physical devices, electronic or mechanic...</td>
+<td><a href="../ConnectivityNodeContainer/">ConnectivityNodeContainer</a></td>
+<td>A base class for all objects that may contain connectivity nodes or topologic...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EnergyConnection/">EnergyConnection</a></td>
-<td>A connection of energy generation or consumption on the power system model</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../UsagePoint/">UsagePoint</a></td>
-<td>Logical or physical point in the network to which readings or events may be a...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ACDCTerminal/">ACDCTerminal</a></td>
-<td>An electrical connection point (AC or DC) to a piece of conducting equipment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Terminal/">Terminal</a></td>
-<td>An AC electrical connection point to a piece of conducting equipment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ConductingEquipment/">ConductingEquipment</a></td>
-<td>The parts of the AC power system that are designed to carry current or that a...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EnergySource/">EnergySource</a></td>
-<td>A generic equivalent for an energy supplier on a transmission or distribution...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TopologicalIsland/">TopologicalIsland</a></td>
-<td>An electrically connected subset of the network</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PowerSystemResource/">PowerSystemResource</a></td>
-<td>A power system resource (PSR) can be an item of equipment such as a switch, a...</td>
+<td><a href="../Location/">Location</a></td>
+<td>The place, scene, or point of something where someone or something has been, ...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -394,20 +360,65 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Substation/">Substation</a></td>
+<td>A collection of equipment for purposes other than generation or utilization, ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EquipmentContainer/">EquipmentContainer</a></td>
+<td>A modelling construct to provide a root class for containing equipment</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Bay/">Bay</a></td>
+<td>A collection of power system resources (within a given substation) including ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PowerSystemResource/">PowerSystemResource</a></td>
+<td>A power system resource (PSR) can be an item of equipment such as a switch, a...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CoordinateSystem/">CoordinateSystem</a></td>
+<td>Coordinate reference system</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../UsagePoint/">UsagePoint</a></td>
+<td>Logical or physical point in the network to which readings or events may be a...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Equipment/">Equipment</a></td>
+<td>The parts of a power system that are physical devices, electronic or mechanic...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ConductingEquipment/">ConductingEquipment</a></td>
+<td>The parts of the AC power system that are designed to carry current or that a...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Line/">Line</a></td>
+<td>Contains equipment beyond a substation belonging to a power transmission line</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../EnergyConsumer/">EnergyConsumer</a></td>
 <td>Generic user of energy - a  point of consumption on the power system model</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EnergyConnection/">EnergyConnection</a></td>
+<td>A connection of energy generation or consumption on the power system model</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../String/">String</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -436,12 +447,11 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Master</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">identifier</span><span class="nv"> </span><span class="s">issued</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">authority.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">mRID</span><span class="nv"> </span><span class="s">is</span>
-<span class="w">  </span><span class="s">unique</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">exchange</span><span class="nv"> </span><span class="s">context.</span><span class="nv"> </span><span class="s">Global</span><span class="nv"> </span><span class="s">uniqueness</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">easily</span><span class="nv"> </span><span class="s">achieved</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">using</span>
-<span class="w">  </span><span class="s">a</span><span class="nv"> </span><span class="s">UUID,</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">specified</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RFC</span><span class="nv"> </span><span class="s">4122,</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">UUID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">strongly</span><span class="nv"> </span><span class="s">recommended.</span>
-
-<span class="w">  </span><span class="s">For</span><span class="nv"> </span><span class="s">CIMXML</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RDF</span><span class="nv"> </span><span class="s">syntax</span><span class="nv"> </span><span class="s">conforming</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">IEC</span><span class="nv"> </span><span class="s">61970-552,</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">mapped</span>
-<span class="w">  </span><span class="s">to</span><span class="nv"> </span><span class="s">rdf:ID</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">rdf:about</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">identify</span><span class="nv"> </span><span class="s">CIM</span><span class="nv"> </span><span class="s">object</span><span class="nv"> </span><span class="s">elements.&#39;</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Master</span><span class="nv"> </span><span class="s">resource</span><span class="nv"> </span><span class="s">identifier</span><span class="nv"> </span><span class="s">issued</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">authority.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">mRID</span><span class="nv"> </span><span class="s">is\</span>
+<span class="w">  </span><span class="s">\ unique</span><span class="nv"> </span><span class="s">within</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">exchange</span><span class="nv"> </span><span class="s">context.</span><span class="nv"> </span><span class="s">Global</span><span class="nv"> </span><span class="s">uniqueness</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">easily</span><span class="nv"> </span><span class="s">achieved</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">using\</span>
+<span class="w">  </span><span class="s">\ a</span><span class="nv"> </span><span class="s">UUID,</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">specified</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RFC</span><span class="nv"> </span><span class="s">4122,</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">UUID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">strongly</span><span class="nv"> </span><span class="s">recommended.\r\</span>
+<span class="w">  </span><span class="s">\nFor</span><span class="nv"> </span><span class="s">CIMXML</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RDF</span><span class="nv"> </span><span class="s">syntax</span><span class="nv"> </span><span class="s">conforming</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">IEC</span><span class="nv"> </span><span class="s">61970-552,</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">mapped\</span>
+<span class="w">  </span><span class="s">\ to</span><span class="nv"> </span><span class="s">rdf:ID</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">rdf:about</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">identify</span><span class="nv"> </span><span class="s">CIM</span><span class="nv"> </span><span class="s">object</span><span class="nv"> </span><span class="s">elements.&quot;</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.mRID</span>
@@ -450,7 +460,7 @@
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 </details>

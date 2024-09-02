@@ -243,117 +243,118 @@ minimum set of data is defined that all operators are expected to conform to,
 along with a number of optional properties and data types.</p>
 <p>The data is intended to be presented as a hierarchy with a
 <a href="TopologyDataSet/">TopologyDataSet</a> at its root, then
-<a href="TopologicalIsland/">TopologicalIsland-s</a> nested inside the
-TopologyDataSet. A grid connection (<em>Aansluiting</em>) is defined as a
-<a href="UsagePoint/">UsagePoint</a> and related to a
-<a href="TopologicalIsland/">TopologicalIsland</a> through a
-<a href="TopologicalNode/">TopologicalNode</a> and
-<a href="ConnectivityNode/">ConnectivityNode</a>.</p>
+<a href="Substation/">Substation-s</a> nested inside the TopologyDataSet. A grid
+connection (<em>Aansluiting</em>) is defined as a <a href="UsagePoint/">UsagePoint</a> and
+related to a <a href="Bay/">Bay</a> through <a href="EnergyConsumer/">EnergyConsumer-s</a>.</p>
 <pre class="mermaid"><code>classDiagram
-direction TB
+direction RL
 
+class Line {
+    Location location
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class Substation {
+    Location location
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class Bay {
+    Location location
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class EnergyConsumer {
+    boolean aggregate
+    boolean normally_in_service
+    EquipmentContainer equipment_container
+    Location location
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class UsagePoint {
+    string connection_category
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class StreetAddress {
+    TownDetail town_detail
+    string postal_code
+    string po_box
+    string language
+}
+class Location {
+    CoordinateSystem coordinate_system
+    StreetAddress main_address
+    PowerSystemResource power_system_resources
+    PositionPoint position_points
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class CoordinateSystem {
+    string crs_urn
+    string description
+    string energy_ident_code_eic
+    string european_article_number_ean
+    string m_rid
+    Name names
+    string short_name
+}
+class PositionPoint {
+    Location location
+    integer sequence_number
+    string x_position
+    string y_position
+    string z_position
+}
+class TownDetail {
+    string code
+    string section
+    string state_or_province
+    string country
+}
 class TopologyDataSet {
     string identifier
     string contact_point
     string conforms_to
     date release_date
     string version
-    string topological_islands
+    Substation substations
 }
-class TopologicalIsland {
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
-class TopologicalNode {
-    SvVoltage sv_voltage
-    TopologicalIsland topological_island
-    BaseVoltage base_voltage
-    ConnectivityNode connectivity_nodes
-}
-class SvVoltage {
-    AngleDegrees angle
-    Voltage v
-}
-class SvPowerFlow {
-    ActivePower p
-    ReactivePower q
-    Terminal terminal
-}
-class Terminal {
-    ConductingEquipment conducting_equipment
-    ConnectivityNode connectivity_node
-    integer sequence_number
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
-class UsagePoint {
-    string connection_category
-    UsagePointConnectedKind connection_state
-    string disconnection_method
-    CurrentFlow estimated_load
-    boolean grounded
-    boolean is_sdp
-    boolean is_virtual
-    Voltage nominal_service_voltage
-    CurrentFlow rated_current
-    ActivePower rated_power
-    Equipment equipments
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
-class EnergyConsumer {
-    ActivePower pfixed
-    PerCent pfixed_pct
-    ReactivePower qfixed
-    PerCent qfixed_pct
-    BaseVoltage base_voltage
-    boolean aggregate
-    boolean in_service
-    boolean network_analysis_enabled
-    boolean normally_in_service
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
-class EnergySource {
-    BaseVoltage base_voltage
-    boolean aggregate
-    boolean in_service
-    boolean network_analysis_enabled
-    boolean normally_in_service
-    string m_rid
-    string description
-    string energy_ident_code_eic
-    string european_article_number_ean
-    Name names
-    string short_name
-}
-
-SvPowerFlow --&gt; Terminal : terminal
-TopologyDataSet --&gt; TopologicalIsland : topological_islands
-TopologicalNode --&gt; SvVoltage : sv_voltage
-TopologicalNode --&gt; TopologicalIsland : topological_island
-TopologicalNode --&gt; ConnectivityNode : connectivity_nodes
-Terminal --&gt; ConnectivityNode : connectivity_node
-Terminal --&gt; EnergyConsumer : conducting_equipment
-Terminal --&gt; EnergySource : conducting_equipment
+TopologyDataSet --&gt; Substation : substations
+Line --&gt; Location : location
+Substation --&gt; Location : location
+Bay --&gt; Location : location
+EnergyConsumer --&gt; Location : location
 UsagePoint --&gt; EnergyConsumer : equipments
-UsagePoint --&gt; EnergySource : equipments</code></pre>
+StreetAddress --&gt; TownDetail : town_detail
+Location --&gt; CoordinateSystem : coordinate_system
+Location --&gt; StreetAddress : main_address
+PositionPoint --&gt; Location : location</code></pre>
 <h2 id="additional-schemas">Additional schemas</h2>
 <ul>
 <li><a href="https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/main/project/jsonschema/dp_eh_nettopologie.schema.json">JSON Schema</a></li>
@@ -371,36 +372,20 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 </thead>
 <tbody>
 <tr>
-<td><a href="ACDCTerminal/">ACDCTerminal</a></td>
-<td>An electrical connection point (AC or DC) to a piece of conducting equipment</td>
-</tr>
-<tr>
-<td><a href="ActivePower/">ActivePower</a></td>
-<td>Product of RMS value of the voltage and the RMS value of the in-phase compone...</td>
-</tr>
-<tr>
-<td><a href="AngleDegrees/">AngleDegrees</a></td>
-<td>Measurement of angle in degrees</td>
-</tr>
-<tr>
-<td><a href="BaseVoltage/">BaseVoltage</a></td>
-<td>Defines a system base voltage which is referenced</td>
+<td><a href="Bay/">Bay</a></td>
+<td>A collection of power system resources (within a given substation) including ...</td>
 </tr>
 <tr>
 <td><a href="ConductingEquipment/">ConductingEquipment</a></td>
 <td>The parts of the AC power system that are designed to carry current or that a...</td>
 </tr>
 <tr>
-<td><a href="ConnectivityNode/">ConnectivityNode</a></td>
-<td>Connectivity nodes are points where terminals of AC conducting equipment are ...</td>
-</tr>
-<tr>
 <td><a href="ConnectivityNodeContainer/">ConnectivityNodeContainer</a></td>
 <td>A base class for all objects that may contain connectivity nodes or topologic...</td>
 </tr>
 <tr>
-<td><a href="CurrentFlow/">CurrentFlow</a></td>
-<td>Electrical current with sign convention: positive flow is out of the conducti...</td>
+<td><a href="CoordinateSystem/">CoordinateSystem</a></td>
+<td>Coordinate reference system</td>
 </tr>
 <tr>
 <td><a href="EnergyConnection/">EnergyConnection</a></td>
@@ -411,16 +396,24 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 <td>Generic user of energy - a  point of consumption on the power system model</td>
 </tr>
 <tr>
-<td><a href="EnergySource/">EnergySource</a></td>
-<td>A generic equivalent for an energy supplier on a transmission or distribution...</td>
-</tr>
-<tr>
 <td><a href="Equipment/">Equipment</a></td>
 <td>The parts of a power system that are physical devices, electronic or mechanic...</td>
 </tr>
 <tr>
+<td><a href="EquipmentContainer/">EquipmentContainer</a></td>
+<td>A modelling construct to provide a root class for containing equipment</td>
+</tr>
+<tr>
 <td><a href="IdentifiedObject/">IdentifiedObject</a></td>
 <td>This is a root class to provide common identification for all classes needing...</td>
+</tr>
+<tr>
+<td><a href="Line/">Line</a></td>
+<td>Contains equipment beyond a substation belonging to a power transmission line</td>
+</tr>
+<tr>
+<td><a href="Location/">Location</a></td>
+<td>The place, scene, or point of something where someone or something has been, ...</td>
 </tr>
 <tr>
 <td><a href="Name/">Name</a></td>
@@ -435,48 +428,32 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 <td>Authority responsible for creation and management of names of a given type; t...</td>
 </tr>
 <tr>
-<td><a href="PerCent/">PerCent</a></td>
-<td>Percentage on a defined base</td>
+<td><a href="PositionPoint/">PositionPoint</a></td>
+<td>Set of spatial coordinates that determine a point, defined in the coordinate ...</td>
 </tr>
 <tr>
 <td><a href="PowerSystemResource/">PowerSystemResource</a></td>
 <td>A power system resource (PSR) can be an item of equipment such as a switch, a...</td>
 </tr>
 <tr>
-<td><a href="ReactivePower/">ReactivePower</a></td>
-<td>Product of RMS value of the voltage and the RMS value of the quadrature compo...</td>
+<td><a href="StreetAddress/">StreetAddress</a></td>
+<td>General purpose street and postal address information</td>
 </tr>
 <tr>
-<td><a href="SvPowerFlow/">SvPowerFlow</a></td>
-<td>State variable for power flow</td>
-</tr>
-<tr>
-<td><a href="SvVoltage/">SvVoltage</a></td>
-<td>State variable for voltage</td>
-</tr>
-<tr>
-<td><a href="Terminal/">Terminal</a></td>
-<td>An AC electrical connection point to a piece of conducting equipment</td>
-</tr>
-<tr>
-<td><a href="TopologicalIsland/">TopologicalIsland</a></td>
-<td>An electrically connected subset of the network</td>
-</tr>
-<tr>
-<td><a href="TopologicalNode/">TopologicalNode</a></td>
-<td>For a detailed substation model a topological node is a set of connectivity n...</td>
+<td><a href="Substation/">Substation</a></td>
+<td>A collection of equipment for purposes other than generation or utilization, ...</td>
 </tr>
 <tr>
 <td><a href="TopologyDataSet/">TopologyDataSet</a></td>
 <td>A single instance of a published dataset</td>
 </tr>
 <tr>
-<td><a href="UsagePoint/">UsagePoint</a></td>
-<td>Logical or physical point in the network to which readings or events may be a...</td>
+<td><a href="TownDetail/">TownDetail</a></td>
+<td>Town details, in the context of address</td>
 </tr>
 <tr>
-<td><a href="Voltage/">Voltage</a></td>
-<td>Electrical voltage, can be both AC and DC</td>
+<td><a href="UsagePoint/">UsagePoint</a></td>
+<td>Logical or physical point in the network to which readings or events may be a...</td>
 </tr>
 </tbody>
 </table>
@@ -494,16 +471,8 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 <td>The aggregate flag provides an alternative way of representing an aggregated ...</td>
 </tr>
 <tr>
-<td><a href="angle/">angle</a></td>
-<td>The voltage angle of the topological node complex voltage with respect to sys...</td>
-</tr>
-<tr>
-<td><a href="base_voltage/">base_voltage</a></td>
-<td>The base voltage of the topological node</td>
-</tr>
-<tr>
-<td><a href="conducting_equipment/">conducting_equipment</a></td>
-<td>The conducting equipment of the terminal</td>
+<td><a href="code/">code</a></td>
+<td>Town code</td>
 </tr>
 <tr>
 <td><a href="conforms_to/">conforms_to</a></td>
@@ -514,48 +483,36 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 <td>A code used to specify the connection category, e</td>
 </tr>
 <tr>
-<td><a href="connection_state/">connection_state</a></td>
-<td>State of the usage point with respect to connection to the network</td>
-</tr>
-<tr>
-<td><a href="connectivity_node/">connectivity_node</a></td>
-<td>The connectivity node to which this terminal connects with zero impedance</td>
-</tr>
-<tr>
-<td><a href="connectivity_nodes/">connectivity_nodes</a></td>
-<td>The connectivity nodes combine together to form this topological node</td>
-</tr>
-<tr>
 <td><a href="contact_point/">contact_point</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="coordinate_system/">coordinate_system</a></td>
+<td>Coordinate system used to describe position points of this location</td>
+</tr>
+<tr>
+<td><a href="crs_urn/">crs_urn</a></td>
+<td>A Uniform Resource Name (URN) for the coordinate reference system (crs) used ...</td>
 </tr>
 <tr>
 <td><a href="description/">description</a></td>
 <td>The description is a free human readable text describing or naming the object</td>
 </tr>
 <tr>
-<td><a href="disconnection_method/">disconnection_method</a></td>
-<td>Is an indication of how the usage point is physically connected or disconnect...</td>
-</tr>
-<tr>
 <td><a href="energy_ident_code_eic/">energy_ident_code_eic</a></td>
 <td>The attribute is used for an exchange of the EIC code (Energy identification ...</td>
+</tr>
+<tr>
+<td><a href="equipment_container/">equipment_container</a></td>
+<td>Container of this equipment</td>
 </tr>
 <tr>
 <td><a href="equipments/">equipments</a></td>
 <td>All equipment connecting this usage point to the electrical grid</td>
 </tr>
 <tr>
-<td><a href="estimated_load/">estimated_load</a></td>
-<td>Estimated load</td>
-</tr>
-<tr>
 <td><a href="european_article_number_ean/">european_article_number_ean</a></td>
 <td>The attribute is used for an exchange of the EAN code (European Article Numbe...</td>
-</tr>
-<tr>
-<td><a href="grounded/">grounded</a></td>
-<td>True if grounded</td>
 </tr>
 <tr>
 <td><a href="identified_object/">identified_object</a></td>
@@ -566,24 +523,20 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 <td></td>
 </tr>
 <tr>
-<td><a href="in_service/">in_service</a></td>
-<td>Specifies the availability of the equipment</td>
+<td><a href="language/">language</a></td>
+<td>The language in which the address is specified, using ISO 639-1 two digit lan...</td>
 </tr>
 <tr>
-<td><a href="is_sdp/">is_sdp</a></td>
-<td>If true, this usage point is a service delivery point, i</td>
-</tr>
-<tr>
-<td><a href="is_virtual/">is_virtual</a></td>
-<td>If true, this usage point is virtual, i</td>
+<td><a href="location/">location</a></td>
+<td>Location of this power system resource</td>
 </tr>
 <tr>
 <td><a href="m_rid/">m_rid</a></td>
 <td>Master resource identifier issued by a model authority</td>
 </tr>
 <tr>
-<td><a href="multiplier/">multiplier</a></td>
-<td></td>
+<td><a href="main_address/">main_address</a></td>
+<td>Main address of the location</td>
 </tr>
 <tr>
 <td><a href="name_type/">name_type</a></td>
@@ -602,48 +555,16 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 <td>All names of this identified object</td>
 </tr>
 <tr>
-<td><a href="network_analysis_enabled/">network_analysis_enabled</a></td>
-<td>The equipment is enabled to participate in network analysis</td>
-</tr>
-<tr>
-<td><a href="nominal_service_voltage/">nominal_service_voltage</a></td>
-<td>Nominal service voltage</td>
-</tr>
-<tr>
 <td><a href="normally_in_service/">normally_in_service</a></td>
 <td>Specifies the availability of the equipment under normal operating conditions</td>
 </tr>
 <tr>
-<td><a href="p/">p</a></td>
-<td>The active power flow</td>
+<td><a href="po_box/">po_box</a></td>
+<td>Post office box</td>
 </tr>
 <tr>
-<td><a href="pfixed/">pfixed</a></td>
-<td>Active power of the load that is a fixed quantity and does not vary as load g...</td>
-</tr>
-<tr>
-<td><a href="pfixed_pct/">pfixed_pct</a></td>
-<td>Fixed active power as a percentage of load group fixed active power</td>
-</tr>
-<tr>
-<td><a href="q/">q</a></td>
-<td>The reactive power flow</td>
-</tr>
-<tr>
-<td><a href="qfixed/">qfixed</a></td>
-<td>Reactive power of the load that is a fixed quantity and does not vary as load...</td>
-</tr>
-<tr>
-<td><a href="qfixed_pct/">qfixed_pct</a></td>
-<td>Fixed reactive power as a percentage of load group fixed reactive power</td>
-</tr>
-<tr>
-<td><a href="rated_current/">rated_current</a></td>
-<td>Current flow that this usage point is configured to deliver</td>
-</tr>
-<tr>
-<td><a href="rated_power/">rated_power</a></td>
-<td>Active power that this usage point is configured to deliver</td>
+<td><a href="postal_code/">postal_code</a></td>
+<td>Postal code for the address</td>
 </tr>
 <tr>
 <td><a href="release_date/">release_date</a></td>
@@ -651,47 +572,39 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 </tr>
 <tr>
 <td><a href="sequence_number/">sequence_number</a></td>
-<td>The orientation of the terminal connections for a multiple terminal conductin...</td>
+<td>Zero-relative sequence number of this point within a series of points</td>
 </tr>
 <tr>
 <td><a href="short_name/">short_name</a></td>
 <td>The attribute is used for an exchange of a human readable short name with len...</td>
 </tr>
 <tr>
-<td><a href="sv_voltage/">sv_voltage</a></td>
-<td>The state voltage associated with the topological node</td>
+<td><a href="state_or_province/">state_or_province</a></td>
+<td>Name of the state or province</td>
 </tr>
 <tr>
-<td><a href="terminal/">terminal</a></td>
-<td>The terminal associated with the power flow state variable</td>
-</tr>
-<tr>
-<td><a href="topological_island/">topological_island</a></td>
-<td>A topological node belongs to a topological island</td>
-</tr>
-<tr>
-<td><a href="topological_islands/">topological_islands</a></td>
+<td><a href="substations/">substations</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="topological_node/">topological_node</a></td>
-<td>The topological nodes at the base voltage</td>
-</tr>
-<tr>
-<td><a href="unit/">unit</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="v/">v</a></td>
-<td>The voltage magnitude at the topological node</td>
-</tr>
-<tr>
-<td><a href="value/">value</a></td>
-<td></td>
+<td><a href="town_detail/">town_detail</a></td>
+<td>Town detail</td>
 </tr>
 <tr>
 <td><a href="version/">version</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="x_position/">x_position</a></td>
+<td>X axis position</td>
+</tr>
+<tr>
+<td><a href="y_position/">y_position</a></td>
+<td>Y axis position</td>
+</tr>
+<tr>
+<td><a href="z_position/">z_position</a></td>
+<td>(if applicable) Z axis position</td>
 </tr>
 </tbody>
 </table>
@@ -705,20 +618,8 @@ UsagePoint --&gt; EnergySource : equipments</code></pre>
 </thead>
 <tbody>
 <tr>
-<td><a href="PhaseCode/">PhaseCode</a></td>
-<td>An unordered enumeration of phase identifiers</td>
-</tr>
-<tr>
-<td><a href="UnitMultiplier/">UnitMultiplier</a></td>
 <td></td>
-</tr>
-<tr>
-<td><a href="UnitSymbol/">UnitSymbol</a></td>
 <td></td>
-</tr>
-<tr>
-<td><a href="UsagePointConnectedKind/">UsagePointConnectedKind</a></td>
-<td>State of the usage point with respect to connection to the network</td>
 </tr>
 </tbody>
 </table>
