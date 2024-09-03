@@ -110,6 +110,7 @@ description: |-
   Location --> StreetAddress : main_address
   PositionPoint --> Location : location
   Bay --> Substation : substation
+  EnergyConsumer --> Bay : equipment_container
   ```
 
   ## Additional schemas
