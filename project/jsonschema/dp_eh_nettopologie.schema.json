@@ -8,14 +8,6 @@
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
                 },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
-                    "type": "string"
-                },
                 "location": {
                     "$ref": "#/$defs/Location",
                     "description": "Location of this power system resource."
@@ -34,6 +26,10 @@
                 "short_name": {
                     "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
                     "type": "string"
+                },
+                "substation": {
+                    "$ref": "#/$defs/Substation",
+                    "description": "Substation containing the bay."
                 }
             },
             "title": "Bay",
@@ -51,17 +47,9 @@
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
                 },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
                 "equipment_container": {
                     "$ref": "#/$defs/EquipmentContainer",
                     "description": "Container of this equipment."
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
-                    "type": "string"
                 },
                 "location": {
                     "$ref": "#/$defs/Location",
@@ -96,14 +84,6 @@
             "properties": {
                 "description": {
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
-                    "type": "string"
-                },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
                     "type": "string"
                 },
                 "location": {
@@ -141,14 +121,6 @@
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
                 },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
-                    "type": "string"
-                },
                 "m_rid": {
                     "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
                     "type": "string"
@@ -183,17 +155,9 @@
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
                 },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
                 "equipment_container": {
                     "$ref": "#/$defs/EquipmentContainer",
                     "description": "Container of this equipment."
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
-                    "type": "string"
                 },
                 "location": {
                     "$ref": "#/$defs/Location",
@@ -234,17 +198,9 @@
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
                 },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
                 "equipment_container": {
                     "$ref": "#/$defs/EquipmentContainer",
                     "description": "Container of this equipment."
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
-                    "type": "string"
                 },
                 "location": {
                     "$ref": "#/$defs/Location",
@@ -285,17 +241,9 @@
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
                 },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
                 "equipment_container": {
                     "$ref": "#/$defs/EquipmentContainer",
                     "description": "Container of this equipment."
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
-                    "type": "string"
                 },
                 "location": {
                     "$ref": "#/$defs/Location",
@@ -332,14 +280,6 @@
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
                 },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
-                    "type": "string"
-                },
                 "location": {
                     "$ref": "#/$defs/Location",
                     "description": "Location of this power system resource."
@@ -371,14 +311,6 @@
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
                 },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
-                    "type": "string"
-                },
                 "m_rid": {
                     "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
                     "type": "string"
@@ -404,14 +336,6 @@
             "properties": {
                 "description": {
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
-                    "type": "string"
-                },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
                     "type": "string"
                 },
                 "location": {
@@ -447,14 +371,6 @@
                 },
                 "description": {
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
-                    "type": "string"
-                },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
                     "type": "string"
                 },
                 "m_rid": {
@@ -586,14 +502,6 @@
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
                 },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
-                    "type": "string"
-                },
                 "location": {
                     "$ref": "#/$defs/Location",
                     "description": "Location of this power system resource."
@@ -647,14 +555,6 @@
             "properties": {
                 "description": {
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
-                    "type": "string"
-                },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
-                    "type": "string"
-                },
-                "european_article_number_ean": {
-                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
                     "type": "string"
                 },
                 "location": {
@@ -737,16 +637,8 @@
             "additionalProperties": false,
             "description": "Logical or physical point in the network to which readings or events may be attributed. Used at the place where a physical or virtual meter may be located; however, it is not required that a meter be present.",
             "properties": {
-                "connection_category": {
-                    "description": "A code used to specify the connection category, e.g., low voltage or low pressure, where the usage point is defined.",
-                    "type": "string"
-                },
                 "description": {
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
-                    "type": "string"
-                },
-                "energy_ident_code_eic": {
-                    "description": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
                     "type": "string"
                 },
                 "equipments": {

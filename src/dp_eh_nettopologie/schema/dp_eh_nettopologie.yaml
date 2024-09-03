@@ -20,8 +20,6 @@ description: |-
   class Line {
       Location location
       string description
-      string energy_ident_code_eic
-      string european_article_number_ean
       string m_rid
       Name names
       string short_name
@@ -29,17 +27,13 @@ description: |-
   class Substation {
       Location location
       string description
-      string energy_ident_code_eic
-      string european_article_number_ean
       string m_rid
       Name names
       string short_name
   }
   class Bay {
-      Location location
+      Substation substation
       string description
-      string energy_ident_code_eic
-      string european_article_number_ean
       string m_rid
       Name names
       string short_name
@@ -50,8 +44,6 @@ description: |-
       EquipmentContainer equipment_container
       Location location
       string description
-      string energy_ident_code_eic
-      string european_article_number_ean
       string m_rid
       Name names
       string short_name
@@ -59,7 +51,6 @@ description: |-
   class UsagePoint {
       string connection_category
       string description
-      string energy_ident_code_eic
       string european_article_number_ean
       string m_rid
       Name names
@@ -77,8 +68,6 @@ description: |-
       PowerSystemResource power_system_resources
       PositionPoint position_points
       string description
-      string energy_ident_code_eic
-      string european_article_number_ean
       string m_rid
       Name names
       string short_name
@@ -86,8 +75,6 @@ description: |-
   class CoordinateSystem {
       string crs_urn
       string description
-      string energy_ident_code_eic
-      string european_article_number_ean
       string m_rid
       Name names
       string short_name
@@ -116,13 +103,13 @@ description: |-
   TopologyDataSet --> Substation : substations
   Line --> Location : location
   Substation --> Location : location
-  Bay --> Location : location
   EnergyConsumer --> Location : location
   UsagePoint --> EnergyConsumer : equipments
   StreetAddress --> TownDetail : town_detail
   Location --> CoordinateSystem : coordinate_system
   Location --> StreetAddress : main_address
   PositionPoint --> Location : location
+  Bay --> Substation : substation
   ```
 
   ## Additional schemas
@@ -183,23 +170,6 @@ classes:
         description: The description is a free human readable text describing or naming
           the object. It may be non unique and may not correlate to a naming hierarchy.
         slot_uri: cim:IdentifiedObject.description
-        multivalued: false
-        range: string
-        required: false
-      energy_ident_code_eic:
-        description: The attribute is used for an exchange of the EIC code (Energy
-          identification Code). The length of the string is 16 characters as defined
-          by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.
-        slot_uri: eu:IdentifiedObject.energyIdentCodeEic
-        multivalued: false
-        range: string
-        required: false
-      european_article_number_ean:
-        description: The attribute is used for an exchange of the EAN code (European
-          Article Number). The length of the string is 16 characters as defined by
-          the EAN code. For details on EAN scheme please refer to the [Codebesluit
-          toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).
-        slot_uri: nl:IdentifiedObject.europeanArticleNumberEAN
         multivalued: false
         range: string
         required: false
@@ -376,6 +346,13 @@ classes:
       including conducting equipment, protection relays, measurements, and telemetry.  A
       bay typically represents a physical grouping related to modularization of equipment.
     is_a: EquipmentContainer
+    attributes:
+      substation:
+        description: Substation containing the bay.
+        slot_uri: cim:Bay.Substation
+        multivalued: false
+        range: Substation
+        required: false
     class_uri: cim:Bay
   EnergyConsumer:
     description: 'Generic user of energy - a  point of consumption on the power system
@@ -531,10 +508,12 @@ classes:
     from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61968.Metering
     is_a: IdentifiedObject
     attributes:
-      connection_category:
-        description: A code used to specify the connection category, e.g., low voltage
-          or low pressure, where the usage point is defined.
-        slot_uri: cim:UsagePoint.connectionCategory
+      european_article_number_ean:
+        description: The attribute is used for an exchange of the EAN code (European
+          Article Number). The length of the string is 16 characters as defined by
+          the EAN code. For details on EAN scheme please refer to the [Codebesluit
+          toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).
+        slot_uri: nl:IdentifiedObject.europeanArticleNumberEAN
         multivalued: false
         range: string
         required: false
