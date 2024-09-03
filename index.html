@@ -252,8 +252,6 @@ direction RL
 class Line {
     Location location
     string description
-    string energy_ident_code_eic
-    string european_article_number_ean
     string m_rid
     Name names
     string short_name
@@ -261,17 +259,13 @@ class Line {
 class Substation {
     Location location
     string description
-    string energy_ident_code_eic
-    string european_article_number_ean
     string m_rid
     Name names
     string short_name
 }
 class Bay {
-    Location location
+    Substation substation
     string description
-    string energy_ident_code_eic
-    string european_article_number_ean
     string m_rid
     Name names
     string short_name
@@ -282,8 +276,6 @@ class EnergyConsumer {
     EquipmentContainer equipment_container
     Location location
     string description
-    string energy_ident_code_eic
-    string european_article_number_ean
     string m_rid
     Name names
     string short_name
@@ -291,7 +283,6 @@ class EnergyConsumer {
 class UsagePoint {
     string connection_category
     string description
-    string energy_ident_code_eic
     string european_article_number_ean
     string m_rid
     Name names
@@ -309,8 +300,6 @@ class Location {
     PowerSystemResource power_system_resources
     PositionPoint position_points
     string description
-    string energy_ident_code_eic
-    string european_article_number_ean
     string m_rid
     Name names
     string short_name
@@ -318,8 +307,6 @@ class Location {
 class CoordinateSystem {
     string crs_urn
     string description
-    string energy_ident_code_eic
-    string european_article_number_ean
     string m_rid
     Name names
     string short_name
@@ -348,13 +335,13 @@ class TopologyDataSet {
 TopologyDataSet --&gt; Substation : substations
 Line --&gt; Location : location
 Substation --&gt; Location : location
-Bay --&gt; Location : location
 EnergyConsumer --&gt; Location : location
 UsagePoint --&gt; EnergyConsumer : equipments
 StreetAddress --&gt; TownDetail : town_detail
 Location --&gt; CoordinateSystem : coordinate_system
 Location --&gt; StreetAddress : main_address
-PositionPoint --&gt; Location : location</code></pre>
+PositionPoint --&gt; Location : location
+Bay --&gt; Substation : substation</code></pre>
 <h2 id="additional-schemas">Additional schemas</h2>
 <ul>
 <li><a href="https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/main/project/jsonschema/dp_eh_nettopologie.schema.json">JSON Schema</a></li>
@@ -479,10 +466,6 @@ PositionPoint --&gt; Location : location</code></pre>
 <td></td>
 </tr>
 <tr>
-<td><a href="connection_category/">connection_category</a></td>
-<td>A code used to specify the connection category, e</td>
-</tr>
-<tr>
 <td><a href="contact_point/">contact_point</a></td>
 <td></td>
 </tr>
@@ -497,10 +480,6 @@ PositionPoint --&gt; Location : location</code></pre>
 <tr>
 <td><a href="description/">description</a></td>
 <td>The description is a free human readable text describing or naming the object</td>
-</tr>
-<tr>
-<td><a href="energy_ident_code_eic/">energy_ident_code_eic</a></td>
-<td>The attribute is used for an exchange of the EIC code (Energy identification ...</td>
 </tr>
 <tr>
 <td><a href="equipment_container/">equipment_container</a></td>
@@ -581,6 +560,10 @@ PositionPoint --&gt; Location : location</code></pre>
 <tr>
 <td><a href="state_or_province/">state_or_province</a></td>
 <td>Name of the state or province</td>
+</tr>
+<tr>
+<td><a href="substation/">substation</a></td>
+<td>Substation containing the bay</td>
 </tr>
 <tr>
 <td><a href="substations/">substations</a></td>

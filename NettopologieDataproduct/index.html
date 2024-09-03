@@ -179,8 +179,6 @@ direction RL
 class Line {
     Location location
     string description
-    string energy_ident_code_eic
-    string european_article_number_ean
     string m_rid
     Name names
     string short_name
@@ -188,17 +186,13 @@ class Line {
 class Substation {
     Location location
     string description
-    string energy_ident_code_eic
-    string european_article_number_ean
     string m_rid
     Name names
     string short_name
 }
 class Bay {
-    Location location
+    Substation substation
     string description
-    string energy_ident_code_eic
-    string european_article_number_ean
     string m_rid
     Name names
     string short_name
@@ -209,8 +203,6 @@ class EnergyConsumer {
     EquipmentContainer equipment_container
     Location location
     string description
-    string energy_ident_code_eic
-    string european_article_number_ean
     string m_rid
     Name names
     string short_name
@@ -218,7 +210,6 @@ class EnergyConsumer {
 class UsagePoint {
     string connection_category
     string description
-    string energy_ident_code_eic
     string european_article_number_ean
     string m_rid
     Name names
@@ -236,8 +227,6 @@ class Location {
     PowerSystemResource power_system_resources
     PositionPoint position_points
     string description
-    string energy_ident_code_eic
-    string european_article_number_ean
     string m_rid
     Name names
     string short_name
@@ -245,8 +234,6 @@ class Location {
 class CoordinateSystem {
     string crs_urn
     string description
-    string energy_ident_code_eic
-    string european_article_number_ean
     string m_rid
     Name names
     string short_name
@@ -275,13 +262,13 @@ class TopologyDataSet {
 TopologyDataSet --&gt; Substation : substations
 Line --&gt; Location : location
 Substation --&gt; Location : location
-Bay --&gt; Location : location
 EnergyConsumer --&gt; Location : location
 UsagePoint --&gt; EnergyConsumer : equipments
 StreetAddress --&gt; TownDetail : town_detail
 Location --&gt; CoordinateSystem : coordinate_system
 Location --&gt; StreetAddress : main_address
-PositionPoint --&gt; Location : location</code></pre>
+PositionPoint --&gt; Location : location
+Bay --&gt; Substation : substation</code></pre>
 <h2 id="additional-schemas">Additional schemas</h2>
 <ul>
 <li><a href="https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/main/project/jsonschema/dp_eh_nettopologie.schema.json">JSON Schema</a></li>

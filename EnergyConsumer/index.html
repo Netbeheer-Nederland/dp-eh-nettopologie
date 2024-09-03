@@ -215,8 +215,6 @@
 
       EnergyConsumer : description
 
-      EnergyConsumer : energy_ident_code_eic
-
       EnergyConsumer : equipment_container
 
 
@@ -225,8 +223,6 @@
     EnergyConsumer --&gt; "0..1" EquipmentContainer : equipment_container
     click EquipmentContainer href "../EquipmentContainer"
 
-
-      EnergyConsumer : european_article_number_ean
 
       EnergyConsumer : location
 
@@ -311,18 +307,6 @@
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The description is a free human readable text describing or naming the object</td>
-<td><a href="../IdentifiedObject/">IdentifiedObject</a></td>
-</tr>
-<tr>
-<td><a href="../energy_ident_code_eic/">energy_ident_code_eic</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The attribute is used for an exchange of the EIC code (Energy identification ...</td>
-<td><a href="../IdentifiedObject/">IdentifiedObject</a></td>
-</tr>
-<tr>
-<td><a href="../european_article_number_ean/">european_article_number_ean</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The attribute is used for an exchange of the EAN code (European Article Numbe...</td>
 <td><a href="../IdentifiedObject/">IdentifiedObject</a></td>
 </tr>
 <tr>
@@ -477,37 +461,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameType</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameTypeAuthority</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">energy_ident_code_eic</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energy_ident_code_eic</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The attribute is used for an exchange of the EIC code (Energy identification</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">Code). The length of the string is 16 characters as defined by the EIC code.</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">For details on EIC scheme please refer to ENTSO-E web site.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu:IdentifiedObject.energyIdentCodeEic</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energy_ident_code_eic</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">european_article_number_ean</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">european_article_number_ean</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The attribute is used for an exchange of the EAN code (European Article</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">Number). The length of the string is 16 characters as defined by the EAN code.</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nl:IdentifiedObject.europeanArticleNumberEAN</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">european_article_number_ean</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
