@@ -11,7 +11,7 @@ description: |-
   [TopologyDataSet](TopologyDataSet.md) at its root, then
   [Substation-s](Substation.md) nested inside the TopologyDataSet. A grid
   connection (*Aansluiting*) is defined as a [UsagePoint](UsagePoint.md) and
-  related to a [Bay](Bay.md) through [EnergyConsumer-s](EnergyConsumer.md).
+  related to a [Bay](Bay.md) through [EnergyConnection-s](EnergyConnection.md).
 
   ```mermaid
   classDiagram
@@ -38,7 +38,7 @@ description: |-
       Name names
       string short_name
   }
-  class EnergyConsumer {
+  class EnergyConnection {
       boolean aggregate
       boolean normally_in_service
       EquipmentContainer equipment_container
@@ -104,14 +104,14 @@ description: |-
   TopologyDataSet --> Substation : substations
   Line --> Location : location
   Substation --> Location : location
-  EnergyConsumer --> Location : location
-  UsagePoint --> EnergyConsumer : equipments
+  EnergyConnection --> Location : location
+  UsagePoint --> EnergyConnection : equipments
   StreetAddress --> TownDetail : town_detail
   Location --> CoordinateSystem : coordinate_system
   Location --> StreetAddress : main_address
   PositionPoint --> Location : location
   Bay --> Substation : substation
-  EnergyConsumer --> Bay : equipment_container
+  EnergyConnection --> Bay : equipment_container
   ```
 
   ## Additional schemas
@@ -126,6 +126,7 @@ prefixes:
   dct: http://purl.org/dc/terms/
   eu: http://iec.ch/TC57/CIM100-European#
   nl: http://iec.ch/TC57/CIM100-Netherlands#
+  nbnl: https://begrippen.netbeheernederland.nl/energiesysteembeheer/nl/page/
   owl: http://www.w3.org/2002/07/owl#
   this: http://data.netbeheernederland.nl/dp-eh-nettopologie/def#
 default_curi_maps:
@@ -342,6 +343,8 @@ classes:
       through which electric energy in bulk is passed for the purposes of switching
       or modifying its characteristics.
     is_a: EquipmentContainer
+    exact_mappings:
+      - nbnl:station
     class_uri: cim:Substation
   Bay:
     description: A collection of power system resources (within a given substation)
@@ -356,15 +359,6 @@ classes:
         range: Substation
         required: false
     class_uri: cim:Bay
-  EnergyConsumer:
-    description: 'Generic user of energy - a  point of consumption on the power system
-      model.
-
-      EnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only
-      if there is no LoadResponseCharacteristic associated with EnergyConsumer or
-      if LoadResponseCharacteristic.exponentModel is set to False.'
-    is_a: EnergyConnection
-    class_uri: cim:EnergyConsumer
   EnergyConnection:
     description: A connection of energy generation or consumption on the power system
       model.
@@ -525,4 +519,6 @@ classes:
         multivalued: true
         range: Equipment
         required: false
+    exact_mappings:
+      - nbnl:overdrachtspunt
     class_uri: cim:UsagePoint
