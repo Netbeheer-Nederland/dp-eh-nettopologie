@@ -172,7 +172,7 @@ along with a number of optional properties and data types.</p>
 <a href="../TopologyDataSet/">TopologyDataSet</a> at its root, then
 <a href="../Substation/">Substation-s</a> nested inside the TopologyDataSet. A grid
 connection (<em>Aansluiting</em>) is defined as a <a href="../UsagePoint/">UsagePoint</a> and
-related to a <a href="../Bay/">Bay</a> through <a href="../EnergyConsumer/">EnergyConsumer-s</a>.</p>
+related to a <a href="../Bay/">Bay</a> through <a href="../EnergyConnection/">EnergyConnection-s</a>.</p>
 <pre class="mermaid"><code>classDiagram
 direction RL
 
@@ -197,7 +197,7 @@ class Bay {
     Name names
     string short_name
 }
-class EnergyConsumer {
+class EnergyConnection {
     boolean aggregate
     boolean normally_in_service
     EquipmentContainer equipment_container
@@ -263,14 +263,14 @@ class TopologyDataSet {
 TopologyDataSet --&gt; Substation : substations
 Line --&gt; Location : location
 Substation --&gt; Location : location
-EnergyConsumer --&gt; Location : location
-UsagePoint --&gt; EnergyConsumer : equipments
+EnergyConnection --&gt; Location : location
+UsagePoint --&gt; EnergyConnection : equipments
 StreetAddress --&gt; TownDetail : town_detail
 Location --&gt; CoordinateSystem : coordinate_system
 Location --&gt; StreetAddress : main_address
 PositionPoint --&gt; Location : location
 Bay --&gt; Substation : substation
-EnergyConsumer --&gt; Bay : equipment_container</code></pre>
+EnergyConnection --&gt; Bay : equipment_container</code></pre>
 <h2 id="additional-schemas">Additional schemas</h2>
 <ul>
 <li><a href="https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/main/project/jsonschema/dp_eh_nettopologie.schema.json">JSON Schema</a></li>
