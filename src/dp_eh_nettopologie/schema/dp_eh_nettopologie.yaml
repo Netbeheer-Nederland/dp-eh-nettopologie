@@ -358,6 +358,8 @@ classes:
         multivalued: false
         range: Substation
         required: false
+    exact_mappings:
+      - nbnl:veld
     class_uri: cim:Bay
   EnergyConnection:
     description: A connection of energy generation or consumption on the power system
