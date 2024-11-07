@@ -81,7 +81,6 @@ description: |-
       string short_name
   }
   class PositionPoint {
-      Location location
       integer sequence_number
       string x_position
       string y_position
@@ -109,7 +108,7 @@ description: |-
   StreetAddress --> TownDetail : town_detail
   Location --> CoordinateSystem : coordinate_system
   Location --> StreetAddress : main_address
-  PositionPoint --> Location : location
+  Location --> PositionPoint : position_points
   Bay --> Substation : substation
   EnergyConnection --> Bay : equipment_container
   ```
@@ -389,6 +388,13 @@ classes:
         multivalued: false
         range: StreetAddress
         required: false
+      position_points:
+        slot_uri: cim:Location.PositionPoints
+        range: PositionPoint
+        required: false
+        multivalued: true
+        description: Sequence of position points describing this location, expressed
+          in coordinate system 'Location.CoordinateSystem'.
     class_uri: cim:Location
   CoordinateSystem:
     description: Coordinate reference system.
@@ -467,12 +473,6 @@ classes:
       geographical zone - in this case, have first and last position point with the
       same values).
     attributes:
-      location:
-        description: Location described by this position point.
-        slot_uri: cim:PositionPoint.Location
-        multivalued: false
-        range: Location
-        required: true
       sequence_number:
         description: Zero-relative sequence number of this point within a series of
           points.

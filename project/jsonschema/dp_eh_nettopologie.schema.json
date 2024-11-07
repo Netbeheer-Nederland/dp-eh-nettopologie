@@ -345,6 +345,13 @@
                     },
                     "type": "array"
                 },
+                "position_points": {
+                    "description": "Sequence of position points describing this location, expressed in coordinate system 'Location.CoordinateSystem'.",
+                    "items": {
+                        "$ref": "#/$defs/PositionPoint"
+                    },
+                    "type": "array"
+                },
                 "short_name": {
                     "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
                     "type": "string"
@@ -422,10 +429,6 @@
             "additionalProperties": false,
             "description": "Set of spatial coordinates that determine a point, defined in the coordinate system specified in 'Location.CoordinateSystem'. Use a single position point instance to describe a point-oriented location. Use a sequence of position points to describe a line-oriented object (physical location of non-point oriented objects like cables or lines), or area of an object (like a substation or a geographical zone - in this case, have first and last position point with the same values).",
             "properties": {
-                "location": {
-                    "$ref": "#/$defs/Location",
-                    "description": "Location described by this position point."
-                },
                 "sequence_number": {
                     "description": "Zero-relative sequence number of this point within a series of points.",
                     "type": "integer"
@@ -444,7 +447,6 @@
                 }
             },
             "required": [
-                "location",
                 "x_position",
                 "y_position"
             ],
