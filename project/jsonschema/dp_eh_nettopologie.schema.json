@@ -634,7 +634,39 @@
     "$id": "http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
+    "description": "A single instance of a published dataset.",
     "metamodel_version": "1.7.0",
+    "properties": {
+        "conforms_to": {
+            "type": "string"
+        },
+        "contact_point": {
+            "type": "string"
+        },
+        "identifier": {
+            "type": "string"
+        },
+        "release_date": {
+            "format": "date",
+            "type": "string"
+        },
+        "substations": {
+            "items": {
+                "$ref": "#/$defs/Substation"
+            },
+            "type": "array"
+        },
+        "version": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "identifier",
+        "contact_point",
+        "conforms_to",
+        "release_date",
+        "version"
+    ],
     "title": "NettopologieDataproduct",
     "type": "object",
     "version": null

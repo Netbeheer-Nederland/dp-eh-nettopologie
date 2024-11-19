@@ -57,12 +57,6 @@ description: |-
       Name names
       string short_name
   }
-  class StreetAddress {
-      TownDetail town_detail
-      string postal_code
-      string po_box
-      string language
-  }
   class Location {
       CoordinateSystem coordinate_system
       StreetAddress main_address
@@ -72,25 +66,6 @@ description: |-
       string m_rid
       Name names
       string short_name
-  }
-  class CoordinateSystem {
-      string crs_urn
-      string description
-      string m_rid
-      Name names
-      string short_name
-  }
-  class PositionPoint {
-      integer sequence_number
-      string x_position
-      string y_position
-      string z_position
-  }
-  class TownDetail {
-      string code
-      string section
-      string state_or_province
-      string country
   }
   class TopologyDataSet {
       string identifier
@@ -105,10 +80,6 @@ description: |-
   Substation --> Location : location
   EnergyConnection --> Location : location
   UsagePoint --> EnergyConnection : equipments
-  StreetAddress --> TownDetail : town_detail
-  Location --> CoordinateSystem : coordinate_system
-  Location --> StreetAddress : main_address
-  Location --> PositionPoint : position_points
   Bay --> Substation : substation
   EnergyConnection --> Bay : equipment_container
   ```
@@ -134,6 +105,7 @@ default_prefix: this
 default_range: string
 classes:
   TopologyDataSet:
+    tree_root: true
     description: A single instance of a published dataset.
     attributes:
       identifier:
