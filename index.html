@@ -289,12 +289,6 @@ class UsagePoint {
     Name names
     string short_name
 }
-class StreetAddress {
-    TownDetail town_detail
-    string postal_code
-    string po_box
-    string language
-}
 class Location {
     CoordinateSystem coordinate_system
     StreetAddress main_address
@@ -304,26 +298,6 @@ class Location {
     string m_rid
     Name names
     string short_name
-}
-class CoordinateSystem {
-    string crs_urn
-    string description
-    string m_rid
-    Name names
-    string short_name
-}
-class PositionPoint {
-    Location location
-    integer sequence_number
-    string x_position
-    string y_position
-    string z_position
-}
-class TownDetail {
-    string code
-    string section
-    string state_or_province
-    string country
 }
 class TopologyDataSet {
     string identifier
@@ -338,10 +312,6 @@ Line --&gt; Location : location
 Substation --&gt; Location : location
 EnergyConnection --&gt; Location : location
 UsagePoint --&gt; EnergyConnection : equipments
-StreetAddress --&gt; TownDetail : town_detail
-Location --&gt; CoordinateSystem : coordinate_system
-Location --&gt; StreetAddress : main_address
-PositionPoint --&gt; Location : location
 Bay --&gt; Substation : substation
 EnergyConnection --&gt; Bay : equipment_container</code></pre>
 <h2 id="additional-schemas">Additional schemas</h2>
@@ -538,6 +508,10 @@ EnergyConnection --&gt; Bay : equipment_container</code></pre>
 <tr>
 <td><a href="po_box/">po_box</a></td>
 <td>Post office box</td>
+</tr>
+<tr>
+<td><a href="position_points/">position_points</a></td>
+<td>Sequence of position points describing this location, expressed in coordinate...</td>
 </tr>
 <tr>
 <td><a href="postal_code/">postal_code</a></td>

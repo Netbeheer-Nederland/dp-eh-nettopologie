@@ -2,382 +2,387 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Bay/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Boolean/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/ConductingEquipment/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/ConnectivityNodeContainer/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/CoordinateSystem/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Curie/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Date/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/DateOrDatetime/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Datetime/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Decimal/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Double/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/EnergyConnection/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Equipment/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/EquipmentContainer/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Float/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/IdentifiedObject/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Integer/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Jsonpath/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Jsonpointer/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Line/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Location/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Name/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/NameType/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/NameTypeAuthority/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Ncname/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/NettopologieDataproduct/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Nodeidentifier/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Objectidentifier/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/PositionPoint/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/PowerSystemResource/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Sparqlpath/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/StreetAddress/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/String/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Substation/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Time/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/TopologyDataSet/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/TownDetail/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Uri/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/Uriorcurie/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/UsagePoint/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/about/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/aggregate/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/code/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/conforms_to/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/contact_point/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/coordinate_system/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/crs_urn/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/description/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/equipment_container/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/equipments/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/european_article_number_ean/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/identified_object/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/identifier/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/language/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/location/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/m_rid/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/main_address/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/name_type/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/name_type_authority/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/name_types/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/names/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/normally_in_service/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/po_box/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/position_points/</loc>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/postal_code/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/release_date/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/sequence_number/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/short_name/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/state_or_province/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/substation/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/substations/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/town_detail/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/version/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/x_position/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/y_position/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/z_position/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
