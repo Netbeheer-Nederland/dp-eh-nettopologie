@@ -33,6 +33,7 @@ description: |-
   }
   class Bay {
       Substation substation
+      EnergyConnection energy_connections
       string description
       string m_rid
       Name names
@@ -41,7 +42,7 @@ description: |-
   class EnergyConnection {
       boolean aggregate
       boolean normally_in_service
-      EquipmentContainer equipment_container
+      UsagePoint usage_points
       Location location
       string description
       string m_rid
@@ -49,7 +50,6 @@ description: |-
       string short_name
   }
   class UsagePoint {
-      Equipment equipments
       string connection_category
       string description
       string european_article_number_ean
@@ -73,14 +73,16 @@ description: |-
       date release_date
       string version
       Substation substations
+      Line lines
   }
   TopologyDataSet --> Substation : substations
+  TopologyDataSet --> Line : lines
   Line --> Location : location
   Substation --> Location : location
   EnergyConnection --> Location : location
-  UsagePoint --> EnergyConnection : equipments
-  Bay --> Substation : substation
-  EnergyConnection --> Bay : equipment_container
+  EnergyConnection --> UsagePoint : usage_points
+  Substation --> Bay : bays
+  Bay --> EnergyConnection : energy_connections
   ```
 
   ## Additional schemas
@@ -131,6 +133,11 @@ classes:
       substations:
         slot_uri: this:TopologyDataSet.Substations
         range: Substation
+        multivalued: true
+        required: false
+      lines:
+        slot_uri: this:TopologyDataSet.Lines
+        range: Line
         multivalued: true
         required: false
     class_uri: this:TopologyDataSet
@@ -282,12 +289,6 @@ classes:
         multivalued: false
         range: boolean
         required: false
-      equipment_container:
-        description: Container of this equipment.
-        slot_uri: cim:Equipment.EquipmentContainer
-        multivalued: false
-        range: EquipmentContainer
-        required: false
     class_uri: cim:Equipment
   ConnectivityNodeContainer:
     description: A base class for all objects that may contain connectivity nodes
@@ -313,6 +314,13 @@ classes:
       through which electric energy in bulk is passed for the purposes of switching
       or modifying its characteristics.
     is_a: EquipmentContainer
+    attributes:
+      bays:
+        slot_uri: cim:Substation.Bays
+        range: Bay
+        required: false
+        multivalued: true
+        description: Bays contained in the substation.
     exact_mappings:
       - nbnl:station
     class_uri: cim:Substation
@@ -322,12 +330,12 @@ classes:
       bay typically represents a physical grouping related to modularization of equipment.
     is_a: EquipmentContainer
     attributes:
-      substation:
-        description: Substation containing the bay.
-        slot_uri: cim:Bay.Substation
-        multivalued: false
-        range: Substation
-        required: false
+      energy_connections:
+        description: Source or consumer connected to the bay.
+        slot_uri: cim:Bay.EnergyConnections
+        multivalued: true
+        range: EnergyConnection
+        required: true
     exact_mappings:
       - nbnl:veld
     class_uri: cim:Bay
@@ -335,6 +343,13 @@ classes:
     description: A connection of energy generation or consumption on the power system
       model.
     is_a: ConductingEquipment
+    attributes:
+      usage_points:
+        description: Usage points associated with the  EnergyConnection.
+        slot_uri: cim:EnergyConnection.usage_points
+        multivalued: true
+        range: UsagePoint
+        required: true
     class_uri: cim:EnergyConnection
   ConductingEquipment:
     description: The parts of the AC power system that are designed to carry current
@@ -485,12 +500,6 @@ classes:
         slot_uri: nl:IdentifiedObject.europeanArticleNumberEAN
         multivalued: false
         range: string
-        required: false
-      equipments:
-        description: All equipment connecting this usage point to the electrical grid.
-        slot_uri: cim:UsagePoint.Equipments
-        multivalued: true
-        range: Equipment
         required: false
     exact_mappings:
       - nbnl:overdrachtspunt
