@@ -265,6 +265,7 @@ class Substation {
 }
 class Bay {
     Substation substation
+    EnergyConnection energy_connections
     string description
     string m_rid
     Name names
@@ -273,7 +274,7 @@ class Bay {
 class EnergyConnection {
     boolean aggregate
     boolean normally_in_service
-    EquipmentContainer equipment_container
+    UsagePoint usage_points
     Location location
     string description
     string m_rid
@@ -281,7 +282,6 @@ class EnergyConnection {
     string short_name
 }
 class UsagePoint {
-    Equipment equipments
     string connection_category
     string description
     string european_article_number_ean
@@ -305,14 +305,16 @@ class TopologyDataSet {
     date release_date
     string version
     Substation substations
+    Line lines
 }
 TopologyDataSet --&gt; Substation : substations
+TopologyDataSet --&gt; Line : lines
 Line --&gt; Location : location
 Substation --&gt; Location : location
 EnergyConnection --&gt; Location : location
-UsagePoint --&gt; EnergyConnection : equipments
-Bay --&gt; Substation : substation
-EnergyConnection --&gt; Bay : equipment_container</code></pre>
+EnergyConnection --&gt; UsagePoint : usage_points
+Substation --&gt; Bay : bays
+Bay --&gt; EnergyConnection : energy_connections</code></pre>
 <h2 id="additional-schemas">Additional schemas</h2>
 <ul>
 <li><a href="https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/main/project/jsonschema/dp_eh_nettopologie.schema.json">JSON Schema</a></li>
@@ -425,6 +427,10 @@ EnergyConnection --&gt; Bay : equipment_container</code></pre>
 <td>The aggregate flag provides an alternative way of representing an aggregated ...</td>
 </tr>
 <tr>
+<td><a href="bays/">bays</a></td>
+<td>Bays contained in the substation</td>
+</tr>
+<tr>
 <td><a href="code/">code</a></td>
 <td>Town code</td>
 </tr>
@@ -449,12 +455,8 @@ EnergyConnection --&gt; Bay : equipment_container</code></pre>
 <td>The description is a free human readable text describing or naming the object</td>
 </tr>
 <tr>
-<td><a href="equipment_container/">equipment_container</a></td>
-<td>Container of this equipment</td>
-</tr>
-<tr>
-<td><a href="equipments/">equipments</a></td>
-<td>All equipment connecting this usage point to the electrical grid</td>
+<td><a href="energy_connections/">energy_connections</a></td>
+<td>Source or consumer connected to the bay</td>
 </tr>
 <tr>
 <td><a href="european_article_number_ean/">european_article_number_ean</a></td>
@@ -471,6 +473,10 @@ EnergyConnection --&gt; Bay : equipment_container</code></pre>
 <tr>
 <td><a href="language/">language</a></td>
 <td>The language in which the address is specified, using ISO 639-1 two digit lan...</td>
+</tr>
+<tr>
+<td><a href="lines/">lines</a></td>
+<td></td>
 </tr>
 <tr>
 <td><a href="location/">location</a></td>
@@ -533,16 +539,16 @@ EnergyConnection --&gt; Bay : equipment_container</code></pre>
 <td>Name of the state or province</td>
 </tr>
 <tr>
-<td><a href="substation/">substation</a></td>
-<td>Substation containing the bay</td>
-</tr>
-<tr>
 <td><a href="substations/">substations</a></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="town_detail/">town_detail</a></td>
 <td>Town detail</td>
+</tr>
+<tr>
+<td><a href="usage_points/">usage_points</a></td>
+<td>Usage points associated with the  EnergyConnection</td>
 </tr>
 <tr>
 <td><a href="version/">version</a></td>

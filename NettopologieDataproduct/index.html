@@ -192,6 +192,7 @@ class Substation {
 }
 class Bay {
     Substation substation
+    EnergyConnection energy_connections
     string description
     string m_rid
     Name names
@@ -200,7 +201,7 @@ class Bay {
 class EnergyConnection {
     boolean aggregate
     boolean normally_in_service
-    EquipmentContainer equipment_container
+    UsagePoint usage_points
     Location location
     string description
     string m_rid
@@ -208,7 +209,6 @@ class EnergyConnection {
     string short_name
 }
 class UsagePoint {
-    Equipment equipments
     string connection_category
     string description
     string european_article_number_ean
@@ -232,14 +232,16 @@ class TopologyDataSet {
     date release_date
     string version
     Substation substations
+    Line lines
 }
 TopologyDataSet --&gt; Substation : substations
+TopologyDataSet --&gt; Line : lines
 Line --&gt; Location : location
 Substation --&gt; Location : location
 EnergyConnection --&gt; Location : location
-UsagePoint --&gt; EnergyConnection : equipments
-Bay --&gt; Substation : substation
-EnergyConnection --&gt; Bay : equipment_container</code></pre>
+EnergyConnection --&gt; UsagePoint : usage_points
+Substation --&gt; Bay : bays
+Bay --&gt; EnergyConnection : energy_connections</code></pre>
 <h2 id="additional-schemas">Additional schemas</h2>
 <ul>
 <li><a href="https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/main/project/jsonschema/dp_eh_nettopologie.schema.json">JSON Schema</a></li>
