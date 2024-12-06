@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/EnergyConnection/" rel="canonical"/>
+<link href="https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/MarketEvaluationPoint/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: EnergyConnection - dp-eh-nettopologie</title>
+<title>Class: MarketEvaluationPoint - dp-eh-nettopologie</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <meta content="#ffffff" name="theme-color"/>
@@ -23,7 +23,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-energyconnection">
+<a class="md-skip" href="#class-marketevaluationpoint">
           Skip to content
         </a>
 </div>
@@ -47,7 +47,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: EnergyConnection
+              Class: MarketEvaluationPoint
             
           </span>
 </div>
@@ -203,67 +203,41 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/Netbeheer-Nederland/dp-eh-nettopologie/edit/master/docs/EnergyConnection.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/Netbeheer-Nederland/dp-eh-nettopologie/edit/master/docs/MarketEvaluationPoint.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-energyconnection">Class: EnergyConnection</h1>
-<p><em>A connection of energy generation or consumption on the power system model.</em></p>
-<p>URI: <a href="https://cim.ucaiug.io/ns#EnergyConnection">cim:EnergyConnection</a></p>
+<h1 id="class-marketevaluationpoint">Class: MarketEvaluationPoint</h1>
+<p><em>The identification of an entity where energy products are measured or computed.</em></p>
+<p>URI: <a href="https://cim.ucaiug.io/ns#MarketEvaluationPoint">cim:MarketEvaluationPoint</a></p>
 <pre class="mermaid"><code> classDiagram
-    class EnergyConnection
-    click EnergyConnection href "../EnergyConnection"
-      ConductingEquipment &lt;|-- EnergyConnection
-        click ConductingEquipment href "../ConductingEquipment"
-
-      EnergyConnection : aggregate
-
-      EnergyConnection : description
-
-      EnergyConnection : location
-
-
-
-
-    EnergyConnection --&gt; "0..1" Location : location
-    click Location href "../Location"
-
-
-      EnergyConnection : m_rid
-
-      EnergyConnection : market_evaluation_points
-
-
-
-
-    EnergyConnection --&gt; "1..*" MarketEvaluationPoint : market_evaluation_points
+    class MarketEvaluationPoint
     click MarketEvaluationPoint href "../MarketEvaluationPoint"
+      UsagePoint &lt;|-- MarketEvaluationPoint
+        click UsagePoint href "../UsagePoint"
+
+      MarketEvaluationPoint : description
+
+      MarketEvaluationPoint : european_article_number_ean
+
+      MarketEvaluationPoint : m_rid
+
+      MarketEvaluationPoint : names
 
 
-      EnergyConnection : names
 
 
-
-
-    EnergyConnection --&gt; "*" Name : names
+    MarketEvaluationPoint --&gt; "*" Name : names
     click Name href "../Name"
 
 
-      EnergyConnection : normally_in_service
-
-      EnergyConnection : short_name
+      MarketEvaluationPoint : short_name
 
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../IdentifiedObject/">IdentifiedObject</a><ul>
-<li><a href="../PowerSystemResource/">PowerSystemResource</a><ul>
-<li><a href="../Equipment/">Equipment</a><ul>
-<li><a href="../ConductingEquipment/">ConductingEquipment</a><ul>
-<li><strong>EnergyConnection</strong></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="../UsagePoint/">UsagePoint</a><ul>
+<li><strong>MarketEvaluationPoint</strong></li>
 </ul>
 </li>
 </ul>
@@ -281,28 +255,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../market_evaluation_points/">market_evaluation_points</a></td>
-<td>1..* <br/> <a href="../MarketEvaluationPoint/">MarketEvaluationPoint</a></td>
-<td>Market evaluation points associated with the  EnergyConnection</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../aggregate/">aggregate</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>The aggregate flag provides an alternative way of representing an aggregated ...</td>
-<td><a href="../Equipment/">Equipment</a></td>
-</tr>
-<tr>
-<td><a href="../normally_in_service/">normally_in_service</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>Specifies the availability of the equipment under normal operating conditions</td>
-<td><a href="../Equipment/">Equipment</a></td>
-</tr>
-<tr>
-<td><a href="../location/">location</a></td>
-<td>0..1 <br/> <a href="../Location/">Location</a></td>
-<td>Location of this power system resource</td>
-<td><a href="../PowerSystemResource/">PowerSystemResource</a></td>
+<td><a href="../european_article_number_ean/">european_article_number_ean</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The attribute is used for an exchange of the EAN code (European Article Numbe...</td>
+<td><a href="../UsagePoint/">UsagePoint</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
@@ -342,10 +298,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Bay/">Bay</a></td>
-<td><a href="../energy_connections/">energy_connections</a></td>
+<td><a href="../EnergyConnection/">EnergyConnection</a></td>
+<td><a href="../market_evaluation_points/">market_evaluation_points</a></td>
 <td>range</td>
-<td><a href="./">EnergyConnection</a></td>
+<td><a href="./">MarketEvaluationPoint</a></td>
 </tr>
 </tbody>
 </table>
@@ -365,11 +321,15 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cim:EnergyConnection</td>
+<td>cim:MarketEvaluationPoint</td>
 </tr>
 <tr>
 <td>native</td>
-<td>this:EnergyConnection</td>
+<td>this:MarketEvaluationPoint</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>nbnl:aansluiting</td>
 </tr>
 </tbody>
 </table>
@@ -377,98 +337,42 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A connection of energy generation or consumption on the power system</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">model.</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MarketEvaluationPoint</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The identification of an entity where energy products are measured or</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">computed.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="nt">exact_mappings</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbnl:aansluiting</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConductingEquipment</span>
-<span class="nt">attributes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">market_evaluation_points</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">market_evaluation_points</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Market evaluation points associated with the  EnergyConnection.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConnection.market_evaluation_points</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MarketEvaluationPoint</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConnection</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UsagePoint</span>
+<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:MarketEvaluationPoint</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A connection of energy generation or consumption on the power system</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">model.</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MarketEvaluationPoint</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The identification of an entity where energy products are measured or</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">computed.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="nt">exact_mappings</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nbnl:aansluiting</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConductingEquipment</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UsagePoint</span>
 <span class="nt">attributes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">market_evaluation_points</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">market_evaluation_points</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Market evaluation points associated with the  EnergyConnection.</span>
+<span class="w">  </span><span class="nt">european_article_number_ean</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">european_article_number_ean</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The attribute is used for an exchange of the EAN code (European Article</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">Number). The length of the string is 16 characters as defined by the EAN code.</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConnection.market_evaluation_points</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">market_evaluation_points</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nl:IdentifiedObject.europeanArticleNumberEAN</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">european_article_number_ean</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MarketEvaluationPoint</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MarketEvaluationPoint</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">aggregate</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"The</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">flag</span><span class="nv"> </span><span class="s">provides</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">alternative</span><span class="nv"> </span><span class="s">way</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">representing</span><span class="nv"> </span><span class="s">an\</span>
-<span class="w">      </span><span class="s">\ aggregated</span><span class="nv"> </span><span class="s">(equivalent)</span><span class="nv"> </span><span class="s">element.</span><span class="nv"> </span><span class="s">It</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">applicable</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">cases</span><span class="nv"> </span><span class="s">when</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">dedicated\</span>
-<span class="w">      </span><span class="s">\ classes</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">equivalent</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">necessary\</span>
-<span class="w">      </span><span class="s">\ to</span><span class="nv"> </span><span class="s">represent</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">required</span><span class="nv"> </span><span class="s">level</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">detail.</span><span class="nv">  </span><span class="s">In</span><span class="nv"> </span><span class="s">case</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">flag</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">set</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">“true”\</span>
-<span class="w">      </span><span class="s">\ the</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">instance</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">represents</span><span class="nv"> </span><span class="s">multiple</span><span class="nv"> </span><span class="s">pieces</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">that\</span>
-<span class="w">      </span><span class="s">\ have</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">modelled</span><span class="nv"> </span><span class="s">together</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">equivalent</span><span class="nv"> </span><span class="s">obtained</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">network\</span>
-<span class="w">      </span><span class="s">\ reduction</span><span class="nv"> </span><span class="s">procedure.</span><span class="nv"> </span><span class="s">Examples</span><span class="nv"> </span><span class="s">would</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformers</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machines\</span>
-<span class="w">      </span><span class="s">\ operating</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">parallel</span><span class="nv"> </span><span class="s">modelled</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformer</span><span class="nv"> </span><span class="s">or\</span>
-<span class="w">      </span><span class="s">\ aggregate</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machine.</span><span class="nv">  </span><span class="s">\nThe</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">EquivalentBranch,\</span>
-<span class="w">      </span><span class="s">\ EquivalentShunt</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">EquivalentInjection."</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:Equipment.aggregate</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">normally_in_service</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">normally_in_service</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Specifies the availability of the equipment under normal operating</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">conditions. True means the equipment is available for topology processing, which</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">determines if the equipment is energized or not. False means that the equipment</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">is treated by network applications as if it is not in the model.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:Equipment.normallyInService</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">normally_in_service</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">location</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">location</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Location of this power system resource.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:PowerSystemResource.Location</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">location</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PowerSystemResource</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Location</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UsagePoint</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">description</span><span class="p">:</span>
@@ -479,7 +383,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.description</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MarketEvaluationPoint</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameType</span>
@@ -499,7 +403,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.mRID</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MarketEvaluationPoint</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -512,7 +416,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.Names</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">names</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MarketEvaluationPoint</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameType</span>
@@ -527,13 +431,13 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu:IdentifiedObject.shortName</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">short_name</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConnection</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MarketEvaluationPoint</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:EnergyConnection</span>
+<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:MarketEvaluationPoint</span>
 </code></pre></div>
 </details>
 </article>

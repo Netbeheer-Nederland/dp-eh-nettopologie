@@ -171,8 +171,20 @@ along with a number of optional properties and data types.</p>
 <p>The data is intended to be presented as a hierarchy with a
 <a href="../TopologyDataSet/">TopologyDataSet</a> at its root, then
 <a href="../Substation/">Substation-s</a> nested inside the TopologyDataSet. A grid
-connection (<em>Aansluiting</em>) is defined as a <a href="../UsagePoint/">UsagePoint</a> and
-related to a <a href="../Bay/">Bay</a> through <a href="../EnergyConnection/">EnergyConnection-s</a>.</p>
+connection (<em>Aansluiting</em>) is defined as a
+<a href="../MarketEvaluationPoint/">MarketEvaluationPoint</a> and related to a
+<a href="../Bay/">Bay</a> through <a href="../EnergyConnection/">EnergyConnection-s</a>.</p>
+<p>Note that this data product does not take into account usage points, i.e.
+"overdrachtspunten". If an "aansluiting" contains multiple
+"overdrachtspunten", the following applies:</p>
+<ul>
+<li>if all "overdrachtspunten" associated with the "aansluiting" are fed
+  from the same <a href="../Bay/">Bay</a>, only one MarketEvaluationPoint is provided;</li>
+<li>if an "aansluiting" contains multiple "overdrachtspunten" which are fed
+  from separate Bay-s, the MarketEvaluationPoint is associated with multiple
+  Bay-s, i.e. duplicated across multiple
+  <a href="../EnergyConnection/">EnergyConnection-s</a></li>
+</ul>
 <pre class="mermaid"><code>classDiagram
 direction RL
 
@@ -201,14 +213,14 @@ class Bay {
 class EnergyConnection {
     boolean aggregate
     boolean normally_in_service
-    UsagePoint usage_points
+    MarketEvaluationPoint market_evaluation_points
     Location location
     string description
     string m_rid
     Name names
     string short_name
 }
-class UsagePoint {
+class MarketEvaluationPoint {
     string connection_category
     string description
     string european_article_number_ean
@@ -239,7 +251,7 @@ TopologyDataSet --&gt; Line : lines
 Line --&gt; Location : location
 Substation --&gt; Location : location
 EnergyConnection --&gt; Location : location
-EnergyConnection --&gt; UsagePoint : usage_points
+EnergyConnection --&gt; MarketEvaluationPoint : market_evaluation_points
 Substation --&gt; Bay : bays
 Bay --&gt; EnergyConnection : energy_connections</code></pre>
 <h2 id="additional-schemas">Additional schemas</h2>
