@@ -165,6 +165,13 @@
                     "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
                     "type": "string"
                 },
+                "market_evaluation_points": {
+                    "description": "Market evaluation points associated with the  EnergyConnection.",
+                    "items": {
+                        "$ref": "#/$defs/MarketEvaluationPoint"
+                    },
+                    "type": "array"
+                },
                 "names": {
                     "description": "All names of this identified object.",
                     "items": {
@@ -179,17 +186,10 @@
                 "short_name": {
                     "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
                     "type": "string"
-                },
-                "usage_points": {
-                    "description": "Usage points associated with the  EnergyConnection.",
-                    "items": {
-                        "$ref": "#/$defs/UsagePoint"
-                    },
-                    "type": "array"
                 }
             },
             "required": [
-                "usage_points"
+                "market_evaluation_points"
             ],
             "title": "EnergyConnection",
             "type": "object"
@@ -365,6 +365,37 @@
                 "coordinate_system"
             ],
             "title": "Location",
+            "type": "object"
+        },
+        "MarketEvaluationPoint": {
+            "additionalProperties": false,
+            "description": "The identification of an entity where energy products are measured or computed.",
+            "properties": {
+                "description": {
+                    "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+                    "type": "string"
+                },
+                "european_article_number_ean": {
+                    "description": "The attribute is used for an exchange of the EAN code (European Article Number). The length of the string is 16 characters as defined by the EAN code. For details on EAN scheme please refer to the [Codebesluit toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).",
+                    "type": "string"
+                },
+                "m_rid": {
+                    "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+                    "type": "string"
+                },
+                "names": {
+                    "description": "All names of this identified object.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": "array"
+                },
+                "short_name": {
+                    "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+                    "type": "string"
+                }
+            },
+            "title": "MarketEvaluationPoint",
             "type": "object"
         },
         "Name": {

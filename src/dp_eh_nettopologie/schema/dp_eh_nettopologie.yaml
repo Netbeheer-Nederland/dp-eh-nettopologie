@@ -10,8 +10,20 @@ description: |-
   The data is intended to be presented as a hierarchy with a
   [TopologyDataSet](TopologyDataSet.md) at its root, then
   [Substation-s](Substation.md) nested inside the TopologyDataSet. A grid
-  connection (*Aansluiting*) is defined as a [UsagePoint](UsagePoint.md) and
-  related to a [Bay](Bay.md) through [EnergyConnection-s](EnergyConnection.md).
+  connection (*Aansluiting*) is defined as a
+  [MarketEvaluationPoint](MarketEvaluationPoint.md) and related to a
+  [Bay](Bay.md) through [EnergyConnection-s](EnergyConnection.md).
+
+  Note that this data product does not take into account usage points, i.e.
+  "overdrachtspunten". If an "aansluiting" contains multiple
+  "overdrachtspunten", the following applies:
+
+  * if all "overdrachtspunten" associated with the "aansluiting" are fed
+    from the same [Bay](Bay.md), only one MarketEvaluationPoint is provided;
+  * if an "aansluiting" contains multiple "overdrachtspunten" which are fed
+    from separate Bay-s, the MarketEvaluationPoint is associated with multiple
+    Bay-s, i.e. duplicated across multiple
+    [EnergyConnection-s](EnergyConnection.md)
 
   ```mermaid
   classDiagram
@@ -42,14 +54,14 @@ description: |-
   class EnergyConnection {
       boolean aggregate
       boolean normally_in_service
-      UsagePoint usage_points
+      MarketEvaluationPoint market_evaluation_points
       Location location
       string description
       string m_rid
       Name names
       string short_name
   }
-  class UsagePoint {
+  class MarketEvaluationPoint {
       string connection_category
       string description
       string european_article_number_ean
@@ -80,7 +92,7 @@ description: |-
   Line --> Location : location
   Substation --> Location : location
   EnergyConnection --> Location : location
-  EnergyConnection --> UsagePoint : usage_points
+  EnergyConnection --> MarketEvaluationPoint : market_evaluation_points
   Substation --> Bay : bays
   Bay --> EnergyConnection : energy_connections
   ```
@@ -344,11 +356,11 @@ classes:
       model.
     is_a: ConductingEquipment
     attributes:
-      usage_points:
-        description: Usage points associated with the  EnergyConnection.
-        slot_uri: cim:EnergyConnection.usage_points
+      market_evaluation_points:
+        description: Market evaluation points associated with the  EnergyConnection.
+        slot_uri: cim:EnergyConnection.market_evaluation_points
         multivalued: true
-        range: UsagePoint
+        range: MarketEvaluationPoint
         required: true
     class_uri: cim:EnergyConnection
   ConductingEquipment:
@@ -501,6 +513,12 @@ classes:
         multivalued: false
         range: string
         required: false
-    exact_mappings:
-      - nbnl:overdrachtspunt
     class_uri: cim:UsagePoint
+  MarketEvaluationPoint:
+    is_a: UsagePoint
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC62325.MarketManagement
+    description: The identification of an entity where energy products are
+      measured or computed.
+    exact_mappings:
+      - nbnl:aansluiting
+    class_uri: cim:MarketEvaluationPoint
