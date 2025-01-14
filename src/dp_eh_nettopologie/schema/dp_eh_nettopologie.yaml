@@ -112,6 +112,7 @@ prefixes:
   nbnl: https://begrippen.netbeheernederland.nl/energiesysteembeheer/nl/page/
   owl: http://www.w3.org/2002/07/owl#
   this: http://data.netbeheernederland.nl/dp-eh-nettopologie/def#
+  skos: http://www.w3.org/2004/02/skos/core#
 default_curi_maps:
 - semweb_context
 default_prefix: this
