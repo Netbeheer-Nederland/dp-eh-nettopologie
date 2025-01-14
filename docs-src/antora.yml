@@ -1,0 +1,6 @@
+name: dp-eh-nettopologie
+title: Nettopologie voor EnergyHubs
+version: true
+nav:
+- modules/ROOT/nav.adoc
+- modules/information-model/nav.adoc

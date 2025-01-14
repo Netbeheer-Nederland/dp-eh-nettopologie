@@ -1,0 +1,84 @@
+= Index
+
+== Classes
+
+[cols="1,2"]
+|===
+| Name | Description
+
+
+| xref::class/TopologyDataSet.adoc[`TopologyDataSet`]
+| +++A single instance of a published dataset.+++
+
+| xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+| +++This is a root class to provide common identification for all classes needing identification and naming attributes.+++
+
+| xref::class/Name.adoc[`Name`]
+| +++The Name class provides the means to define any number of human readable  names for an object. A name is <b>not</b> to be used for defining inter-object relationships. For inter-object relationships instead use the object identification 'mRID'.+++
+
+| xref::class/NameType.adoc[`NameType`]
+| +++Type of name. Possible values for attribute 'name' are implementation dependent but standard profiles may specify types. An enterprise may have multiple IT systems each having its own local name for the same object, e.g. a planning system may have different names from an EMS. An object may also have different names within the same IT system, e.g. localName as defined in CIM version 14. The definition from CIM14 is:
+The localName is a human readable name of the object. It is a free text name local to a node in a naming hierarchy similar to a file directory structure. A power system related naming hierarchy may be: Substation, VoltageLevel, Equipment etc. Children of the same parent in such a hierarchy have names that typically are unique among them.+++
+
+| xref::class/NameTypeAuthority.adoc[`NameTypeAuthority`]
+| +++Authority responsible for creation and management of names of a given type; typically an organization or an enterprise system.+++
+
+| xref::class/Line.adoc[`Line`]
+| +++Contains equipment beyond a substation belonging to a power transmission line.+++
+
+| xref::class/EquipmentContainer.adoc[`EquipmentContainer`]
+| +++A modelling construct to provide a root class for containing equipment.+++
+
+| xref::class/Equipment.adoc[`Equipment`]
+| +++The parts of a power system that are physical devices, electronic or mechanical.+++
+
+| xref::class/ConnectivityNodeContainer.adoc[`ConnectivityNodeContainer`]
+| +++A base class for all objects that may contain connectivity nodes or topological nodes.+++
+
+| xref::class/PowerSystemResource.adoc[`PowerSystemResource`]
+| +++A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated.+++
+
+| xref::class/Substation.adoc[`Substation`]
+| +++A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics.+++
+
+| xref::class/Bay.adoc[`Bay`]
+| +++A collection of power system resources (within a given substation) including conducting equipment, protection relays, measurements, and telemetry.  A bay typically represents a physical grouping related to modularization of equipment.+++
+
+| xref::class/EnergyConnection.adoc[`EnergyConnection`]
+| +++A connection of energy generation or consumption on the power system model.+++
+
+| xref::class/ConductingEquipment.adoc[`ConductingEquipment`]
+| +++The parts of the AC power system that are designed to carry current or that are conductively connected through terminals.+++
+
+| xref::class/Location.adoc[`Location`]
+| +++The place, scene, or point of something where someone or something has been, is, and/or will be at a given moment in time. It can be defined with one or more position points (coordinates) in a given coordinate system.+++
+
+| xref::class/CoordinateSystem.adoc[`CoordinateSystem`]
+| +++Coordinate reference system.+++
+
+| xref::class/StreetAddress.adoc[`StreetAddress`]
+| +++General purpose street and postal address information.+++
+
+| xref::class/TownDetail.adoc[`TownDetail`]
+| +++Town details, in the context of address.+++
+
+| xref::class/PositionPoint.adoc[`PositionPoint`]
+| +++Set of spatial coordinates that determine a point, defined in the coordinate system specified in 'Location.CoordinateSystem'. Use a single position point instance to describe a point-oriented location. Use a sequence of position points to describe a line-oriented object (physical location of non-point oriented objects like cables or lines), or area of an object (like a substation or a geographical zone - in this case, have first and last position point with the same values).+++
+
+| xref::class/UsagePoint.adoc[`UsagePoint`]
+| +++Logical or physical point in the network to which readings or events may be attributed. Used at the place where a physical or virtual meter may be located; however, it is not required that a meter be present.+++
+
+| xref::class/MarketEvaluationPoint.adoc[`MarketEvaluationPoint`]
+| +++The identification of an entity where energy products are measured or computed.+++
+
+|===
+
+== Types
+
+No types are defined in the schema.
+
+
+== Enumerations
+
+
+No enumerations are defined in the schema.

@@ -1,0 +1,85 @@
+= `TownDetail`
+:toclevels: 4
+
+
++++Town details, in the context of address.+++
+
+
+[cols="h,3",width=65%]
+|===
+| Type
+| Class
+
+| URI^xref:ROOT::uri_explanation.adoc[?]^
+| `cim:TownDetail`
+
+
+| CIM standard (perspective)
+| IEC61968 (Enterprise)
+
+
+
+|===
+
+== Class hierarchy
+* *`TownDetail`*
+
+
+== Slots
+
+
+
+
+[cols="3,1,3,6",width=100%]
+|===
+| Name | Cardinalityxref:ROOT::cardinalities_explained.adoc[^?^,title="Explains stuff"] | Type | Description
+
+| <<code,`code`>>
+| 0..1
+| https://w3id.org/linkml/String[`string`]
+| +++Town code.+++
+
+| <<state_or_province,`state_or_province`>>
+| 0..1
+| https://w3id.org/linkml/String[`string`]
+| +++Name of the state or province.+++
+|===
+
+'''
+
+
+//[discrete]
+[#code]
+=== `code`
++++Town code.+++
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:TownDetail.code`
+| Cardinalityxref:ROOT::cardinalities_explained.adoc[^?^,title="Explains stuff"]
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+
+|===
+
+//[discrete]
+[#state_or_province]
+=== `state_or_province`
++++Name of the state or province.+++
+
+[cols="h,4",width=65%]
+|===
+| URI
+| `cim:TownDetail.stateOrProvince`
+| Cardinalityxref:ROOT::cardinalities_explained.adoc[^?^,title="Explains stuff"]
+| 0..1
+| Type
+| https://w3id.org/linkml/String[`string`]
+
+
+|===
+
+

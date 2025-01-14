@@ -1,0 +1,87 @@
+[.truncate]
+* Information model
+** xref::index.adoc[Index]
+** Classes
+*** xref::class/TopologyDataSet.adoc[`TopologyDataSet` (root)]
+
+*** xref::class/Bay.adoc[`Bay`]
+
+
+
+*** xref::class/ConductingEquipment.adoc[`ConductingEquipment`]
+
+
+
+*** xref::class/ConnectivityNodeContainer.adoc[`ConnectivityNodeContainer`]
+
+
+
+*** xref::class/CoordinateSystem.adoc[`CoordinateSystem`]
+
+
+
+*** xref::class/EnergyConnection.adoc[`EnergyConnection`]
+
+
+
+*** xref::class/Equipment.adoc[`Equipment`]
+
+
+
+*** xref::class/EquipmentContainer.adoc[`EquipmentContainer`]
+
+
+
+*** xref::class/IdentifiedObject.adoc[`IdentifiedObject`]
+
+
+
+*** xref::class/Line.adoc[`Line`]
+
+
+
+*** xref::class/Location.adoc[`Location`]
+
+
+
+*** xref::class/MarketEvaluationPoint.adoc[`MarketEvaluationPoint`]
+
+
+
+*** xref::class/Name.adoc[`Name`]
+
+
+
+*** xref::class/NameType.adoc[`NameType`]
+
+
+
+*** xref::class/NameTypeAuthority.adoc[`NameTypeAuthority`]
+
+
+
+*** xref::class/PositionPoint.adoc[`PositionPoint`]
+
+
+
+*** xref::class/PowerSystemResource.adoc[`PowerSystemResource`]
+
+
+
+*** xref::class/StreetAddress.adoc[`StreetAddress`]
+
+
+
+*** xref::class/Substation.adoc[`Substation`]
+
+
+
+
+*** xref::class/TownDetail.adoc[`TownDetail`]
+
+
+
+*** xref::class/UsagePoint.adoc[`UsagePoint`]
+
+
+
