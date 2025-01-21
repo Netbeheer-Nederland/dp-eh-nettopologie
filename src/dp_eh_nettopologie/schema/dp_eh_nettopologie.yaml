@@ -1,6 +1,7 @@
 name: NettopologieDataproduct
 title: Nettopologie Dataproduct
-id: http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0
+id: http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0
+version: 1.0.0
 description: |-
   This data product for EnergyHubs describes which information and data to
   exchange between DSO and customer/advisor when establishing an EnergyHub. A
@@ -37,6 +38,7 @@ description: |-
       string short_name
   }
   class Substation {
+      Bay bays
       Location location
       string description
       string m_rid
@@ -44,16 +46,14 @@ description: |-
       string short_name
   }
   class Bay {
-      Substation substation
-      EnergyConnection energy_connections
+      EnergyConsumer energy_consumers
+      Location location
       string description
       string m_rid
       Name names
       string short_name
   }
-  class EnergyConnection {
-      boolean aggregate
-      boolean normally_in_service
+  class EnergyConsumer {
       MarketEvaluationPoint market_evaluation_points
       Location location
       string description
@@ -62,9 +62,8 @@ description: |-
       string short_name
   }
   class MarketEvaluationPoint {
-      string connection_category
-      string description
       string european_article_number_ean
+      string description
       string m_rid
       Name names
       string short_name
@@ -87,14 +86,16 @@ description: |-
       Substation substations
       Line lines
   }
+
+  Line --> Location : location
+  Substation --> Bay : bays
+  Substation --> Location : location
+  Bay --> EnergyConsumer : energy_consumers
+  Bay --> Location : location
+  EnergyConsumer --> MarketEvaluationPoint : market_evaluation_points
+  EnergyConsumer --> Location : location
   TopologyDataSet --> Substation : substations
   TopologyDataSet --> Line : lines
-  Line --> Location : location
-  Substation --> Location : location
-  EnergyConnection --> Location : location
-  EnergyConnection --> MarketEvaluationPoint : market_evaluation_points
-  Substation --> Bay : bays
-  Bay --> EnergyConnection : energy_connections
   ```
 
   ## Additional schemas
@@ -146,7 +147,7 @@ classes:
         slot_uri: this:TopologyDataSet.Substations
         range: Substation
         multivalued: true
-        required: false
+        required: true
       lines:
         slot_uri: this:TopologyDataSet.Lines
         range: Line
@@ -203,12 +204,6 @@ classes:
         multivalued: false
         range: NameType
         required: true
-      identified_object:
-        description: Identified object that this name designates.
-        slot_uri: cim:Name.IdentifiedObject
-        multivalued: false
-        range: IdentifiedObject
-        required: true
     class_uri: cim:Name
   NameType:
     description: "Type of name. Possible values for attribute 'name' are implementation\
@@ -236,12 +231,6 @@ classes:
         multivalued: false
         range: NameTypeAuthority
         required: false
-      names:
-        description: All names of this type.
-        slot_uri: cim:NameType.Names
-        multivalued: true
-        range: Name
-        required: false
     class_uri: cim:NameType
   NameTypeAuthority:
     description: "Authority responsible for creation and management of names of a\
@@ -253,12 +242,6 @@ classes:
         slot_uri: cim:NameTypeAuthority.description
         multivalued: false
         range: string
-        required: false
-      name_types:
-        description: All name types managed by this authority.
-        slot_uri: cim:NameTypeAuthority.NameTypes
-        multivalued: true
-        range: NameType
         required: false
     class_uri: cim:NameTypeAuthority
   Line:
@@ -274,33 +257,6 @@ classes:
     description: The parts of a power system that are physical devices, electronic
       or mechanical.
     is_a: PowerSystemResource
-    attributes:
-      aggregate:
-        description: "The aggregate flag provides an alternative way of representing\
-          \ an aggregated (equivalent) element. It is applicable in cases when the\
-          \ dedicated classes for equivalent equipment do not have all of the attributes\
-          \ necessary to represent the required level of detail.  In case the flag\
-          \ is set to \u201Ctrue\u201D the single instance of equipment represents\
-          \ multiple pieces of equipment that have been modelled together as an aggregate\
-          \ equivalent obtained by a network reduction procedure. Examples would be\
-          \ power transformers or synchronous machines operating in parallel modelled\
-          \ as a single aggregate power transformer or aggregate synchronous machine.\
-          \  \nThe attribute is not used for EquivalentBranch, EquivalentShunt and\
-          \ EquivalentInjection."
-        slot_uri: cim:Equipment.aggregate
-        multivalued: false
-        range: boolean
-        required: false
-      normally_in_service:
-        description: Specifies the availability of the equipment under normal operating
-          conditions. True means the equipment is available for topology processing,
-          which determines if the equipment is energized or not. False means that
-          the equipment is treated by network applications as if it is not in the
-          model.
-        slot_uri: cim:Equipment.normallyInService
-        multivalued: false
-        range: boolean
-        required: false
     class_uri: cim:Equipment
   ConnectivityNodeContainer:
     description: A base class for all objects that may contain connectivity nodes
@@ -330,7 +286,7 @@ classes:
       bays:
         slot_uri: cim:Substation.Bays
         range: Bay
-        required: false
+        required: true
         multivalued: true
         description: Bays contained in the substation.
     exact_mappings:
@@ -342,11 +298,11 @@ classes:
       bay typically represents a physical grouping related to modularization of equipment.
     is_a: EquipmentContainer
     attributes:
-      energy_connections:
+      energy_consumers:
         description: Source or consumer connected to the bay.
-        slot_uri: cim:Bay.EnergyConnections
+        slot_uri: this:Bay.EnergyConsumers
         multivalued: true
-        range: EnergyConnection
+        range: EnergyConsumer
         required: true
     exact_mappings:
       - nbnl:veld
@@ -358,11 +314,17 @@ classes:
     attributes:
       market_evaluation_points:
         description: Market evaluation points associated with the  EnergyConnection.
-        slot_uri: cim:EnergyConnection.market_evaluation_points
+        slot_uri: this:EnergyConnection.MarketEvaluationPoints
         multivalued: true
         range: MarketEvaluationPoint
         required: true
     class_uri: cim:EnergyConnection
+  EnergyConsumer:
+    class_uri: cim:EnergyConsumer
+    is_a: EnergyConnection
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61970.Base.Wires
+    description: "Generic user of energy - a point of consumption on the power
+      system model."
   ConductingEquipment:
     description: The parts of the AC power system that are designed to carry current
       or that are conductively connected through terminals.
@@ -379,13 +341,13 @@ classes:
         slot_uri: cim:Location.CoordinateSystem
         multivalued: false
         range: CoordinateSystem
-        required: true
+        required: false
       main_address:
         description: Main address of the location.
         slot_uri: cim:Location.mainAddress
         multivalued: false
         range: StreetAddress
-        required: false
+        required: true
       position_points:
         slot_uri: cim:Location.PositionPoints
         range: PositionPoint
@@ -420,32 +382,36 @@ classes:
   StreetAddress:
     description: General purpose street and postal address information.
     attributes:
-      town_detail:
-        description: Town detail.
-        slot_uri: cim:StreetAddress.townDetail
-        multivalued: false
-        range: TownDetail
-        required: false
       postal_code:
         description: Postal code for the address.
         slot_uri: cim:StreetAddress.postalCode
         multivalued: false
         range: string
         required: false
-      po_box:
-        description: Post office box.
-        slot_uri: cim:StreetAddress.poBox
+      streetDetail:
+        slot_uri: cim:StreetAddress.streetDetail
+        range: StreetDetail
+        required: true
         multivalued: false
-        range: string
-        required: false
-      language:
-        description: The language in which the address is specified, using ISO 639-1
-          two digit language code.
-        slot_uri: cim:StreetAddress.language
+        description: Street detail.
+      town_detail:
+        description: Town detail.
+        slot_uri: cim:StreetAddress.townDetail
         multivalued: false
-        range: string
+        range: TownDetail
         required: false
     class_uri: cim:StreetAddress
+  StreetDetail:
+    class_uri: cim:StreetDetail
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61968.Common
+    description: "Street details, in the context of address.\r\n"
+    attributes:
+      number:
+        slot_uri: cim:StreetDetail.number
+        range: string
+        required: true
+        multivalued: false
+        description: Designator of the specific location on the street.
   TownDetail:
     description: Town details, in the context of address.
     attributes:
@@ -512,7 +478,7 @@ classes:
         slot_uri: nl:IdentifiedObject.europeanArticleNumberEAN
         multivalued: false
         range: string
-        required: false
+        required: true
     class_uri: cim:UsagePoint
   MarketEvaluationPoint:
     is_a: UsagePoint

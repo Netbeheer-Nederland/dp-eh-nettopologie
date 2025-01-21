@@ -8,10 +8,10 @@
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
                 },
-                "energy_connections": {
+                "energy_consumers": {
                     "description": "Source or consumer connected to the bay.",
                     "items": {
-                        "$ref": "#/$defs/EnergyConnection"
+                        "$ref": "#/$defs/EnergyConsumer"
                     },
                     "type": "array"
                 },
@@ -36,7 +36,7 @@
                 }
             },
             "required": [
-                "energy_connections"
+                "energy_consumers"
             ],
             "title": "Bay",
             "type": "object"
@@ -45,10 +45,6 @@
             "additionalProperties": false,
             "description": "The parts of the AC power system that are designed to carry current or that are conductively connected through terminals.",
             "properties": {
-                "aggregate": {
-                    "description": "The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to \u201ctrue\u201d the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.  \nThe attribute is not used for EquivalentBranch, EquivalentShunt and EquivalentInjection.",
-                    "type": "boolean"
-                },
                 "description": {
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
@@ -67,10 +63,6 @@
                         "$ref": "#/$defs/Name"
                     },
                     "type": "array"
-                },
-                "normally_in_service": {
-                    "description": "Specifies the availability of the equipment under normal operating conditions. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.",
-                    "type": "boolean"
                 },
                 "short_name": {
                     "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
@@ -149,10 +141,6 @@
             "additionalProperties": false,
             "description": "A connection of energy generation or consumption on the power system model.",
             "properties": {
-                "aggregate": {
-                    "description": "The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to \u201ctrue\u201d the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.  \nThe attribute is not used for EquivalentBranch, EquivalentShunt and EquivalentInjection.",
-                    "type": "boolean"
-                },
                 "description": {
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
@@ -179,10 +167,6 @@
                     },
                     "type": "array"
                 },
-                "normally_in_service": {
-                    "description": "Specifies the availability of the equipment under normal operating conditions. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.",
-                    "type": "boolean"
-                },
                 "short_name": {
                     "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
                     "type": "string"
@@ -194,14 +178,51 @@
             "title": "EnergyConnection",
             "type": "object"
         },
+        "EnergyConsumer": {
+            "additionalProperties": false,
+            "description": "Generic user of energy - a point of consumption on the power system model.",
+            "properties": {
+                "description": {
+                    "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+                    "type": "string"
+                },
+                "location": {
+                    "$ref": "#/$defs/Location",
+                    "description": "Location of this power system resource."
+                },
+                "m_rid": {
+                    "description": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+                    "type": "string"
+                },
+                "market_evaluation_points": {
+                    "description": "Market evaluation points associated with the  EnergyConnection.",
+                    "items": {
+                        "$ref": "#/$defs/MarketEvaluationPoint"
+                    },
+                    "type": "array"
+                },
+                "names": {
+                    "description": "All names of this identified object.",
+                    "items": {
+                        "$ref": "#/$defs/Name"
+                    },
+                    "type": "array"
+                },
+                "short_name": {
+                    "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "market_evaluation_points"
+            ],
+            "title": "EnergyConsumer",
+            "type": "object"
+        },
         "Equipment": {
             "additionalProperties": false,
             "description": "The parts of a power system that are physical devices, electronic or mechanical.",
             "properties": {
-                "aggregate": {
-                    "description": "The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to \u201ctrue\u201d the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.  \nThe attribute is not used for EquivalentBranch, EquivalentShunt and EquivalentInjection.",
-                    "type": "boolean"
-                },
                 "description": {
                     "description": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
                     "type": "string"
@@ -220,10 +241,6 @@
                         "$ref": "#/$defs/Name"
                     },
                     "type": "array"
-                },
-                "normally_in_service": {
-                    "description": "Specifies the availability of the equipment under normal operating conditions. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.",
-                    "type": "boolean"
                 },
                 "short_name": {
                     "description": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
@@ -362,7 +379,7 @@
                 }
             },
             "required": [
-                "coordinate_system"
+                "main_address"
             ],
             "title": "Location",
             "type": "object"
@@ -395,6 +412,9 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "european_article_number_ean"
+            ],
             "title": "MarketEvaluationPoint",
             "type": "object"
         },
@@ -402,18 +422,13 @@
             "additionalProperties": false,
             "description": "The Name class provides the means to define any number of human readable  names for an object. A name is <b>not</b> to be used for defining inter-object relationships. For inter-object relationships instead use the object identification 'mRID'.",
             "properties": {
-                "identified_object": {
-                    "$ref": "#/$defs/IdentifiedObject",
-                    "description": "Identified object that this name designates."
-                },
                 "name_type": {
                     "$ref": "#/$defs/NameType",
                     "description": "Type of this name."
                 }
             },
             "required": [
-                "name_type",
-                "identified_object"
+                "name_type"
             ],
             "title": "Name",
             "type": "object"
@@ -429,13 +444,6 @@
                 "name_type_authority": {
                     "$ref": "#/$defs/NameTypeAuthority",
                     "description": "Authority responsible for managing names of this type."
-                },
-                "names": {
-                    "description": "All names of this type.",
-                    "items": {
-                        "$ref": "#/$defs/Name"
-                    },
-                    "type": "array"
                 }
             },
             "title": "NameType",
@@ -448,13 +456,6 @@
                 "description": {
                     "description": "Description of the name type authority.\r\n",
                     "type": "string"
-                },
-                "name_types": {
-                    "description": "All name types managed by this authority.",
-                    "items": {
-                        "$ref": "#/$defs/NameType"
-                    },
-                    "type": "array"
                 }
             },
             "title": "NameTypeAuthority",
@@ -523,24 +524,38 @@
             "additionalProperties": false,
             "description": "General purpose street and postal address information.",
             "properties": {
-                "language": {
-                    "description": "The language in which the address is specified, using ISO 639-1 two digit language code.",
-                    "type": "string"
-                },
-                "po_box": {
-                    "description": "Post office box.",
-                    "type": "string"
-                },
                 "postal_code": {
                     "description": "Postal code for the address.",
                     "type": "string"
+                },
+                "streetDetail": {
+                    "$ref": "#/$defs/StreetDetail",
+                    "description": "Street detail."
                 },
                 "town_detail": {
                     "$ref": "#/$defs/TownDetail",
                     "description": "Town detail."
                 }
             },
+            "required": [
+                "streetDetail"
+            ],
             "title": "StreetAddress",
+            "type": "object"
+        },
+        "StreetDetail": {
+            "additionalProperties": false,
+            "description": "Street details, in the context of address.",
+            "properties": {
+                "number": {
+                    "description": "Designator of the specific location on the street.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "number"
+            ],
+            "title": "StreetDetail",
             "type": "object"
         },
         "Substation": {
@@ -578,6 +593,9 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "bays"
+            ],
             "title": "Substation",
             "type": "object"
         },
@@ -619,7 +637,8 @@
                 "contact_point",
                 "conforms_to",
                 "release_date",
-                "version"
+                "version",
+                "substations"
             ],
             "title": "TopologyDataSet",
             "type": "object"
@@ -668,11 +687,14 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "european_article_number_ean"
+            ],
             "title": "UsagePoint",
             "type": "object"
         }
     },
-    "$id": "http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0",
+    "$id": "http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
     "description": "A single instance of a published dataset.",
@@ -712,9 +734,10 @@
         "contact_point",
         "conforms_to",
         "release_date",
-        "version"
+        "version",
+        "substations"
     ],
     "title": "NettopologieDataproduct",
     "type": "object",
-    "version": null
+    "version": "1.0.0"
 }

@@ -1,0 +1,83 @@
+{
+  "identifier": "test_data_dp_eh_nettopologie",
+  "contact_point": "",
+  "conforms_to": "http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0",
+  "release_date": "2025-01-21",
+  "version": "1.0.0",
+  "substations": [
+    {
+      "bays": [
+        {
+          "energy_consumers": [
+            {
+              "market_evaluation_points": [
+                {
+                  "european_article_number_ean": "123456789101112131"
+                }
+              ],
+              "location": {
+                "main_address": {
+                  "postal_code": "1234AB",
+                  "streetDetail": {
+                    "number": "23"
+                  }
+                }
+              }
+            },
+            {
+              "market_evaluation_points": [
+                {
+                  "european_article_number_ean": "223456789101112131"
+                }
+              ],
+              "location": {
+                "main_address": {
+                  "postal_code": "1234AB",
+                  "streetDetail": {
+                    "number": "19"
+                  }
+                }
+              }
+            },
+            {
+              "market_evaluation_points": [
+                {
+                  "european_article_number_ean": "323456789101112131"
+                }
+              ],
+              "location": {
+                "main_address": {
+                  "postal_code": "1234AB",
+                  "streetDetail": {
+                    "number": "17"
+                  }
+                }
+              }
+            }
+          ],
+          "description": "MS-123456-M01-VE04"
+        },
+        {
+          "energy_consumers": [
+            {
+              "market_evaluation_points": [
+                {
+                  "european_article_number_ean": "923456789101112131"
+                }
+              ],
+              "location": {
+                "main_address": {
+                  "postal_code": "1234AB",
+                  "streetDetail": {
+                    "number": "11"
+                  }
+                }
+              }
+            }
+          ],
+          "description": "MS-123456-M01-VE05"
+        }
+      ]
+    }
+  ]
+}
