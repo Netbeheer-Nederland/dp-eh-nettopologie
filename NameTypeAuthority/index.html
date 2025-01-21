@@ -211,15 +211,6 @@ _</p>
     click NameTypeAuthority href "../NameTypeAuthority"
       NameTypeAuthority : description
 
-      NameTypeAuthority : name_types
-
-
-
-
-    NameTypeAuthority --&gt; "*" NameType : name_types
-    click NameType href "../NameType"
-
-
 </code></pre>
 <!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>
@@ -237,12 +228,6 @@ _</p>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Description of the name type authority</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../name_types/">name_types</a></td>
-<td>* <br/> <a href="../NameType/">NameType</a></td>
-<td>All name types managed by this authority</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -269,7 +254,7 @@ _</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</li>
+<li>from schema: http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -297,13 +282,13 @@ _</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameTypeAuthority</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Authority</span><span class="nv"> </span><span class="s">responsible</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">creation</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">management</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">names</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">given\</span>
 <span class="w">  </span><span class="s">\ type;</span><span class="nv"> </span><span class="s">typically</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">organization</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">enterprise</span><span class="nv"> </span><span class="s">system.\r\n"</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">description</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Description</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">name</span><span class="nv"> </span><span class="s">type</span><span class="nv"> </span><span class="s">authority.\r\n"</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:NameTypeAuthority.description</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
@@ -312,17 +297,6 @@ _</p>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">name_types</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name_types</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">All name types managed by this authority.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:NameTypeAuthority.NameTypes</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameTypeAuthority</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameType</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:NameTypeAuthority</span>
 </code></pre></div>
 </details>
@@ -331,13 +305,13 @@ _</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameTypeAuthority</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Authority</span><span class="nv"> </span><span class="s">responsible</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">creation</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">management</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">names</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">given\</span>
 <span class="w">  </span><span class="s">\ type;</span><span class="nv"> </span><span class="s">typically</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">organization</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">enterprise</span><span class="nv"> </span><span class="s">system.\r\n"</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">description</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Description</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">name</span><span class="nv"> </span><span class="s">type</span><span class="nv"> </span><span class="s">authority.\r\n"</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:NameTypeAuthority.description</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameTypeAuthority</span>
@@ -348,19 +322,6 @@ _</p>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">name_types</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name_types</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">All name types managed by this authority.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:NameTypeAuthority.NameTypes</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name_types</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameTypeAuthority</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameTypeAuthority</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameType</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:NameTypeAuthority</span>
 </code></pre></div>
 </details>

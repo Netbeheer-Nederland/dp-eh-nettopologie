@@ -215,8 +215,6 @@
         click ConductingEquipment href "../ConductingEquipment"
 
 
-      Equipment : aggregate
-
       Equipment : description
 
       Equipment : location
@@ -238,8 +236,6 @@
     Equipment --&gt; "*" Name : names
     click Name href "../Name"
 
-
-      Equipment : normally_in_service
 
       Equipment : short_name
 
@@ -268,18 +264,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../aggregate/">aggregate</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>The aggregate flag provides an alternative way of representing an aggregated ...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../normally_in_service/">normally_in_service</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>Specifies the availability of the equipment under normal operating conditions</td>
-<td>direct</td>
-</tr>
 <tr>
 <td><a href="../location/">location</a></td>
 <td>0..1 <br/> <a href="../Location/">Location</a></td>
@@ -315,7 +299,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</li>
+<li>from schema: http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -343,44 +327,9 @@
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The parts of a power system that are physical devices, electronic or</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">mechanical.</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PowerSystemResource</span>
-<span class="nt">attributes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">aggregate</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"The</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">flag</span><span class="nv"> </span><span class="s">provides</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">alternative</span><span class="nv"> </span><span class="s">way</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">representing</span><span class="nv"> </span><span class="s">an\</span>
-<span class="w">      </span><span class="s">\ aggregated</span><span class="nv"> </span><span class="s">(equivalent)</span><span class="nv"> </span><span class="s">element.</span><span class="nv"> </span><span class="s">It</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">applicable</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">cases</span><span class="nv"> </span><span class="s">when</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">dedicated\</span>
-<span class="w">      </span><span class="s">\ classes</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">equivalent</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">necessary\</span>
-<span class="w">      </span><span class="s">\ to</span><span class="nv"> </span><span class="s">represent</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">required</span><span class="nv"> </span><span class="s">level</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">detail.</span><span class="nv">  </span><span class="s">In</span><span class="nv"> </span><span class="s">case</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">flag</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">set</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">“true”\</span>
-<span class="w">      </span><span class="s">\ the</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">instance</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">represents</span><span class="nv"> </span><span class="s">multiple</span><span class="nv"> </span><span class="s">pieces</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">that\</span>
-<span class="w">      </span><span class="s">\ have</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">modelled</span><span class="nv"> </span><span class="s">together</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">equivalent</span><span class="nv"> </span><span class="s">obtained</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">network\</span>
-<span class="w">      </span><span class="s">\ reduction</span><span class="nv"> </span><span class="s">procedure.</span><span class="nv"> </span><span class="s">Examples</span><span class="nv"> </span><span class="s">would</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformers</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machines\</span>
-<span class="w">      </span><span class="s">\ operating</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">parallel</span><span class="nv"> </span><span class="s">modelled</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformer</span><span class="nv"> </span><span class="s">or\</span>
-<span class="w">      </span><span class="s">\ aggregate</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machine.</span><span class="nv">  </span><span class="s">\nThe</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">EquivalentBranch,\</span>
-<span class="w">      </span><span class="s">\ EquivalentShunt</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">EquivalentInjection."</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:Equipment.aggregate</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">normally_in_service</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">normally_in_service</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Specifies the availability of the equipment under normal operating</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">conditions. True means the equipment is available for topology processing, which</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">determines if the equipment is energized or not. False means that the equipment</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">is treated by network applications as if it is not in the model.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:Equipment.normallyInService</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:Equipment</span>
 </code></pre></div>
 </details>
@@ -389,52 +338,14 @@
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The parts of a power system that are physical devices, electronic or</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">mechanical.</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PowerSystemResource</span>
 <span class="nt">attributes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">aggregate</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"The</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">flag</span><span class="nv"> </span><span class="s">provides</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">alternative</span><span class="nv"> </span><span class="s">way</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">representing</span><span class="nv"> </span><span class="s">an\</span>
-<span class="w">      </span><span class="s">\ aggregated</span><span class="nv"> </span><span class="s">(equivalent)</span><span class="nv"> </span><span class="s">element.</span><span class="nv"> </span><span class="s">It</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">applicable</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">cases</span><span class="nv"> </span><span class="s">when</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">dedicated\</span>
-<span class="w">      </span><span class="s">\ classes</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">equivalent</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">necessary\</span>
-<span class="w">      </span><span class="s">\ to</span><span class="nv"> </span><span class="s">represent</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">required</span><span class="nv"> </span><span class="s">level</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">detail.</span><span class="nv">  </span><span class="s">In</span><span class="nv"> </span><span class="s">case</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">flag</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">set</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">“true”\</span>
-<span class="w">      </span><span class="s">\ the</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">instance</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">represents</span><span class="nv"> </span><span class="s">multiple</span><span class="nv"> </span><span class="s">pieces</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">that\</span>
-<span class="w">      </span><span class="s">\ have</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">modelled</span><span class="nv"> </span><span class="s">together</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">equivalent</span><span class="nv"> </span><span class="s">obtained</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">network\</span>
-<span class="w">      </span><span class="s">\ reduction</span><span class="nv"> </span><span class="s">procedure.</span><span class="nv"> </span><span class="s">Examples</span><span class="nv"> </span><span class="s">would</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformers</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machines\</span>
-<span class="w">      </span><span class="s">\ operating</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">parallel</span><span class="nv"> </span><span class="s">modelled</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformer</span><span class="nv"> </span><span class="s">or\</span>
-<span class="w">      </span><span class="s">\ aggregate</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machine.</span><span class="nv">  </span><span class="s">\nThe</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">EquivalentBranch,\</span>
-<span class="w">      </span><span class="s">\ EquivalentShunt</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">EquivalentInjection."</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:Equipment.aggregate</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">normally_in_service</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">normally_in_service</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Specifies the availability of the equipment under normal operating</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">conditions. True means the equipment is available for topology processing, which</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">determines if the equipment is energized or not. False means that the equipment</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">is treated by network applications as if it is not in the model.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:Equipment.normallyInService</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">normally_in_service</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">location</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">location</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Location of this power system resource.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:PowerSystemResource.Location</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">location</span>
@@ -448,7 +359,7 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The description is a free human readable text describing or naming</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">the object. It may be non unique and may not correlate to a naming hierarchy.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.description</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
@@ -468,7 +379,7 @@
 <span class="w">      </span><span class="s">\ strongly</span><span class="nv"> </span><span class="s">recommended.\r\nFor</span><span class="nv"> </span><span class="s">CIMXML</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">files</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">RDF</span><span class="nv"> </span><span class="s">syntax</span><span class="nv"> </span><span class="s">conforming</span><span class="nv"> </span><span class="s">to\</span>
 <span class="w">      </span><span class="s">\ IEC</span><span class="nv"> </span><span class="s">61970-552,</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mRID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">mapped</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">rdf:ID</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">rdf:about</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">identify\</span>
 <span class="w">      </span><span class="s">\ CIM</span><span class="nv"> </span><span class="s">object</span><span class="nv"> </span><span class="s">elements."</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.mRID</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m_rid</span>
@@ -481,14 +392,13 @@
 <span class="w">  </span><span class="nt">names</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">names</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">All names of this identified object.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:IdentifiedObject.Names</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">names</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentifiedObject</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameType</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Name</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -496,7 +406,7 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">short_name</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The attribute is used for an exchange of a human readable short name</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">with length of the string 12 characters maximum.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu:IdentifiedObject.shortName</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">short_name</span>

@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/aggregate/">
+        <link rel="canonical" href="https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/streetDetail/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: aggregate - dp-eh-nettopologie</title>
+        <title>Slot: streetDetail - dp-eh-nettopologie</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-aggregate" class="md-skip">
+        <a href="#slot-streetdetail" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: aggregate
+              Slot: streetDetail
             
           </span>
         </div>
@@ -321,16 +321,15 @@
                 
                   
 
-  <a href="https://github.com/Netbeheer-Nederland/dp-eh-nettopologie/edit/master/docs/aggregate.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/Netbeheer-Nederland/dp-eh-nettopologie/edit/master/docs/streetDetail.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-aggregate">Slot: aggregate</h1>
-<p>_The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to “true” the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.  _</p>
-<p><em>The attribute is not used for EquivalentBranch, EquivalentShunt and EquivalentInjection.</em></p>
-<p>URI: <a href="https://cim.ucaiug.io/ns#Equipment.aggregate">cim:Equipment.aggregate</a></p>
+<h1 id="slot-streetdetail">Slot: streetDetail</h1>
+<p><em>Street detail.</em></p>
+<p>URI: <a href="https://cim.ucaiug.io/ns#StreetAddress.streetDetail">cim:StreetAddress.streetDetail</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -344,30 +343,25 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Equipment/">Equipment</a></td>
-<td>The parts of a power system that are physical devices, electronic or mechanic...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EnergyConnection/">EnergyConnection</a></td>
-<td>A connection of energy generation or consumption on the power system model</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ConductingEquipment/">ConductingEquipment</a></td>
-<td>The parts of the AC power system that are designed to carry current or that a...</td>
+<td><a href="../StreetAddress/">StreetAddress</a></td>
+<td>General purpose street and postal address information</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Boolean/">Boolean</a></li>
+<li>
+<p>Range: <a href="../StreetDetail/">StreetDetail</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</li>
+<li>from schema: http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -380,35 +374,27 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cim:Equipment.aggregate</td>
+<td>cim:StreetAddress.streetDetail</td>
 </tr>
 <tr>
 <td>native</td>
-<td>this:aggregate</td>
+<td>this:streetDetail</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;The</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">flag</span><span class="nv"> </span><span class="s">provides</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">alternative</span><span class="nv"> </span><span class="s">way</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">representing</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">aggregated\</span>
-<span class="w">  </span><span class="s">\ (equivalent)</span><span class="nv"> </span><span class="s">element.</span><span class="nv"> </span><span class="s">It</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">applicable</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">cases</span><span class="nv"> </span><span class="s">when</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">dedicated</span><span class="nv"> </span><span class="s">classes</span><span class="nv"> </span><span class="s">for\</span>
-<span class="w">  </span><span class="s">\ equivalent</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">attributes</span><span class="nv"> </span><span class="s">necessary</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">represent\</span>
-<span class="w">  </span><span class="s">\ the</span><span class="nv"> </span><span class="s">required</span><span class="nv"> </span><span class="s">level</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">detail.</span><span class="nv">  </span><span class="s">In</span><span class="nv"> </span><span class="s">case</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">flag</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">set</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">“true”</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">instance\</span>
-<span class="w">  </span><span class="s">\ of</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">represents</span><span class="nv"> </span><span class="s">multiple</span><span class="nv"> </span><span class="s">pieces</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">equipment</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">modelled</span><span class="nv"> </span><span class="s">together\</span>
-<span class="w">  </span><span class="s">\ as</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">equivalent</span><span class="nv"> </span><span class="s">obtained</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">network</span><span class="nv"> </span><span class="s">reduction</span><span class="nv"> </span><span class="s">procedure.</span><span class="nv"> </span><span class="s">Examples\</span>
-<span class="w">  </span><span class="s">\ would</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformers</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machines</span><span class="nv"> </span><span class="s">operating</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">parallel</span><span class="nv"> </span><span class="s">modelled\</span>
-<span class="w">  </span><span class="s">\ as</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">transformer</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">synchronous</span><span class="nv"> </span><span class="s">machine.</span><span class="nv">  </span><span class="s">\n\</span>
-<span class="w">  </span><span class="s">The</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">EquivalentBranch,</span><span class="nv"> </span><span class="s">EquivalentShunt</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">EquivalentInjection.&quot;</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">streetDetail</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Street detail.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:Equipment.aggregate</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate</span>
-<span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
+<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:StreetAddress.streetDetail</span>
+<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">streetDetail</span>
+<span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StreetAddress</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
-<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StreetAddress</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StreetDetail</span>
+<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 </details>

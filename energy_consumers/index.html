@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/name_types/">
+        <link rel="canonical" href="https://Netbeheer-Nederland.github.io/dp-eh-nettopologie/energy_consumers/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: name_types - dp-eh-nettopologie</title>
+        <title>Slot: energy_consumers - dp-eh-nettopologie</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-name_types" class="md-skip">
+        <a href="#slot-energy_consumers" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: name_types
+              Slot: energy_consumers
             
           </span>
         </div>
@@ -321,15 +321,15 @@
                 
                   
 
-  <a href="https://github.com/Netbeheer-Nederland/dp-eh-nettopologie/edit/master/docs/name_types.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/Netbeheer-Nederland/dp-eh-nettopologie/edit/master/docs/energy_consumers.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-name_types">Slot: name_types</h1>
-<p><em>All name types managed by this authority.</em></p>
-<p>URI: <a href="https://cim.ucaiug.io/ns#NameTypeAuthority.NameTypes">cim:NameTypeAuthority.NameTypes</a></p>
+<h1 id="slot-energy_consumers">Slot: energy_consumers</h1>
+<p><em>Source or consumer connected to the bay.</em></p>
+<p>URI: <a href="http://data.netbeheernederland.nl/dp-eh-nettopologie/def#Bay.EnergyConsumers">this:Bay.EnergyConsumers</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -343,8 +343,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NameTypeAuthority/">NameTypeAuthority</a></td>
-<td>Authority responsible for creation and management of names of a given type; t...</td>
+<td><a href="../Bay/">Bay</a></td>
+<td>A collection of power system resources (within a given substation) including ...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -352,16 +352,19 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../NameType/">NameType</a></p>
+<p>Range: <a href="../EnergyConsumer/">EnergyConsumer</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
+</li>
+<li>
+<p>Required: True</p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</li>
+<li>from schema: http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -374,27 +377,27 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cim:NameTypeAuthority.NameTypes</td>
+<td>this:Bay.EnergyConsumers</td>
 </tr>
 <tr>
 <td>native</td>
-<td>this:name_types</td>
+<td>this:energy_consumers</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name_types</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">All name types managed by this authority.</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energy_consumers</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Source or consumer connected to the bay.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cim:NameTypeAuthority.NameTypes</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name_types</span>
-<span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameTypeAuthority</span>
+<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">this:Bay.EnergyConsumers</span>
+<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">energy_consumers</span>
+<span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bay</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameTypeAuthority</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NameType</span>
-<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bay</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnergyConsumer</span>
+<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>

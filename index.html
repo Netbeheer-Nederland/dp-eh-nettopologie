@@ -269,6 +269,7 @@ class Line {
     string short_name
 }
 class Substation {
+    Bay bays
     Location location
     string description
     string m_rid
@@ -276,16 +277,14 @@ class Substation {
     string short_name
 }
 class Bay {
-    Substation substation
-    EnergyConnection energy_connections
+    EnergyConsumer energy_consumers
+    Location location
     string description
     string m_rid
     Name names
     string short_name
 }
-class EnergyConnection {
-    boolean aggregate
-    boolean normally_in_service
+class EnergyConsumer {
     MarketEvaluationPoint market_evaluation_points
     Location location
     string description
@@ -294,9 +293,8 @@ class EnergyConnection {
     string short_name
 }
 class MarketEvaluationPoint {
-    string connection_category
-    string description
     string european_article_number_ean
+    string description
     string m_rid
     Name names
     string short_name
@@ -319,20 +317,22 @@ class TopologyDataSet {
     Substation substations
     Line lines
 }
-TopologyDataSet --&gt; Substation : substations
-TopologyDataSet --&gt; Line : lines
+
 Line --&gt; Location : location
-Substation --&gt; Location : location
-EnergyConnection --&gt; Location : location
-EnergyConnection --&gt; MarketEvaluationPoint : market_evaluation_points
 Substation --&gt; Bay : bays
-Bay --&gt; EnergyConnection : energy_connections</code></pre>
+Substation --&gt; Location : location
+Bay --&gt; EnergyConsumer : energy_consumers
+Bay --&gt; Location : location
+EnergyConsumer --&gt; MarketEvaluationPoint : market_evaluation_points
+EnergyConsumer --&gt; Location : location
+TopologyDataSet --&gt; Substation : substations
+TopologyDataSet --&gt; Line : lines</code></pre>
 <h2 id="additional-schemas">Additional schemas</h2>
 <ul>
 <li><a href="https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/refs/heads/main/project/jsonschema/dp_eh_nettopologie.schema.json">JSON Schema</a></li>
 </ul>
 <h2 id="identifiers">Identifiers</h2>
-<p>URI: http://data.netbeheernederland.nl/dp-eh-nettopologie/version#1.0.0</p>
+<p>URI: http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0</p>
 <p>Name: NettopologieDataproduct</p>
 <h2 id="classes">Classes</h2>
 <table>
@@ -362,6 +362,10 @@ Bay --&gt; EnergyConnection : energy_connections</code></pre>
 <tr>
 <td><a href="EnergyConnection/">EnergyConnection</a></td>
 <td>A connection of energy generation or consumption on the power system model</td>
+</tr>
+<tr>
+<td><a href="EnergyConsumer/">EnergyConsumer</a></td>
+<td>Generic user of energy - a point of consumption on the power system model</td>
 </tr>
 <tr>
 <td><a href="Equipment/">Equipment</a></td>
@@ -412,6 +416,10 @@ Bay --&gt; EnergyConnection : energy_connections</code></pre>
 <td>General purpose street and postal address information</td>
 </tr>
 <tr>
+<td><a href="StreetDetail/">StreetDetail</a></td>
+<td>Street details, in the context of address</td>
+</tr>
+<tr>
 <td><a href="Substation/">Substation</a></td>
 <td>A collection of equipment for purposes other than generation or utilization, ...</td>
 </tr>
@@ -438,10 +446,6 @@ Bay --&gt; EnergyConnection : energy_connections</code></pre>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="aggregate/">aggregate</a></td>
-<td>The aggregate flag provides an alternative way of representing an aggregated ...</td>
-</tr>
 <tr>
 <td><a href="bays/">bays</a></td>
 <td>Bays contained in the substation</td>
@@ -471,7 +475,7 @@ Bay --&gt; EnergyConnection : energy_connections</code></pre>
 <td>The description is a free human readable text describing or naming the object</td>
 </tr>
 <tr>
-<td><a href="energy_connections/">energy_connections</a></td>
+<td><a href="energy_consumers/">energy_consumers</a></td>
 <td>Source or consumer connected to the bay</td>
 </tr>
 <tr>
@@ -479,16 +483,8 @@ Bay --&gt; EnergyConnection : energy_connections</code></pre>
 <td>The attribute is used for an exchange of the EAN code (European Article Numbe...</td>
 </tr>
 <tr>
-<td><a href="identified_object/">identified_object</a></td>
-<td>Identified object that this name designates</td>
-</tr>
-<tr>
 <td><a href="identifier/">identifier</a></td>
 <td></td>
-</tr>
-<tr>
-<td><a href="language/">language</a></td>
-<td>The language in which the address is specified, using ISO 639-1 two digit lan...</td>
 </tr>
 <tr>
 <td><a href="lines/">lines</a></td>
@@ -519,20 +515,12 @@ Bay --&gt; EnergyConnection : energy_connections</code></pre>
 <td>Authority responsible for managing names of this type</td>
 </tr>
 <tr>
-<td><a href="name_types/">name_types</a></td>
-<td>All name types managed by this authority</td>
-</tr>
-<tr>
 <td><a href="names/">names</a></td>
 <td>All names of this identified object</td>
 </tr>
 <tr>
-<td><a href="normally_in_service/">normally_in_service</a></td>
-<td>Specifies the availability of the equipment under normal operating conditions</td>
-</tr>
-<tr>
-<td><a href="po_box/">po_box</a></td>
-<td>Post office box</td>
+<td><a href="number/">number</a></td>
+<td>Designator of the specific location on the street</td>
 </tr>
 <tr>
 <td><a href="position_points/">position_points</a></td>
@@ -557,6 +545,10 @@ Bay --&gt; EnergyConnection : energy_connections</code></pre>
 <tr>
 <td><a href="state_or_province/">state_or_province</a></td>
 <td>Name of the state or province</td>
+</tr>
+<tr>
+<td><a href="streetDetail/">streetDetail</a></td>
+<td>Street detail</td>
 </tr>
 <tr>
 <td><a href="substations/">substations</a></td>
