@@ -18,7 +18,7 @@
               "location": {
                 "main_address": {
                   "postal_code": "1234AB",
-                  "streetDetail": {
+                  "street_detail": {
                     "number": "23"
                   }
                 }
@@ -33,7 +33,7 @@
               "location": {
                 "main_address": {
                   "postal_code": "1234AB",
-                  "streetDetail": {
+                  "street_detail": {
                     "number": "19"
                   }
                 }
@@ -48,7 +48,7 @@
               "location": {
                 "main_address": {
                   "postal_code": "1234AB",
-                  "streetDetail": {
+                  "street_detail": {
                     "number": "17"
                   }
                 }
@@ -68,7 +68,7 @@
               "location": {
                 "main_address": {
                   "postal_code": "1234AB",
-                  "streetDetail": {
+                  "street_detail": {
                     "number": "11"
                   }
                 }

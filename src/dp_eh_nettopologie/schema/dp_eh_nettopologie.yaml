@@ -1,7 +1,4 @@
 name: NettopologieDataproduct
-title: Nettopologie Dataproduct
-id: http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0
-version: 1.0.0
 description: |-
   This data product for EnergyHubs describes which information and data to
   exchange between DSO and customer/advisor when establishing an EnergyHub. A
@@ -101,6 +98,9 @@ description: |-
   ## Additional schemas
   * [JSON Schema](https://raw.githubusercontent.com/Netbeheer-Nederland/dp-eh-nettopologie/refs/heads/main/project/jsonschema/dp_eh_nettopologie.schema.json)
   ## Identifiers
+title: Nettopologie Dataproduct
+id: http://data.netbeheernederland.nl/dp-eh-nettopologie/version/1.0.0
+version: 1.0.0
 imports:
 - linkml:types
 prefixes:
@@ -119,41 +119,41 @@ default_prefix: this
 default_range: string
 classes:
   TopologyDataSet:
-    tree_root: true
     description: A single instance of a published dataset.
     attributes:
       identifier:
         slot_uri: dct:identifier
-        multivalued: false
         required: true
+        multivalued: false
       contact_point:
         slot_uri: dcat:contactPoint
-        multivalued: false
         required: true
+        multivalued: false
       conforms_to:
         slot_uri: dct:conformsTo
-        multivalued: false
         required: true
+        multivalued: false
       release_date:
         slot_uri: dct:issued
-        multivalued: false
         range: date
         required: true
+        multivalued: false
       version:
         slot_uri: owl:versionInfo
-        multivalued: false
         required: true
+        multivalued: false
       substations:
         slot_uri: this:TopologyDataSet.Substations
         range: Substation
-        multivalued: true
         required: true
+        multivalued: true
       lines:
         slot_uri: this:TopologyDataSet.Lines
         range: Line
-        multivalued: true
         required: false
+        multivalued: true
     class_uri: this:TopologyDataSet
+    tree_root: true
   IdentifiedObject:
     description: This is a root class to provide common identification for all classes
       needing identification and naming attributes.
@@ -163,9 +163,9 @@ classes:
         description: The description is a free human readable text describing or naming
           the object. It may be non unique and may not correlate to a naming hierarchy.
         slot_uri: cim:IdentifiedObject.description
-        multivalued: false
         range: string
         required: false
+        multivalued: false
       m_rid:
         description: "Master resource identifier issued by a model authority. The\
           \ mRID is unique within an exchange context. Global uniqueness is easily\
@@ -174,22 +174,22 @@ classes:
           \ conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about\
           \ attributes that identify CIM object elements."
         slot_uri: cim:IdentifiedObject.mRID
-        multivalued: false
         range: string
         required: false
+        multivalued: false
       names:
         description: All names of this identified object.
         slot_uri: cim:IdentifiedObject.Names
-        multivalued: true
         range: Name
         required: false
+        multivalued: true
       short_name:
         description: The attribute is used for an exchange of a human readable short
           name with length of the string 12 characters maximum.
         slot_uri: eu:IdentifiedObject.shortName
-        multivalued: false
         range: string
         required: false
+        multivalued: false
     class_uri: cim:IdentifiedObject
   Name:
     description: "The Name class provides the means to define any number of human\
@@ -201,9 +201,9 @@ classes:
       name_type:
         description: Type of this name.
         slot_uri: cim:Name.NameType
-        multivalued: false
         range: NameType
         required: true
+        multivalued: false
     class_uri: cim:Name
   NameType:
     description: "Type of name. Possible values for attribute 'name' are implementation\
@@ -222,15 +222,15 @@ classes:
       description:
         description: "Description of the name type.\r\n"
         slot_uri: cim:NameType.description
-        multivalued: false
         range: string
         required: false
+        multivalued: false
       name_type_authority:
         description: Authority responsible for managing names of this type.
         slot_uri: cim:NameType.NameTypeAuthority
-        multivalued: false
         range: NameTypeAuthority
         required: false
+        multivalued: false
     class_uri: cim:NameType
   NameTypeAuthority:
     description: "Authority responsible for creation and management of names of a\
@@ -240,9 +240,9 @@ classes:
       description:
         description: "Description of the name type authority.\r\n"
         slot_uri: cim:NameTypeAuthority.description
-        multivalued: false
         range: string
         required: false
+        multivalued: false
     class_uri: cim:NameTypeAuthority
   Line:
     description: Contains equipment beyond a substation belonging to a power transmission
@@ -273,39 +273,39 @@ classes:
       location:
         description: Location of this power system resource.
         slot_uri: cim:PowerSystemResource.Location
-        multivalued: false
         range: Location
         required: false
+        multivalued: false
     class_uri: cim:PowerSystemResource
   Substation:
     description: A collection of equipment for purposes other than generation or utilization,
       through which electric energy in bulk is passed for the purposes of switching
       or modifying its characteristics.
+    exact_mappings:
+    - nbnl:station
     is_a: EquipmentContainer
     attributes:
       bays:
+        description: Bays contained in the substation.
         slot_uri: cim:Substation.Bays
         range: Bay
         required: true
         multivalued: true
-        description: Bays contained in the substation.
-    exact_mappings:
-      - nbnl:station
     class_uri: cim:Substation
   Bay:
     description: A collection of power system resources (within a given substation)
       including conducting equipment, protection relays, measurements, and telemetry.  A
       bay typically represents a physical grouping related to modularization of equipment.
+    exact_mappings:
+    - nbnl:veld
     is_a: EquipmentContainer
     attributes:
       energy_consumers:
         description: Source or consumer connected to the bay.
         slot_uri: this:Bay.EnergyConsumers
-        multivalued: true
         range: EnergyConsumer
         required: true
-    exact_mappings:
-      - nbnl:veld
+        multivalued: true
     class_uri: cim:Bay
   EnergyConnection:
     description: A connection of energy generation or consumption on the power system
@@ -315,16 +315,16 @@ classes:
       market_evaluation_points:
         description: Market evaluation points associated with the  EnergyConnection.
         slot_uri: this:EnergyConnection.MarketEvaluationPoints
-        multivalued: true
         range: MarketEvaluationPoint
         required: true
+        multivalued: true
     class_uri: cim:EnergyConnection
   EnergyConsumer:
-    class_uri: cim:EnergyConsumer
-    is_a: EnergyConnection
+    description: Generic user of energy - a point of consumption on the power system
+      model.
     from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61970.Base.Wires
-    description: "Generic user of energy - a point of consumption on the power
-      system model."
+    is_a: EnergyConnection
+    class_uri: cim:EnergyConsumer
   ConductingEquipment:
     description: The parts of the AC power system that are designed to carry current
       or that are conductively connected through terminals.
@@ -339,22 +339,22 @@ classes:
       coordinate_system:
         description: Coordinate system used to describe position points of this location.
         slot_uri: cim:Location.CoordinateSystem
-        multivalued: false
         range: CoordinateSystem
         required: false
+        multivalued: false
       main_address:
         description: Main address of the location.
         slot_uri: cim:Location.mainAddress
-        multivalued: false
         range: StreetAddress
         required: true
+        multivalued: false
       position_points:
+        description: Sequence of position points describing this location, expressed
+          in coordinate system 'Location.CoordinateSystem'.
         slot_uri: cim:Location.PositionPoints
         range: PositionPoint
         required: false
         multivalued: true
-        description: Sequence of position points describing this location, expressed
-          in coordinate system 'Location.CoordinateSystem'.
     class_uri: cim:Location
   CoordinateSystem:
     description: Coordinate reference system.
@@ -375,9 +375,9 @@ classes:
           A profile should limit this code to a set of allowed URNs agreed to by all
           sending and receiving parties.'
         slot_uri: cim:CoordinateSystem.crsUrn
-        multivalued: false
         range: string
         required: true
+        multivalued: false
     class_uri: cim:CoordinateSystem
   StreetAddress:
     description: General purpose street and postal address information.
@@ -385,48 +385,48 @@ classes:
       postal_code:
         description: Postal code for the address.
         slot_uri: cim:StreetAddress.postalCode
-        multivalued: false
         range: string
         required: false
-      streetDetail:
+        multivalued: false
+      street_detail:
+        description: Street detail.
         slot_uri: cim:StreetAddress.streetDetail
         range: StreetDetail
         required: true
         multivalued: false
-        description: Street detail.
       town_detail:
         description: Town detail.
         slot_uri: cim:StreetAddress.townDetail
-        multivalued: false
         range: TownDetail
         required: false
+        multivalued: false
     class_uri: cim:StreetAddress
   StreetDetail:
-    class_uri: cim:StreetDetail
-    from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61968.Common
     description: "Street details, in the context of address.\r\n"
+    from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC61968.Common
     attributes:
       number:
+        description: Designator of the specific location on the street.
         slot_uri: cim:StreetDetail.number
         range: string
         required: true
         multivalued: false
-        description: Designator of the specific location on the street.
+    class_uri: cim:StreetDetail
   TownDetail:
     description: Town details, in the context of address.
     attributes:
       code:
         description: Town code.
         slot_uri: cim:TownDetail.code
-        multivalued: false
         range: string
         required: false
+        multivalued: false
       state_or_province:
         description: Name of the state or province.
         slot_uri: cim:TownDetail.stateOrProvince
-        multivalued: false
         range: string
         required: false
+        multivalued: false
     class_uri: cim:TownDetail
   PositionPoint:
     description: Set of spatial coordinates that determine a point, defined in the
@@ -441,27 +441,27 @@ classes:
         description: Zero-relative sequence number of this point within a series of
           points.
         slot_uri: cim:PositionPoint.sequenceNumber
-        multivalued: false
         range: integer
         required: false
+        multivalued: false
       x_position:
         description: X axis position.
         slot_uri: cim:PositionPoint.xPosition
-        multivalued: false
         range: string
         required: true
+        multivalued: false
       y_position:
         description: Y axis position.
         slot_uri: cim:PositionPoint.yPosition
-        multivalued: false
         range: string
         required: true
+        multivalued: false
       z_position:
         description: (if applicable) Z axis position.
         slot_uri: cim:PositionPoint.zPosition
-        multivalued: false
         range: string
         required: false
+        multivalued: false
     class_uri: cim:PositionPoint
   UsagePoint:
     description: Logical or physical point in the network to which readings or events
@@ -476,15 +476,16 @@ classes:
           the EAN code. For details on EAN scheme please refer to the [Codebesluit
           toekenning EAN-codes elektriciteit](https://www.acm.nl/nl/publicaties/codebesluit-toekenning-ean-codes-elektriciteit).
         slot_uri: nl:IdentifiedObject.europeanArticleNumberEAN
-        multivalued: false
         range: string
         required: true
+        multivalued: false
     class_uri: cim:UsagePoint
   MarketEvaluationPoint:
-    is_a: UsagePoint
+    description: The identification of an entity where energy products are measured
+      or computed.
     from_schema: https://cim.ucaiug.io/ns#TC57CIM.IEC62325.MarketManagement
-    description: The identification of an entity where energy products are
-      measured or computed.
     exact_mappings:
-      - nbnl:aansluiting
+    - nbnl:aansluiting
+    is_a: UsagePoint
     class_uri: cim:MarketEvaluationPoint
+

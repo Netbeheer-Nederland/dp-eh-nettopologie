@@ -528,7 +528,7 @@
                     "description": "Postal code for the address.",
                     "type": "string"
                 },
-                "streetDetail": {
+                "street_detail": {
                     "$ref": "#/$defs/StreetDetail",
                     "description": "Street detail."
                 },
@@ -538,7 +538,7 @@
                 }
             },
             "required": [
-                "streetDetail"
+                "street_detail"
             ],
             "title": "StreetAddress",
             "type": "object"
